@@ -57,7 +57,7 @@ modeling, investigators can use leap to analyze multiepisode data.
 
 The episode R package includes psychotherapy outcome data sets, etc…
 
-# Function Organization
+# Package index
 
 ### Data Preparation
 
