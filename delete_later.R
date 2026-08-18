@@ -1,20 +1,28 @@
 
 
-# leap:: |------------------------------------------------
+# leap:: |----------------------------------------------------------
 load_all()
 
 # review
 ls("package:leap")
 
-# check_raw() |-----------------------------------------------
+# check_raw() |---------------------------------------------
 check_raw(df_unb)
 
-# cols_standard() |-----------------------------------------------------
+## pipe compatibility
 
 
 
-# order_sessions() |------------------------------------------
+# cols_standard() |-----------------------------------------
+
+
+## pipe compatibility
+
+
+# order_sessions() |-----------------------------------------
 order_sessions(df_unb, by = "date")
+
+## pipe compatibility
 
 # add_variables() -------------------------------------------
 tmp0 <- order_sessions(df_unb, by = "date")
@@ -26,20 +34,22 @@ tmp5 <- add_client_episode_id(tmp4)
 df_unb <- add_episode_vars(df_unb)
 df_bal <- add_episode_vars(df_bal)
 
+## pipe compatibility
+
 # check_eps() ------------------------------------------------
 check_eps(df_unb)
 
 
 # filter_episodes()  -----------------------------------------
-
 filter_episodes(df_unb, min_sessions = 3)
 filter_responders(df_unb, low = 0.10)
 
+## pipe compatibility
 
 # episode_breaks() -------------------------------------------
 breaks <- episode_breaks(dfs$df_bal)
 
-# plot_episode_loss() ---------------------------------------
+# plot_episode_loss() ----------------------------------------
 plot_episode_loss(breaks, y_lims = c(0, 25))
 
 # plot_lag_density() -----------------------------------------
@@ -73,5 +83,5 @@ plot_episode_change(slopes, y_lims = c(-10, 10))
 (mod3 <- fit_bel(brk))
 # mod4 <- fit_brms()
 
-# compare_lme_fit() --------------------------------------------------
+# compare_lme_fit() ------------------------------------------
 
