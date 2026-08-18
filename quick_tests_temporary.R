@@ -1,11 +1,9 @@
-# is the application of growth mixture modeling to
-# delimiting treatment episodes a whole paper?
 
+
+# load leap functions
 load_all()
-library(tidyverse)
-library(mclust)
 
-# Print leap functions
+# quick check
 ls("package:leap")
 
 # pick any two data sets
