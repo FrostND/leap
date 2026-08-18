@@ -8,35 +8,28 @@ library(mclust)
 # Print leap functions
 ls("package:leap")
 
-# Explore Delimiter Estimation Methods
-load(
-  "~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData"
-)
-
 # pick any two data sets
 df_unb <- pluck(data, "unbalanced", "clinical", "efficient_resp")
 df_bal <- pluck(data, "balanced", "clinical", "efficient_resp")
 
-# check data
+# check: check_raw() ------------------------------
 check_raw(df_unb)
 
-# test episode builder functions
+# check: add_ functions ---------------------------
 tmp0 <- order_sessions(df_unb, by = "date")
 tmp1 <- add_session_lag(tmp0)
 tmp2 <- add_episode_id(tmp1)
 tmp3 <- add_episode_session(tmp2)
 tmp4 <- add_episode_count(tmp3)
 tmp5 <- add_client_episode_id(tmp4)
-tmp6 <- add_episode_vars(df_unb)
-tmp7 <- add_episode_vars(df_bal)
+df_unb <- add_episode_vars(df_unb)
+df_bal <- add_episode_vars(df_bal)
 
-dfs <- purrr::map(lst(df_unb, df_bal), .f = add_episode_vars)
-
-# check filter episodes
+# check: filter_episodes()  ------------------------
 filter_episodes(dfs$df_unb, min_sessions = 3)
 filter_responders(dfs$df_unb, low = 0.10)
 
-# episode breaks and breaks plot
+# check: episode_breaks(), and breaks plot
 brk <- episode_breaks(dfs$df_bal)
 plot_episode_loss(brk, y_lims = c(0, 25))
 
