@@ -54,7 +54,7 @@ The second aim of the leap() package is to test various statistical approaches t
 
 The episode R package includes psychotherapy outcome data sets, etc...
 
-# Function Organization
+# Package index
 
 ### Data Preparation
 

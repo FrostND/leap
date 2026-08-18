@@ -1,9 +1,9 @@
 #' Filter treatment episodes by episode-level characteristics
 #'
-#' Filters longitudinal session records according to structural
-#' characteristics of client-specific treatment episodes. Episodes may be
-#' selected by episode number, number of sessions, or episode duration, and
-#' users can control whether only matched episodes, prior episodes, or the
+#' Filter longitudinal session records organized into treatment episodes
+#' according to episode characteristics. Episodes may be selected by
+#' episode number, number of sessions, or episode duration, and users
+#' can control whether only matched episodes, prior episodes, or the
 #' complete treatment history of matched clients are retained.
 #'
 #' @param data A data frame containing session-level treatment records. The
@@ -82,14 +82,15 @@
 #'   max_sessions = 20
 #' )
 #'
-#' # Retain treatment episodes lasting at least eight weeks
+#' # Retain episodes lasting at least eight weeks
+#' # in duration
 #' data_filt <- filter_episodes(
 #'   data = tx_data,
 #'   min_weeks = 8
 #' )
 #'
-#' # Identify clients who reached Episode 3 and retain Episodes 1 through 3
-#' # for those clients, dropping all other cases.
+#' # Identify clients who reached Episode 3 and retain
+#' # Episodes 1 through 3 for those clients
 #' data_filt <- filter_episodes(
 #'   data = tx_data,
 #'   episode_num = 3,
@@ -97,7 +98,7 @@
 #' )
 #'
 #' # Retain the complete treatment history of clients with a qualifying
-#' # Episode 2
+#' # Episode 2 who attended a minimum of 5 sessions
 #' data_filt <- filter_episodes(
 #'   data = tx_data,
 #'   episode_num = 2,
