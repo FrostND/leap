@@ -1,0 +1,11 @@
+bibentry(
+  bibtype = "Article",
+  title = "leap",
+  author = "Nick Frost",
+  journal = 2026,
+  year = "Software Journal",
+  volume = 4,
+  number = 1,
+  pages = 20,
+  doi = "http.frost.article"
+)

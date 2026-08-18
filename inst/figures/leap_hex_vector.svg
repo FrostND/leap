@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 1200"
+     width="1200"
+     height="1200">
+
+  <!-- ============================================================
+       LEAP HEX STICKER — VERSION 2
+       ============================================================
+       Coordinate system:
+         x = 0 ... 1200  (left -> right)
+         y = 0 ... 1200  (top  -> bottom)
+
+       Main editable colors:
+         Navy border / runner : #06254A
+         Navy lower panel     : #041E3D
+         Teal top             : #10B7C9
+         Teal side            : #075A7D
+         Purple top           : #8750C8
+         Purple side          : #3B2B79
+         White                : #FFFFFF
+
+       TIP:
+       Search this file for "EDIT:" to find the main controls.
+       ============================================================ -->
+
+  <defs>
+
+    <!-- EDIT: Hex clipping boundary.
+         Changing these six points changes the overall hex proportions. -->
+    <clipPath id="hexClip">
+      <polygon points="
+        600,35
+        1100,325
+        1100,900
+        600,1185
+        100,900
+        100,325
+      "/>
+    </clipPath>
+
+    <!-- Left platform top gradient.
+         EDIT: Change stop colors to alter the teal treatment-episode color. -->
+    <linearGradient id="leftTopGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#10B7C9"/>
+      <stop offset="100%" stop-color="#07869A"/>
+    </linearGradient>
+
+    <!-- Right platform top gradient.
+         EDIT: Change stop colors to alter the purple treatment-episode color. -->
+    <linearGradient id="rightTopGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#8750C8"/>
+      <stop offset="100%" stop-color="#6840A5"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- ============================================================
+       BACKGROUND
+       ============================================================ -->
+
+  <!-- White square artboard. The visible logo itself is clipped to the hex.
+       EDIT: Change fill if you ever want an off-white background. -->
+  <rect width="1200" height="1200" fill="#FFFFFF"/>
+
+  <g clip-path="url(#hexClip)">
+
+    <!-- White interior of the hex. -->
+    <rect width="1200" height="1200" fill="#FFFFFF"/>
+
+
+    <!-- ==========================================================
+         LEFT EPISODE PLATFORM
+         ==========================================================
+         Three deliberately simple planes:
+           1. top plane
+           2. front face
+           3. side facet
+
+         EDIT:
+         - Move the inner cliff edge by changing x ≈ 505.
+         - Raise/lower the cliff top by changing y ≈ 575.
+         - Shorten/tall the cliff by changing bottom y ≈ 800.
+         ========================================================== -->
+
+    <!-- Left cliff: main dark face -->
+    <polygon
+      points="100,630 505,560 475,800 100,800"
+      fill="#041E3D"/>
+
+
+
+    <!-- Left cliff: colored top surface -->
+    <polygon
+      points="100,585 505,560 430,605 100,630"
+      fill="url(#leftTopGradient)"/>
+
+
+    <!-- ==========================================================
+         RIGHT EPISODE PLATFORM
+         ==========================================================
+         EDIT:
+         - Move the inner cliff edge by changing x ≈ 705.
+         - Raise/lower the cliff top by changing y ≈ 560.
+         - Shorten/tall the cliff by changing bottom y ≈ 800.
+         ========================================================== -->
+
+    <!-- Right cliff: main dark face -->
+    <polygon
+      points="705,560 1100,600 1400,800 730,800"
+      fill="#29225F"/>
+
+    <!-- Right cliff: colored top surface -->
+    <polygon
+      points="705,560 1100,585 1100,635 775,700"
+      fill="url(#rightTopGradient)"/>
+
+
+    <!-- ==========================================================
+         RUNNER
+         ==========================================================
+         The original vector silhouette is reused from v1.
+
+         EDIT:
+         transform="translate(X Y) scale(S)"
+
+         Current settings:
+           X = 54   -> horizontal shift
+           Y = 58   -> vertical shift
+           S = 0.85 -> 85% of original size
+
+         Examples:
+           Move runner LEFT  20px: translate(34 58)
+           Move runner RIGHT 20px: translate(74 58)
+           Move runner UP    20px: translate(54 38)
+           Make runner 5% larger: scale(0.90)
+         ========================================================== -->
+
+    <g transform="translate(54 58) scale(0.85)">
+      <path d="M 819.0,257.0 L 812.0,252.0 L 797.0,255.0 L 789.0,277.0 L 748.0,293.0 L 724.0,281.0 L 704.0,261.0 L 710.0,255.0 L 726.0,258.0 L 738.0,239.0 L 738.0,201.0 L 724.0,190.0 L 707.0,186.0 L 688.0,196.0 L 683.0,209.0 L 687.0,229.0 L 680.0,238.0 L 661.0,229.0 L 596.0,223.0 L 514.0,259.0 L 505.0,274.0 L 515.0,289.0 L 529.0,288.0 L 545.0,267.0 L 599.0,252.0 L 630.0,265.0 L 612.0,310.0 L 582.0,344.0 L 575.0,373.0 L 542.0,420.0 L 534.0,426.0 L 499.0,430.0 L 458.0,461.0 L 442.0,450.0 L 433.0,451.0 L 424.0,463.0 L 422.0,478.0 L 402.0,502.0 L 397.0,519.0 L 400.0,533.0 L 414.0,533.0 L 422.0,518.0 L 452.0,499.0 L 457.0,489.0 L 528.0,465.0 L 556.0,461.0 L 625.0,398.0 L 662.0,397.0 L 712.0,385.0 L 716.0,387.0 L 706.0,412.0 L 695.0,427.0 L 674.0,441.0 L 672.0,452.0 L 715.0,484.0 L 739.0,485.0 L 741.0,474.0 L 724.0,464.0 L 718.0,435.0 L 766.0,381.0 L 766.0,355.0 L 718.0,343.0 L 664.0,341.0 L 699.0,302.0 L 749.0,322.0 L 774.0,313.0 L 823.0,276.0 Z" fill="#06254A"/>
+    </g>
+
+
+    <!-- ==========================================================
+         LOWER NAVY BRAND PANEL
+         ==========================================================
+         EDIT:
+         The first two y-values (currently 700) control where the
+         navy panel begins. Lower number = taller navy panel.
+         ========================================================== -->
+
+    <polygon
+      points="
+        100,750
+        1100,750
+        1100,900
+        600,1185
+        100,900
+      "
+      fill="#041E3D"/>
+
+
+    <!-- ==========================================================
+         LEAP WORDMARK
+         ==========================================================
+         This version uses editable SVG text instead of traced letter
+         polygons, making size and positioning much easier to control.
+
+         EDIT:
+           x="600"       -> horizontal center
+           y="1235"      -> vertical position
+           font-size     -> overall word size
+           font-weight   -> thickness
+           letter-spacing-> spacing between letters
+
+         NOTE:
+         The font stack is intentionally generic:
+           Arial / Helvetica / sans-serif
+         This should render consistently on most systems.
+         If you want absolutely identical typography everywhere,
+         convert the final text to paths in Illustrator/Inkscape later.
+         ========================================================== -->
+
+    <text
+      x="600"
+      y="975"
+      text-anchor="middle"
+      fill="#FFFFFF"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="205"
+      font-weight="750"
+      letter-spacing="3">
+      LEAP
+    </text>
+
+  </g>
+
+
+  <!-- ============================================================
+       HEX BORDER
+       ============================================================
+       EDIT:
+         stroke-width="28" controls border thickness.
+         stroke="#06254A" controls border color.
+       ============================================================ -->
+
+  <polygon
+    points="
+      600,35
+      1100,325
+      1100,900
+      600,1185
+      100,900
+      100,325
+    "
+    fill="none"
+    stroke="#06254A"
+    stroke-width="28"
+    stroke-linejoin="round"/>
+
+</svg>
