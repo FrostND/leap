@@ -20,3 +20,5 @@ Suggests:
     brms,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/FrostND/leap
+BugReports: https://github.com/FrostND/leap/issues
