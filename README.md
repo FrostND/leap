@@ -7,11 +7,12 @@
 
 <!-- badges: end -->
 
-The Longitudinal Episode Analysis and Procedures (leap) package provides
-tools for identifying, describing and analyzing repeated treatment
-episodes in longitudinal psychotherapy and behavioral health research.
-
 ## Overview
+
+The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (leap)
+package provides researchers with tools to identify, describe, and
+analyze repeated treatment episodes in longitudinal psychotherapy and
+behavioral health research.
 
 ## Installation
 
@@ -27,7 +28,8 @@ You can install the development version of leap from GitHub.
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-## basic example code
+## add episode variables from raw longitudinal data
+# episode_df <- add_episode_vars(data)
 ```
 
 ## Motivation
