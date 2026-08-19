@@ -21,10 +21,6 @@ The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (**leap**) pack
 
 <!-- badges: end -->
 
-## Overview
-
-The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (**leap**) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal psychotherapy and behavioral health data. **leap** supports workflows for defining treatment episodes, characterizing within- and between-episode patterns, and modeling change across successive episodes.
-
 ## Installation
 
 You can install the development version of leap from GitHub.
