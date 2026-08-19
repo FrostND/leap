@@ -3,13 +3,12 @@
 
 # leap <img src="inst/figures/leap_hex_test.png" align="right" height="128"/>
 
-The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
-(**leap**) package provides tools for identifying, describing,
-visualizing, and analyzing repeated treatment episodes in longitudinal
-psychotherapy and behavioral health data. **leap** supports workflows
-for defining treatment episodes, characterizing within- and
-between-episode patterns, and modeling change across successive
-episodes.
+The longitudinal episode analysis and procedures (`leap`) package
+provides tools for identifying, describing, visualizing, and analyzing
+repeated treatment episodes in longitudinal psychotherapy and behavioral
+health data. `leap` supports workflows for defining treatment episodes,
+characterizing within- and between-episode patterns, and modeling change
+across successive episodes.
 
 <!-- badges: start -->
 
@@ -52,40 +51,40 @@ The leap package includes psychotherapy outcome data sets, etc…
 
 # Package index
 
-### Data Preparation
+#### Data Preparation
 
 `cols_standardize()`, `check_raw_data()`, `sort_sessions()`,
 `add_session_lag()`, `add_episode_id()`, `add_episode_session()`,
 `add_client_episode_id()`, `add_episode_count()`
 
-### Data Checking and Filtering
+#### Data Checking and Filtering
 
 `check_episode_data()`, `check_episode_gaps()`, `filter_episodes()`,
 `filter_cohort()`, `filter_responder()`, `sample_episode()`
 
-### Episode Summaries
+#### Episode Summaries
 
 `describe_episodes()`, `estimate_episode_slopes()`,
 `build_transition_data()`
 
-### Statistical Modeling
+#### Statistical Modeling
 
 `fit_lme()`, `fit_lme_selection()`, `fit_sao()`, `fit_bel()`,
 `fit_brms()`
 
-### Model Diagnostics
+#### Model Diagnostics
 
 `compare_episode_models()`, `episode_icc()`, `episode_pwr()`
 
-### Visualization
+#### Visualization
 
 `plot_episode_curves()`, `plot_cohort_curves()`,
 `plot_episode_change()`, `plot_cohort_change()`,
 `plot_sampled_episode()`, `plot_episode_distributions()`
 
-### Data Restructuring
+#### Data Restructuring
 
-### Internal Helpers
+#### Internal Helpers
 
 `cols_validate()`, `pivot_clients_wide()`, `pivot_episodes_wide()`,
 `map_models()`
