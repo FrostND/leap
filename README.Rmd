@@ -51,19 +51,19 @@ The leap package includes psychotherapy outcome data sets, etc...
 
 #### Data Preparation
 
-`cols_standardize()`, `check_raw_data()`, `sort_sessions()`, `add_session_lag()`, `add_episode_id()`, `add_episode_session()`, `add_client_episode_id()`, `add_episode_count()`
+`cols_standard()`, `check_raw()`, `order_sessions()`, `add_session_lag()`, `add_episode_id()`, `add_episode_session()`, `add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`
 
 #### Data Checking and Filtering
 
-`check_episode_data()`, `check_episode_gaps()`, `filter_episodes()`, `filter_cohort()`, `filter_responder()`, `sample_episode()`
+`check_eps()`, `check_episode_gaps()`, `filter_episodes()`, `filter_cohort()`, `filter_responder()`
 
 #### Episode Summaries
 
-`describe_episodes()`, `estimate_episode_slopes()`, `build_transition_data()`
+`describe_episodes()`, `episode_slopes()`, `episode_breaks()`
 
 #### Statistical Modeling
 
-`fit_lme()`, `fit_lme_selection()`, `fit_sao()`, `fit_bel()`, `fit_brms()`
+`fit_lme()`, `fit_sao()`, `fit_bel()`, `fit_brms()`
 
 #### Model Diagnostics
 
