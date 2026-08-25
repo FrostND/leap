@@ -51,11 +51,11 @@ The leap package includes psychotherapy outcome data sets, etc...
 
 #### Data Preparation
 
-`cols_standard()`, `check_raw()`, `order_sessions()`, `add_session_lag()`, `add_episode_id()`, `add_episode_session()`, `add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`
+`cols_standard()`, `order_sessions()`, `add_session_lag()`, `add_episode_id()`, `add_episode_session()`, `add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`
 
 #### Data Checking and Filtering
 
-`check_eps()`, `check_episode_gaps()`, `filter_episodes()`, `filter_cohort()`, `filter_responder()`
+`check_raw()`, `check_eps()`, `check_episode_gaps()`, `filter_episodes()`, `filter_cohort()`, `filter_responder()`
 
 #### Episode Summaries
 
