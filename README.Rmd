@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# leap <img src="inst/figures/leap_hex_test.png" align="right" height="128"/>
+# leap <img src="inst/figures/leap_hex.png" align="right" height="128"/>
 
 The longitudinal episode analysis and procedures (`leap`) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal psychotherapy and behavioral health data. `leap` supports workflows for defining treatment episodes, characterizing within- and between-episode patterns, and modeling change across successive episodes.
 

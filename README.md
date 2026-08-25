@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# leap <img src="inst/figures/leap_hex_test.png" align="right" height="128"/>
+# leap <img src="inst/figures/leap_hex.png" align="right" height="128"/>
 
 The longitudinal episode analysis and procedures (`leap`) package
 provides tools for identifying, describing, visualizing, and analyzing
@@ -51,16 +51,19 @@ The leap package includes psychotherapy outcome data sets, etc…
 
 # Package index
 
-#### Data Preparation
+#### Pre-Processing
 
-`cols_standard()`, `check_raw()`, `order_sessions()`,
+`check_raw()`, `cols_standard()`, `cols_validate()`, `order_sessions()`,
+
+#### Add Episode Variables
+
 `add_session_lag()`, `add_episode_id()`, `add_episode_session()`,
-`add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`
+`add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`,
+`lag_delimiter()`
 
-#### Data Checking and Filtering
+#### Checking and Filtering
 
-`check_eps()`, `check_episode_gaps()`, `filter_episodes()`,
-`filter_cohort()`, `filter_responder()`
+`check_eps()`, `filter_episodes()`, `filter_cohort()`
 
 #### Episode Summaries
 
@@ -72,15 +75,12 @@ The leap package includes psychotherapy outcome data sets, etc…
 
 #### Model Diagnostics
 
-`compare_episode_models()`, `episode_icc()`, `episode_pwr()`
+`compare_lme_fit()`, `episode_icc()`, `episode_pwr()`
 
 #### Visualization
 
-`plot_episode_curves()`, `plot_cohort_curves()`,
-`plot_episode_change()`, `plot_cohort_change()`,
-`plot_sampled_episode()`, `plot_episode_distributions()`
-
-#### Data Restructuring
+`plot_episode_curves()`, `plot_episode_change()`, `plot_episode_loss()`,
+`plot_lag_density()`, `plot_cohort_curves()`, `plot_cohort_change()`
 
 #### Internal Helpers
 
