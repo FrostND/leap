@@ -107,12 +107,12 @@
 
     <!-- Right cliff: main dark face -->
     <polygon
-      points="705,560 1100,600 1400,800 730,800"
+      points="695,560 1100,600 1400,800 730,800"
       fill="#29225F"/>
 
     <!-- Right cliff: colored top surface -->
     <polygon
-      points="705,560 1100,585 1100,635 775,700"
+      points="1100,585 695,560 770,605 1100,630"
       fill="url(#rightTopGradient)"/>
 
 
