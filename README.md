@@ -34,8 +34,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ## Motivation
 
-The leap() package was developed to serve two main aims. The first is to
-provide researchers with a set of pre-made R tools to analyze
+The `leap()` package was developed to serve two main aims. The first is
+to provide researchers with a set of pre-made R tools to analyze
 psychotherapy treatment episodes. Therefore, this package contains a
 suite of useful R functions to wrangle, summarize, and explore
 psychotherapy data that contains multiple episodes of care.

@@ -41,7 +41,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ## Motivation
 
-The leap() package was developed to serve two main aims. The first is to provide researchers with a set of pre-made R tools to analyze psychotherapy treatment episodes. Therefore, this package contains a suite of useful R functions to wrangle, summarize, and explore psychotherapy data that contains multiple episodes of care.
+The `leap()` package was developed to serve two main aims. The first is to provide researchers with a set of pre-made R tools to analyze psychotherapy treatment episodes. Therefore, this package contains a suite of useful R functions to wrangle, summarize, and explore psychotherapy data that contains multiple episodes of care.
 
 The second aim of the leap() package is to test various statistical approaches to modeling therapeutic outcomes with multi-episode data - an issue that has received less attention in either the psychotherapy or methodology research literature. Using three alternative approaches, including longitudinal growth modeling, slopes as outcomes, and Bayesian modeling, investigators can use leap to analyze multiepisode data.
 
