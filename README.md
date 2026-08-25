@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# leap <img src="inst/figures/leap_hex.png" align="right" height="128"/>
+# leap <img src="inst/figures/leap_hex.png" align="right" height="138"/>
 
 The longitudinal episode analysis and procedures (`leap`) package
 provides tools for identifying, describing, visualizing, and analyzing
