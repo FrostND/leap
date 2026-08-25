@@ -19,8 +19,9 @@ across successive episodes.
 You can install the development version of leap from GitHub.
 
 ``` r
-# install.packages("pak")
-# pak::pak("leap") 
+install.packages("pak")
+
+pak::pak("leap") 
 ```
 
 ## Example
@@ -28,19 +29,22 @@ You can install the development version of leap from GitHub.
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-## add episode variables from raw longitudinal data
-# episode_df <- add_episode_vars(data)
+# check raw longitudinal data file 
+check_raw(data)
+
+# add episode variables from raw longitudinal data
+add_episode_vars(data)
 ```
 
 ## Motivation
 
-The `leap()` package was developed to serve two main aims. The first is
-to provide researchers with a set of pre-made R tools to analyze
+The `leap` package was developed to serve two main aims. The first is to
+provide researchers with a set of pre-made R tools to analyze
 psychotherapy treatment episodes. Therefore, this package contains a
 suite of useful R functions to wrangle, summarize, and explore
 psychotherapy data that contains multiple episodes of care.
 
-The second aim of the leap() package is to test various statistical
+The second aim of the `leap` package is to test various statistical
 approaches to modeling therapeutic outcomes with multi-episode data - an
 issue that has received less attention in either the psychotherapy or
 methodology research literature. Using three alternative approaches,
@@ -51,38 +55,38 @@ The leap package includes psychotherapy outcome data sets, etc…
 
 # Package index
 
-#### Pre-Processing
+### Pre-Processing
 
-`check_raw()`, `cols_standard()`, `cols_validate()`, `order_sessions()`,
+`check_raw()`, `cols_standard()`, `cols_validate()`, `order_sessions()`
 
-#### Add Episode Variables
+### Add Episode Variables
 
 `add_session_lag()`, `add_episode_id()`, `add_episode_session()`,
 `add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`,
 `lag_delimiter()`
 
-#### Checking and Filtering
+### Checking and Filtering
 
 `check_eps()`, `filter_episodes()`, `filter_cohort()`
 
-#### Episode Summaries
+### Episode Summaries
 
 `describe_episodes()`, `episode_slopes()`, `episode_breaks()`
 
-#### Statistical Modeling
+### Statistical Modeling
 
 `fit_lme()`, `fit_sao()`, `fit_bel()`, `fit_brms()`
 
-#### Model Diagnostics
+### Model Diagnostics
 
 `compare_lme_fit()`, `episode_icc()`, `episode_pwr()`
 
-#### Visualization
+### Visualization
 
 `plot_episode_curves()`, `plot_episode_change()`, `plot_episode_loss()`,
 `plot_lag_density()`, `plot_cohort_curves()`, `plot_cohort_change()`
 
-#### Internal Helpers
+### Internal Helpers
 
 `cols_validate()`, `pivot_clients_wide()`, `pivot_episodes_wide()`,
 `map_models()`
