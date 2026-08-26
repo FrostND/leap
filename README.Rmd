@@ -83,20 +83,12 @@ describe_episodes(episode_data)
 # fit mixed effects longitudinal growth model 
 fit_lme(episode_data, cohort = "all", model = "episode")
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# plot episode data 
+# plot episodes 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # episode growth curves 
 growth <- plot_episode_curves(episode_data)
-
-
-# decline between episodes 
-episode_data |> 
-  episode_breaks() %>% 
-  plot_episode_loss()
-
 
 
 

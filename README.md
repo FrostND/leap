@@ -48,20 +48,22 @@ episode_data <- add_episode_vars(data)
 check_eps(episode_data)
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # describe and model  
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # summary statistics by episode 
 describe_episodes(episode_data)
 
-# fit mixed effects multilevel model 
+# fit mixed effects longitudinal growth model 
 fit_lme(episode_data, cohort = "all", model = "episode")
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # plot episodes 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-plot_episode_curves(episode_data)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# episode growth curves 
+growth <- plot_episode_curves(episode_data)
 ```
 
 # Example:
