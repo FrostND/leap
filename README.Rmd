@@ -23,7 +23,7 @@ The longitudinal episode analysis and procedures (`leap`) package provides tools
 
 ## Installation
 
-You can install the development version of leap from GitHub.
+You can install the development version of `leap` from GitHub.
 
 ```{r, eval = FALSE}
 # install devtools 
