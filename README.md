@@ -6,9 +6,9 @@
 The longitudinal episode analysis and procedures (`leap`) package
 provides tools for identifying, describing, visualizing, and analyzing
 repeated treatment episodes in longitudinal psychotherapy and behavioral
-health data. `leap` supports workflows for defining treatment episodes,
-characterizing within- and between-episode patterns, and modeling change
-across successive episodes.
+health data. Specifically, `leap` supports workflows for defining
+treatment episodes, characterizing within- and between-episode patterns,
+and modeling change across successive episodes.
 
 <!-- badges: start -->
 
@@ -16,7 +16,7 @@ across successive episodes.
 
 ## Installation
 
-You can install the development version of leap from GitHub.
+You can install the development version of `leap` from GitHub.
 
 ``` r
 # install devtools 
@@ -26,17 +26,45 @@ install.packages("devtools")
 install_github("FrostND/leap")
 ```
 
-## Example
+## Example: creating episode variables
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to derive episode variables
+from unstructured longitudinal outcome data:
 
 ``` r
-# check raw longitudinal data file 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Identify episodes  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 1. Check whether the data contain the variables 
+# needed for treatment episode identification.
 check_raw(data)
 
-# add episode variables from raw longitudinal data
-add_episode_vars(data)
+# 2. Add the full set of treatment episode variables.
+episode_data <- add_episode_vars(data)
+
+# 3. Check the derived episode structure.
+check_eps(episode_data)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-
+# describe and model  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# summary statistics by episode 
+describe_episodes(episode_data)
+
+# fit mixed effects multilevel model 
+fit_lme(episode_data, cohort = "all", model = "episode")
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# plot episodes 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+plot_episode_curves(episode_data)
 ```
+
+# Example:
 
 ## Motivation
 
