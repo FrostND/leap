@@ -26,10 +26,10 @@ The longitudinal episode analysis and procedures (`leap`) package provides tools
 You can install the development version of leap from GitHub.
 
 ```{r, eval = FALSE}
-# install devtools if needed
+# install devtools 
 install.packages("devtools")
 
-# download developer version 
+# download developement version 
 install_github("FrostND/leap")
 ```
 
