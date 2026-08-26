@@ -38,11 +38,14 @@ install_github("FrostND/leap")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example, eval = FALSE}
+
+
 # check raw longitudinal data file 
 check_raw(data)
 
 # add episode variables from raw longitudinal data
 add_episode_vars(data)
+
 ```
 
 ## Motivation
