@@ -33,37 +33,39 @@ from unstructured longitudinal outcome data:
 
 ``` r
 #--------------------------
-# Identify episodes  
+# Identify episodes
 #--------------------------
 
-# check whether the data contain requisite variables 
+# Check data requirements for episode identification.
 check_raw(data)
 
-# add the full set of treatment episode indicators
+# Derive treatment episode variables.
 episode_data <- add_episode_vars(data)
 
-# check the derived episode structure
+# Check the resulting episode structure.
 check_eps(episode_data)
 
+
 #--------------------------
-# describe and model  
+# Describe and model
 #--------------------------
 
-# summary statistics by episode 
+# Summarize treatment episodes.
 describe_episodes(episode_data)
 
-# fit mixed effects longitudinal growth model 
-fit_lme(episode_data, cohort = "all", model = "episode")
+# Fit a longitudinal mixed-effects model.
+model <- fit_lme(episode_data, cohort = "all", model = "episode")
+
 
 #--------------------------
-# plot episodes 
+# Visualize episodes
 #--------------------------
 
-# episode growth curves 
+# Plot session-level trajectories across treatment episodes.
 growth <- plot_episode_curves(episode_data)
-```
 
-# Example:
+growth
+```
 
 ## Motivation
 
