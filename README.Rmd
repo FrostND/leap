@@ -57,25 +57,22 @@ data <- data %>%
 ```
 
 ```{r example, eval = FALSE}
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 # Identify episodes  
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 
-# 1. Check whether the data contain the variables 
-# needed for treatment episode identification.
+# check whether the data contain requisite variables 
 check_raw(data)
 
-# 2. Add the full set of treatment episode variables.
+# add the full set of treatment episode indicators
 episode_data <- add_episode_vars(data)
 
-# 3. Check the derived episode structure.
+# check the derived episode structure
 check_eps(episode_data)
 
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 # describe and model  
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 
 # summary statistics by episode 
 describe_episodes(episode_data)
@@ -83,14 +80,12 @@ describe_episodes(episode_data)
 # fit mixed effects longitudinal growth model 
 fit_lme(episode_data, cohort = "all", model = "episode")
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 # plot episodes 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#--------------------------
 
 # episode growth curves 
 growth <- plot_episode_curves(episode_data)
-
-
 
 ```
 
