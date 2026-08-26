@@ -3,11 +3,14 @@
 
 # leap <img src="inst/figures/leap_hex.png" align="right" height="138"/>
 
-The longitudinal episode analysis and procedures (`leap`) package
+The **longitudinal episode analysis and procedures** (`leap`) package
 provides tools for identifying, describing, visualizing, and analyzing
 repeated treatment episodes in longitudinal psychotherapy and behavioral
-health data. Specifically, `leap` supports workflows for defining
-treatment episodes, characterizing within- and between-episode patterns,
+health data.
+
+`leap` supports the treatment episode workflow from episode
+identification through statistical analysis, including tools for
+defining episodes, characterizing within- and between-episode patterns,
 and modeling change across successive episodes.
 
 <!-- badges: start -->
@@ -26,16 +29,39 @@ install.packages("devtools")
 install_github("FrostND/leap")
 ```
 
-## Example: creating episode variables
+## Motivation
 
-This is a basic example which shows you how to derive episode variables
-from unstructured longitudinal outcome data:
+Psychotherapy is often represented as a single, continuous course of
+treatment. In longitudinal clinical data, however, clients may disengage
+from care and subsequently return for additional treatment, producing
+multiple distinct episodes of care. Analyzing these data requires
+decisions about how treatment episodes are defined, represented, and
+incorporated into statistical models.
+
+`leap` was developed with two primary aims.
+
+First, the package provides a set of tools for preparing and exploring
+multi-episode psychotherapy data. These functions support common tasks
+such as identifying temporal breaks in treatment, constructing
+episode-level variables, describing patterns of service utilization, and
+visualizing change within and between treatment episodes.
+
+Second, `leap` provides tools for investigating alternative approaches
+to modeling therapeutic change across repeated episodes of care. These
+include longitudinal mixed-effects models, slopes-as-outcomes models,
+and Bayesian multilevel models. Together, these approaches allow
+researchers to examine both change occurring within treatment episodes
+and patterns of change across successive episodes.
+
+## Basic workflow
+
+A typical `leap` workflow consists of identifying treatment episodes,
+describing the resulting episode structure, and then visualizing or
+modeling change across episodes.
+
+### Identify treatment episodes
 
 ``` r
-#--------------------------
-# Identify episodes
-#--------------------------
-
 # Check data requirements for episode identification.
 check_raw(data)
 
@@ -44,45 +70,86 @@ episode_data <- add_episode_vars(data)
 
 # Check the resulting episode structure.
 check_eps(episode_data)
+```
 
+### Describe treatment episodes
 
-#--------------------------
-# Describe and model
-#--------------------------
-
-# Summarize treatment episodes.
+``` r
 describe_episodes(episode_data)
+```
 
-# Fit a longitudinal mixed-effects model.
+### Model change across episodes
+
+``` r
 model <- fit_lme(episode_data, cohort = "all", model = "episode")
+summary(model)
+```
 
+### Visualize treatment trajectories
 
-#--------------------------
-# Visualize episodes
-#--------------------------
-
-# Plot session-level trajectories across treatment episodes.
+``` r
 growth <- plot_episode_curves(episode_data)
-
 growth
 ```
 
-## Motivation
+## Episode identification
 
-The `leap` package was developed to serve two main aims. The first is to
-provide researchers with a set of pre-made R tools to analyze
-psychotherapy treatment episodes. Therefore, this package contains a
-suite of useful R functions to wrangle, summarize, and explore
-psychotherapy data that contains multiple episodes of care.
+Treatment episodes are commonly defined using a predetermined period of
+inactivity, such as 90 days without treatment. `leap` supports this
+approach while also providing tools for examining the empirical
+distribution of time between sessions.
 
-The second aim of the `leap` package is to test various statistical
-approaches to modeling therapeutic outcomes with multi-episode data - an
-issue that has received less attention in either the psychotherapy or
-methodology research literature. Using three alternative approaches,
-including longitudinal growth modeling, slopes as outcomes, and Bayesian
-modeling, investigators can use leap to analyze multiepisode data.
+Session lags can be calculated and inspected directly:
 
-The leap package includes psychotherapy outcome data sets, etc…
+``` r
+episode_data <- data |>
+  add_session_lag() |>
+  add_episode_id(threshold = 90)
+```
+
+Candidate episode delimiters can also be estimated from the observed
+distribution of session lags:
+
+``` r
+lag_delimiter(data, method = "iqr")
+lag_delimiter(data, method = "quantile")
+lag_delimiter(data, method = "mixture")
+```
+
+The mixture-modeling approach treats episode delimitation as an
+empirical classification problem by identifying relatively short- and
+long-gap components in the observed distribution of session lags.
+Estimated delimiters should be interpreted as data-informed candidate
+thresholds rather than definitive clinical boundaries between treatment
+episodes.
+
+## Modeling treatment episodes
+
+`leap` currently supports several complementary approaches to analyzing
+change across repeated treatment episodes:
+
+- `fit_lme()` fits longitudinal mixed-effects models directly to
+  session-level observations.
+- `fit_sao()` uses episode-specific rates of change as outcomes in a
+  slopes-as-outcomes framework.
+- `fit_brms()` fits Bayesian multilevel models of session-level
+  treatment trajectories.
+
+These approaches address related but distinct questions about
+therapeutic change and the structure of repeated episodes of care.
+
+## Data
+
+`leap` includes simulated psychotherapy data for demonstrating episode
+identification, visualization, and statistical modeling. The simulated
+data illustrate common features of longitudinal treatment records,
+including unequal numbers of sessions, repeated episodes of care, and
+variation in within- and between-episode change.
+
+## Development
+
+`leap` is under active development. Function names, arguments, and model
+specifications may change prior to the first stable release.
 
 # Package index
 
