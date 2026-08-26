@@ -19,9 +19,11 @@ across successive episodes.
 You can install the development version of leap from GitHub.
 
 ``` r
-install.packages("pak")
+# install devtools if needed
+install.packages("devtools")
 
-pak::pak("leap") 
+# download developer version 
+install_github("FrostND/leap")
 ```
 
 ## Example
