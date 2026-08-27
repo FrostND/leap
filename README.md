@@ -32,13 +32,13 @@ install_github("FrostND/leap")
 ## Motivation
 
 Psychotherapy is often represented as a single, continuous course of
-treatment. In longitudinal clinical data, however, clients may disengage
+treatment. In real world contexts, however, individuals may disengage
 from care and subsequently return for additional treatment, producing
 multiple distinct episodes of care. Analyzing these data requires
 decisions about how treatment episodes are defined, represented, and
 incorporated into statistical models.
 
-`leap` was developed with two primary aims.
+the `leap` package was developed with two primary aims:
 
 First, the package provides a set of tools for preparing and exploring
 multi-episode psychotherapy data. These functions support common tasks
@@ -51,7 +51,7 @@ to modeling therapeutic change across repeated episodes of care. These
 include longitudinal mixed-effects models, slopes-as-outcomes models,
 and Bayesian multilevel models. Together, these approaches allow
 researchers to examine both change occurring within treatment episodes
-and patterns of change across successive episodes.
+and patterns of change across different episodes.
 
 ## Basic workflow
 
