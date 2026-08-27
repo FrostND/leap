@@ -59,14 +59,16 @@
        BACKGROUND
        ============================================================ -->
 
-  <!-- White square artboard. The visible logo itself is clipped to the hex.
-       EDIT: Change fill if you ever want an off-white background. -->
-  <rect width="1200" height="1200" fill="#FFFFFF"/>
+ <!-- Everything in this group is clipped to the hex boundary.
+     The SVG canvas outside the hex remains transparent. -->
+<g clip-path="url(#hexClip)">
 
-  <g clip-path="url(#hexClip)">
-
-    <!-- White interior of the hex. -->
-    <rect width="1200" height="1200" fill="#FFFFFF"/>
+  <!-- White interior of the hex. -->
+  <rect
+    width="1200"
+    height="1200"
+    fill="#FFFFFF"
+  />
 
 
     <!-- ==========================================================
