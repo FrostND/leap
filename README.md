@@ -34,11 +34,12 @@ install_github("FrostND/leap")
 Psychotherapy is often represented as a single, continuous course of
 treatment. In real world contexts, however, individuals may disengage
 from care and subsequently return for additional treatment, producing
-multiple distinct episodes of care. Analyzing these data requires
-decisions about how treatment episodes are defined, represented, and
-incorporated into statistical models.
+multiple distinct episodes of care. Analyzing these complex longitudinal
+data requires decisions about how episodes of care are defined,
+represented, and incorporated into statistical modeling and data
+analysis.
 
-the `leap` package was developed with two primary aims:
+The `leap` package was developed with two primary aims:
 
 First, the package provides a set of tools for preparing and exploring
 multi-episode psychotherapy data. These functions support common tasks
