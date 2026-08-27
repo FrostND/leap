@@ -56,9 +56,9 @@ and patterns of change across different episodes.
 
 ## Basic workflow
 
-A typical `leap` workflow consists of identifying treatment episodes,
-describing the resulting episode structure, and then visualizing or
-modeling change across episodes.
+A typical `leap` workflow consists of identifying unique treatment
+episodes in longitudinal data, describing the resulting episode
+structure, and then visualizing or modeling change across episodes.
 
 ### Identify treatment episodes
 
@@ -105,7 +105,7 @@ Session lags can be calculated and inspected directly:
 ``` r
 episode_data <- data |>
   add_session_lag() |>
-  add_episode_id(threshold = 90)
+  add_episode_id(delimiter = 90)
 ```
 
 Candidate episode delimiters can also be estimated from the observed
@@ -117,12 +117,12 @@ lag_delimiter(data, method = "quantile")
 lag_delimiter(data, method = "mixture")
 ```
 
-The mixture-modeling approach treats episode delimitation as an
-empirical classification problem by identifying relatively short- and
-long-gap components in the observed distribution of session lags.
-Estimated delimiters should be interpreted as data-informed candidate
-thresholds rather than definitive clinical boundaries between treatment
-episodes.
+The mixture-modeling approach, implemented using the `mclust` package
+(Scrucca et al., 2016), treats episode identification as an empirical
+classification problem by identifying relatively short- and long-gap
+components in the observed distribution of session lags. Estimated
+delimiters should be interpreted as data-informed candidate thresholds
+rather than definitive clinical boundaries between treatment episodes.
 
 ## Modeling treatment episodes
 
@@ -150,13 +150,13 @@ variation in within- and between-episode change.
 ## Development
 
 `leap` is under active development. Function names, arguments, and model
-specifications may change prior to the first stable release.
+specifications may change in future releases.
 
 # Package index
 
 ### Pre-Processing
 
-`check_raw()`, `cols_standard()`, `cols_validate()`, `order_sessions()`
+`check_raw()`, `cols_standard()`, `order_sessions()`
 
 ### Add Episode Variables
 
@@ -166,7 +166,7 @@ specifications may change prior to the first stable release.
 
 ### Checking and Filtering
 
-`check_eps()`, `filter_episodes()`, `filter_cohort()`
+`check_eps()`, `filter_episodes()`
 
 ### Episode Summaries
 
@@ -187,5 +187,4 @@ specifications may change prior to the first stable release.
 
 ### Internal Helpers
 
-`cols_validate()`, `pivot_clients_wide()`, `pivot_episodes_wide()`,
-`map_models()`
+`cols_validate()`, `filter_cohort()`
