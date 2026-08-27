@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # leap <img src="inst/figures/leap_hex.png" align="right" height="138"/>
 
-The **longitudinal episode analysis and procedures** (`leap`) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal psychotherapy and behavioral health data.
+The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal psychotherapy and behavioral health data.
 
 `leap` supports the treatment episode workflow from episode identification through statistical analysis, including tools for defining episodes, characterizing within- and between-episode patterns, and modeling change across successive episodes.
 
@@ -119,7 +119,7 @@ lag_delimiter(data, method = "quantile")
 lag_delimiter(data, method = "mixture")
 ```
 
-The mixture-modeling approach, implemented using the `mclust` package (Scrucca et al., 2016), treats episode identification as an empirical classification problem by identifying relatively short- and long-gap components in the observed distribution of session lags. Estimated delimiters should be interpreted as data-informed candidate thresholds rather than definitive clinical boundaries between treatment episodes.
+The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats episode identification as an empirical classification problem by identifying relatively short- and long-gap components in the observed distribution of session lags. Estimated delimiters should be interpreted as data-informed candidate thresholds rather than definitive clinical boundaries between treatment episodes.
 
 ## Modeling treatment episodes
 
@@ -129,9 +129,7 @@ The mixture-modeling approach, implemented using the `mclust` package (Scrucca e
 - `fit_sao()` uses episode-specific rates of change as outcomes in a slopes-as-outcomes framework.
 - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
-These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
-
-## Data
+Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.Data
 
 `leap` includes simulated psychotherapy data for demonstrating episode identification, visualization, and statistical modeling. The simulated data illustrate common features of longitudinal treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in within- and between-episode change.
 
@@ -173,4 +171,4 @@ These approaches address related but distinct questions about therapeutic change
 
 `cols_validate()`, `filter_cohort()`
 
-# References
+## References

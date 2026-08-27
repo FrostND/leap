@@ -3,10 +3,10 @@
 
 # leap <img src="inst/figures/leap_hex.png" align="right" height="138"/>
 
-The **longitudinal episode analysis and procedures** (`leap`) package
-provides tools for identifying, describing, visualizing, and analyzing
-repeated treatment episodes in longitudinal psychotherapy and behavioral
-health data.
+The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
+(`leap`) package provides tools for identifying, describing,
+visualizing, and analyzing repeated treatment episodes in longitudinal
+psychotherapy and behavioral health data.
 
 `leap` supports the treatment episode workflow from episode
 identification through statistical analysis, including tools for
@@ -118,7 +118,7 @@ lag_delimiter(data, method = "mixture")
 ```
 
 The mixture-modeling approach, implemented using the `mclust` package
-(Scrucca et al., 2016), treats episode identification as an empirical
+(Scrucca et al. 2016), treats episode identification as an empirical
 classification problem by identifying relatively short- and long-gap
 components in the observed distribution of session lags. Estimated
 delimiters should be interpreted as data-informed candidate thresholds
@@ -136,10 +136,11 @@ change across repeated treatment episodes:
 - `fit_brms()` fits Bayesian multilevel models of session-level
   treatment trajectories.
 
-These approaches address related but distinct questions about
-therapeutic change and the structure of repeated episodes of care.
-
-## Data
+Frequentist mixed-effects models are estimated using `lme4` (Bates et
+al. 2015) whereas Bayesian multilevel models are estimated using `brms`
+(Bürkner 2017). These approaches address related but distinct questions
+about therapeutic change and the structure of repeated episodes of
+care.Data
 
 `leap` includes simulated psychotherapy data for demonstrating episode
 identification, visualization, and statistical modeling. The simulated
@@ -189,4 +190,32 @@ specifications may change in future releases.
 
 `cols_validate()`, `filter_cohort()`
 
-# References
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-bates2015" class="csl-entry">
+
+Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015.
+“Fitting Linear Mixed-Effects Models Using Lme4.” *Journal of
+Statistical Software* 67 (1): 1–48.
+
+</div>
+
+<div id="ref-burkner2017" class="csl-entry">
+
+Bürkner, Paul-Christian. 2017. “Brms: An r Package for Bayesian
+Multilevel Models Using Stan.” *Journal of Statistical Software* 80 (1):
+1–28.
+
+</div>
+
+<div id="ref-scrucca2016" class="csl-entry">
+
+Scrucca, Luca, Michael Fop, T. Brendan Murphy, and Adrian E. Raftery.
+2016. “Mclust 5: Clustering, Classification and Density Estimation Using
+Gaussian Finite Mixture Models.” *The R Journal* 8 (1): 289–317.
+
+</div>
+
+</div>
