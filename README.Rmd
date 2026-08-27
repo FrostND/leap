@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: references.bib
 editor_options: 
   chunk_output_type: console
 ---
@@ -172,3 +173,4 @@ These approaches address related but distinct questions about therapeutic change
 
 `cols_validate()`, `filter_cohort()`
 
+# References

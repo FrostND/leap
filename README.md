@@ -188,3 +188,5 @@ specifications may change in future releases.
 ### Internal Helpers
 
 `cols_validate()`, `filter_cohort()`
+
+# References
