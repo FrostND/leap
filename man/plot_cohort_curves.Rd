@@ -5,17 +5,17 @@
 \title{Plot growth curves by treatment-episode cohort}
 \usage{
 plot_cohort_curves(
-  df,
-  episode_count = "n_episodes",
-  outcome = "outcome",
-  episode_id = "episode_id",
-  episode_session = "episode_session",
+  data,
   x_range = NULL,
   y_range = NULL,
   clinical_cutoff = NULL
 )
 }
 \arguments{
+\item{clinical_cutoff}{Optional numeric value indicating a clinically
+meaningful outcome threshold. When supplied, a dashed horizontal line is
+added to each panel.}
+
 \item{df}{A data frame containing longitudinal treatment-session records.}
 
 \item{episode_count}{Character string specifying the column containing the
@@ -30,10 +30,6 @@ identifier. Defaults to \code{"episode_id"}.}
 
 \item{episode_session}{Character string specifying session number within
 treatment episode. Defaults to \code{"episode_session"}.}
-
-\item{clinical_cutoff}{Optional numeric value indicating a clinically
-meaningful outcome threshold. When supplied, a dashed horizontal line is
-added to each panel.}
 
 \item{x_lims}{Optional numeric vector of length two defining the displayed
 x-axis limits.}

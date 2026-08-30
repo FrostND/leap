@@ -106,26 +106,15 @@ plot_episode_change <- function(
   )
 
   # Define analytic cohort.
-  data <- filter_cohorts(
-    data = data,
-    cohort = cohort
-  )
+  data <- filter_cohorts(data = data, cohort = cohort)
 
   # Optionally restrict episodes displayed.
   if (!is.null(max_episodes)) {
-    data <- data[
-      data$episode_id <= max_episodes,
-      ,
-      drop = FALSE
-    ]
+    data <- data[data$episode_id <= max_episodes, ,drop = FALSE]
   }
 
   # Summarize change by episode number.
-  episode_groups <- split(
-    data,
-    f = data$episode_id,
-    drop = TRUE
-  )
+  episode_groups <- split(data, f = data$episode_id, drop = TRUE)
 
   summary_list <- lapply(episode_groups, function(x) {
 

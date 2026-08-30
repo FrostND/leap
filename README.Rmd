@@ -63,7 +63,8 @@ data <- data %>%
   nest_by(client_id) %>%
   ungroup() %>%
   slice_head(n = 10) %>%
-  unnest()
+  unnest(cols = data)
+
 ```
 
 ### Identify treatment episodes

@@ -57,34 +57,33 @@
 #'
 #' @export
 plot_cohort_curves <- function(
-  df,
-  episode_count = "n_episodes",
-  outcome = "outcome",
-  episode_id = "episode_id",
-  episode_session = "episode_session",
+  data,
   x_range = NULL,
   y_range = NULL,
   clinical_cutoff = NULL
   ) {
 
+  cols_validate(data, required = c("client_id", "episode_session", "n_episodes", "episode_id"))
+
   # 1.Three episodes maximum
-  df <- subset(df, df[[episode_count]] <= 3)
+  data <- subset(data, n_episodes <= 3)
 
   # 2.Cohort sub-lists
-  cohort_dfs <- split(df, df[[episode_count]])
+  cohort_dfs <- split(data, f = data$n_episodes)
   cohort_n <- length(cohort_dfs)
 
   # 3.Reference lm
-  ref_single <- lm(outcome ~ session_id, data = cohort_dfs[[1]])
+  ref_single <- lm(outcome ~ episode_session, data = cohort_dfs[[1]])
 
   # 4.Define plot parameters
   gg_fun <- function(df, ...) {
-  ggplot(df, aes(x = session_id, y = outcome, group = episode_id)) +
+  ggplot(df, aes(x = episode_session, y = outcome, group = episode_id)) +
     geom_smooth(
       method = "lm",
       se = FALSE,
       fullrange = TRUE,
-      ...) +
+      ...
+      ) +
     facet_wrap(
       vars(episode_id),
       nrow = 1,
@@ -125,7 +124,7 @@ colors <- c("black", "#3B6EA8", "#B84A3A")
 
 # 6.Run plotting function on subsets
 p1 <- gg_fun(df = cohort_dfs[[1]], colour = colors[1], size = .9) +
-    labs(title = "Cohort: One Treatment Episode")
+  labs(title = "Cohort: One Treatment Episode")
 p2 <- gg_fun(df = cohort_dfs[[2]], colour = colors[2], size = .9) +
   labs(title = "Cohort: Two Treatment Episodes")
 p3 <- gg_fun(df = cohort_dfs[[3]], colour = colors[3], size = .9) +
@@ -137,7 +136,7 @@ grid_layout <- "A##
                 CCC"
 
 # step 7: Assemble plots
-curves <- wrap_plots(
+curves <- patchwork::wrap_plots(
   A = p1,
   B = p2,
   C = p3,
