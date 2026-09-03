@@ -52,7 +52,7 @@ Second, `leap` provides tools for investigating alternative approaches to modeli
 
 A typical `leap` workflow consists of identifying unique treatment episodes in longitudinal data, describing the resulting episode structure, and then visualizing or modeling change across episodes.
 
-```{r fictitious-data, include = FALSE}
+```{r data, include = FALSE}
 # Create a small example data set.
 load("data/simulation_data.RData")
 
