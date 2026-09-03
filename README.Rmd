@@ -92,15 +92,15 @@ describe_episodes(episode_data)
 ### Model change across episodes
 
 ```{r model, eval = FALSE}
-model <- fit_lme(episode_data, cohort = "all", model = "episode")
-summary(model)
+# mixed-effects growth model 
+fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
 ### Visualize treatment trajectories
 
 ```{r visualize, eval = FALSE}
-growth <- plot_episode_curves(episode_data)
-growth
+# plot growth rates by episode 
+plot_episode_curves(episode_data)
 ```
 
 ## Episode identification
@@ -133,7 +133,7 @@ The mixture-modeling approach, implemented using the `mclust` package [@scrucca2
 - `fit_sao()` uses episode-specific rates of change as outcomes in a slopes-as-outcomes framework.
 - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
-Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.Data
+Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
 
 `leap` includes simulated psychotherapy data for demonstrating episode identification, visualization, and statistical modeling. The simulated data illustrate common features of longitudinal treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in within- and between-episode change.
 

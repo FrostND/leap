@@ -84,15 +84,15 @@ describe_episodes(episode_data)
 ### Model change across episodes
 
 ``` r
-model <- fit_lme(episode_data, cohort = "all", model = "episode")
-summary(model)
+# mixed-effects growth model 
+fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
 ### Visualize treatment trajectories
 
 ``` r
-growth <- plot_episode_curves(episode_data)
-growth
+# plot growth rates by episode 
+plot_episode_curves(episode_data)
 ```
 
 ## Episode identification
@@ -141,8 +141,7 @@ change across repeated treatment episodes:
 Frequentist mixed-effects models are estimated using `lme4` (Bates et
 al. 2015) whereas Bayesian multilevel models are estimated using `brms`
 (Bürkner 2017). These approaches address related but distinct questions
-about therapeutic change and the structure of repeated episodes of
-care.Data
+about therapeutic change and the structure of repeated episodes of care.
 
 `leap` includes simulated psychotherapy data for demonstrating episode
 identification, visualization, and statistical modeling. The simulated
