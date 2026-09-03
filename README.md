@@ -6,7 +6,8 @@
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides tools for identifying, describing,
 visualizing, and analyzing repeated treatment episodes in longitudinal
-psychotherapy and behavioral health data.
+behavioral health data, with particular applications to psychotherapy
+research.
 
 `leap` supports the treatment episode workflow from episode
 identification through statistical analysis, including tools for
