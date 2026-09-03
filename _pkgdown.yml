@@ -5,11 +5,11 @@ template:
   bslib:
     primary: "#593196"
     navbar-bg: "#E8EDF2"
-    navbar-light-color: "#ffffff"
-    navbar-light-hover-color: "#ffffff"
+    navbar-light-color: "#343A40"
+    navbar-light-hover-color: "#593196"
+    link-color: "#593196"
     navbar-padding-y: 0.75rem
     navbar-brand-font-size: 1.15rem
-    link-color: "#183663"
     border-radius: 0.45rem
 
 navbar:
