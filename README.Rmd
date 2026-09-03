@@ -141,38 +141,4 @@ Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas
 
 `leap` is under active development. Function names, arguments, and model specifications may change in future releases.
 
-# Package index
-
-### Pre-Processing
-
-`check_raw()`, `cols_standard()`, `order_sessions()`
-
-### Add Episode Variables
-
-`add_session_lag()`, `add_episode_id()`, `add_episode_session()`, `add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`, `lag_delimiter()`
-
-### Checking and Filtering
-
-`check_eps()`, `filter_episodes()`
-
-### Episode Summaries
-
-`describe_episodes()`, `episode_slopes()`, `episode_breaks()`
-
-### Statistical Modeling
-
-`fit_lme()`, `fit_sao()`, `fit_bel()`, `fit_brms()`
-
-### Model Diagnostics
-
-`compare_lme_fit()`, `episode_icc()`, `episode_pwr()`
-
-### Visualization
-
-`plot_episode_curves()`, `plot_episode_change()`, `plot_episode_loss()`, `plot_lag_density()`, `plot_cohort_curves()`, `plot_cohort_change()`
-
-### Internal Helpers
-
-`cols_validate()`, `filter_cohort()`
-
 ## References

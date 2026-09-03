@@ -2,11 +2,9 @@ url: https://frostnd.github.io/leap/
 
 template:
   bootstrap: 5
-  bootswatch: pulse
-  light-switch: true
   bslib:
-    primary: "#183663"
-    navbar-bg: "#343A40"
+    primary: "#593196"
+    navbar-bg: "#E8EDF2"
     navbar-light-color: "#ffffff"
     navbar-light-hover-color: "#ffffff"
     navbar-padding-y: 0.75rem
