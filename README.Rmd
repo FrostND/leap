@@ -44,20 +44,23 @@ Psychotherapy is often represented as a single, continuous course of treatment. 
 
 The `leap` package was developed with two primary aims:
 
-First, the package provides a set of tools for preparing and exploring multi-episode psychotherapy data. These functions support common tasks such as identifying temporal breaks in treatment, constructing episode-level variables, describing patterns of service utilization, and visualizing change within and between treatment episodes.
+First, the package provides a set of tools for preparing and exploring multi-episode psychotherapy data. These functions support common tasks such as identifying temporal breaks in treatment, constructing episode-level variables, describing patterns of service utilization, and visualizing change within and between unique treatment episodes.
 
 Second, `leap` provides tools for investigating alternative approaches to modeling therapeutic change across repeated episodes of care. These include longitudinal mixed-effects models, slopes-as-outcomes models, and Bayesian multilevel models. Together, these approaches allow researchers to examine both change occurring within treatment episodes and patterns of change across different episodes.
 
 ## Basic workflow
 
-A typical `leap` workflow consists of identifying unique treatment episodes in longitudinal data, describing the resulting episode structure, and then visualizing or modeling change across episodes.
+A typical `leap` workflow consists of identifying unique treatment episodes in longitudinal health records data, describing the resulting episode structure, and then visualizing or modeling change across episodes.
 
 ```{r data, include = FALSE}
-# Create a small example data set.
-load("data/simulation_data.RData")
 
+# package 
 library(tidyverse)
 
+# create a small example data set.
+load("data/simulation_data.RData")
+
+# subset simulated data 
 data <- data %>%
   pluck("unbalanced", "clinical", "diminishing_resp") %>%
   nest_by(client_id) %>%
@@ -70,13 +73,13 @@ data <- data %>%
 ### Identify treatment episodes
 
 ```{r identify, eval = FALSE}
-# Check data requirements for episode identification.
+# Data check 
 check_raw(data)
 
-# Derive treatment episode variables.
+# Derive episodes from raw 
 episode_data <- add_episode_vars(data)
 
-# Check the resulting episode structure.
+# Check the episode structure 
 check_eps(episode_data)
 ```
 

@@ -46,7 +46,7 @@ First, the package provides a set of tools for preparing and exploring
 multi-episode psychotherapy data. These functions support common tasks
 such as identifying temporal breaks in treatment, constructing
 episode-level variables, describing patterns of service utilization, and
-visualizing change within and between treatment episodes.
+visualizing change within and between unique treatment episodes.
 
 Second, `leap` provides tools for investigating alternative approaches
 to modeling therapeutic change across repeated episodes of care. These
@@ -58,19 +58,20 @@ and patterns of change across different episodes.
 ## Basic workflow
 
 A typical `leap` workflow consists of identifying unique treatment
-episodes in longitudinal data, describing the resulting episode
-structure, and then visualizing or modeling change across episodes.
+episodes in longitudinal health records data, describing the resulting
+episode structure, and then visualizing or modeling change across
+episodes.
 
 ### Identify treatment episodes
 
 ``` r
-# Check data requirements for episode identification.
+# Data check 
 check_raw(data)
 
-# Derive treatment episode variables.
+# Derive episodes from raw 
 episode_data <- add_episode_vars(data)
 
-# Check the resulting episode structure.
+# Check the episode structure 
 check_eps(episode_data)
 ```
 
