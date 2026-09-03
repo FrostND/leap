@@ -6,7 +6,7 @@ template:
   light-switch: true
   bslib:
     link-color: "#183663"
-    navbar-padding-y: 0.75rem
+    pkgdown-nav-height: 90px
     navbar-brand-font-size: 1.15rem
     border-radius: 0.45rem
 

@@ -1,4 +1,6 @@
 
+true
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # leap <img src="inst/figures/logo.png" align="right" height="118"/>
@@ -9,10 +11,9 @@ visualizing, and analyzing repeated treatment episodes in longitudinal
 behavioral health data, with particular applications to psychotherapy
 research.
 
-`leap` supports the treatment episode workflow from episode
-identification through statistical analysis, including tools for
-defining episodes, characterizing within- and between-episode patterns,
-and modeling change across successive episodes.
+`leap` supports a treatment episode workflow from episode identification
+through statistical analysis, including tools for defining episodes,
+characterizing within- and between-episode patterns patterns of change.
 
 <!-- badges: start -->
 
@@ -62,7 +63,7 @@ episodes in longitudinal health records data, describing the resulting
 episode structure, and then visualizing or modeling change across
 episodes.
 
-### Identify treatment episodes
+### Episode identification
 
 ``` r
 # Data check 
@@ -75,13 +76,13 @@ episode_data <- add_episode_vars(data)
 check_eps(episode_data)
 ```
 
-### Describe treatment episodes
+### Describe episodes
 
 ``` r
 describe_episodes(episode_data)
 ```
 
-### Model change across episodes
+### Model change within and between episodes
 
 ``` r
 # mixed-effects growth model 
@@ -153,43 +154,6 @@ variation in within- and between-episode change.
 
 `leap` is under active development. Function names, arguments, and model
 specifications may change in future releases.
-
-# Package index
-
-### Pre-Processing
-
-`check_raw()`, `cols_standard()`, `order_sessions()`
-
-### Add Episode Variables
-
-`add_session_lag()`, `add_episode_id()`, `add_episode_session()`,
-`add_client_episode_id()`, `add_episode_count()`, `add_episode_vars()`,
-`lag_delimiter()`
-
-### Checking and Filtering
-
-`check_eps()`, `filter_episodes()`
-
-### Episode Summaries
-
-`describe_episodes()`, `episode_slopes()`, `episode_breaks()`
-
-### Statistical Modeling
-
-`fit_lme()`, `fit_sao()`, `fit_bel()`, `fit_brms()`
-
-### Model Diagnostics
-
-`compare_lme_fit()`, `episode_icc()`, `episode_pwr()`
-
-### Visualization
-
-`plot_episode_curves()`, `plot_episode_change()`, `plot_episode_loss()`,
-`plot_lag_density()`, `plot_cohort_curves()`, `plot_cohort_change()`
-
-### Internal Helpers
-
-`cols_validate()`, `filter_cohort()`
 
 ## References
 

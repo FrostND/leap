@@ -2,7 +2,7 @@ Package: leap
 Title: Tools for Analyzing Psychotherapy Treatment Episodes
 Version: 0.0.0.9000
 Authors@R:
-    person("Nick", "Frost", email = "drnickfrost@gmail.com", role = c("aut", "cre"))
+    person("Nickolas", "Frost", email = "drnickfrost@gmail.com", role = c("aut", "cre"))
 Description: Provides tools for identifying, describing, visualizing, and modeling psychotherapy treatment episodes in longitudinal clinical data. Functions support empirically informed episode delimitation, construction of episode-level variables, analysis of within- and between-episode change, and frequentist and Bayesian multilevel models of treatment trajectories.
 License: MIT + file LICENSE
 Encoding: UTF-8

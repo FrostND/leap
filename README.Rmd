@@ -3,6 +3,9 @@ output: github_document
 bibliography: references.bib
 editor_options: 
   chunk_output_type: console
+toc: true
+toc-location: right
+toc-depth: 3
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -20,7 +23,7 @@ knitr::opts_chunk$set(
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal behavioral health data, with particular applications to psychotherapy research.
 
-`leap` supports the treatment episode workflow from episode identification through statistical analysis, including tools for defining episodes, characterizing within- and between-episode patterns, and modeling change across successive episodes.
+`leap` supports a treatment episode workflow from episode identification through statistical analysis, including tools for defining episodes, characterizing within- and between-episode patterns patterns of change.
 
 <!-- badges: start -->
 
@@ -70,7 +73,7 @@ data <- data %>%
 
 ```
 
-### Identify treatment episodes
+### Episode identification
 
 ```{r identify, eval = FALSE}
 # Data check 
@@ -83,13 +86,13 @@ episode_data <- add_episode_vars(data)
 check_eps(episode_data)
 ```
 
-### Describe treatment episodes
+### Describe episodes
 
 ```{r describe, eval = FALSE}
 describe_episodes(episode_data)
 ```
 
-### Model change across episodes
+### Model change within and between episodes
 
 ```{r model, eval = FALSE}
 # mixed-effects growth model 
