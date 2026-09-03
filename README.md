@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# leap <img src="inst/figures/leap_hex.png" align="right" height="138"/>
+# leap <img src="inst/figures/logo.png" align="right" height="118"/>
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides tools for identifying, describing,

@@ -1,0 +1,41 @@
+url: https://frostnd.github.io/leap/
+
+template:
+  bootstrap: 5
+  bootswatch: pulse
+  light-switch: true
+  bslib:
+    primary: "#183663"
+    navbar-bg: "#343A40"
+    navbar-light-color: "#ffffff"
+    navbar-light-hover-color: "#ffffff"
+    navbar-padding-y: 0.75rem
+    navbar-brand-font-size: 1.15rem
+    link-color: "#183663"
+    border-radius: 0.45rem
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github, lightswitch]
+
+  components:
+    intro:
+      text: Get Started
+      href: articles/leap.html
+
+    reference:
+      text: Reference
+      href: reference/index.html
+
+    articles:
+      text: Articles
+      menu:
+        - text: Working with Treatment Episodes
+          href: articles/treatment-episodes.html
+        - text: Modeling Repeated Episodes
+          href: articles/modeling-episodes.html
+
+    news:
+      text: News
+      href: news/index.html
