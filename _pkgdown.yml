@@ -1,14 +1,12 @@
-url: https://frostnd.github.io/leap/
 
+url: https://frostnd.github.io/leap/
 template:
   bootstrap: 5
-  light-switch: true
   bootswatch: pulse
+  light-switch: true
   bslib:
     link-color: "#183663"
-    pkgdown-nav-height: 90px
-    navbar-brand-font-size: 1.15rem
-    border-radius: 0.45rem
+    border-radius: 0.35rem
 
 navbar:
   structure:
