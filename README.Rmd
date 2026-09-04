@@ -36,6 +36,7 @@ install.packages("devtools")
 
 # download developement version 
 install_github("FrostND/leap")
+
 ```
 
 ## Motivation
@@ -140,5 +141,11 @@ Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas
 ## Development
 
 `leap` is under active development. Function names, arguments, and model specifications may change in future releases.
+
+```{r webpage construction, eval = FALSE, include = FALSE}
+usethis::use_pkgdown_github_pages()
+pkgdown::build_site()
+
+```
 
 ## References
