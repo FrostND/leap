@@ -2,8 +2,8 @@ url: https://frostnd.github.io/leap/
 
 template:
   bootstrap: 5
-  bootswatch: pulse
   light-switch: true
+  bootswatch: pulse
   bslib:
     link-color: "#183663"
     pkgdown-nav-height: 90px
