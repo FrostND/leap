@@ -4,16 +4,16 @@
 # leap <img src="inst/figures/logo.png" align="right" height="128"/>
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
-(`leap`) package provides tools for identifying, describing,
-visualizing, and analyzing repeated treatment episodes in longitudinal
-behavioral health data, with particular applications to psychotherapy
-research.
+(`leap`) package provides tools for identifying, visualizing, and
+modeling repeated treatment episodes in longitudinal behavioral health
+data, with particular applications to psychotherapy research.
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 <!-- badges: end -->
 
 ## Why leap?

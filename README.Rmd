@@ -18,12 +18,12 @@ knitr::opts_chunk$set(
 
 # leap <img src="inst/figures/logo.png" align="right" height="128"/>
 
-The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools for identifying, describing, visualizing, and analyzing repeated treatment episodes in longitudinal behavioral health data, with particular applications to psychotherapy research.
+The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools for identifying, visualizing, and modeling repeated treatment episodes in longitudinal behavioral health data, with particular applications to psychotherapy research.
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FrostND/leap/actions/workflows/R-CMD-check.yaml) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 <!-- badges: end -->
 
 ## Why leap?
@@ -54,7 +54,6 @@ install.packages("devtools")
 
 # download development version 
 install_github("FrostND/leap")
-
 ```
 
 ## Get Started
@@ -62,7 +61,11 @@ install_github("FrostND/leap")
 For a complete introduction to the `leap` workflow, see [Get Started with leap](articles/leap.html)
 
 ```{r webpage construction, eval = FALSE, include = FALSE}
-#usethis::use_pkgdown_github_pages()
+# usethis::use_pkgdown_github_pages()
+# usethis::use_github_action("check-standard")
+# usethis::use_github_actions_badge("R-CMD-check")
+# usethis::use_lifecycle_badge("experimental")
+
 pkgdown::build_site()
 
 ```
