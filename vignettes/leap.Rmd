@@ -57,19 +57,33 @@ Once episodes have been identified, each unique episode can be summarized using 
 describe_episodes(episode_data)
 ```
 
+These summaries provide an initial description of treatment utilization and the organization of repeated episodes within clients.
+
+### Visualize treatment trajectories
+
+Episode-specific trajectories can be inspected before fitting statistical models:
+
+```{r visualize, eval = FALSE}
+# plot growth rates by episode 
+plot_episode_curves(episode_data)
+```
+
+Visualizing the data can help reveal differences in treatment duration, starting levels, rates of change, and patterns of return across episodes.
+
 ### Model change within and between episodes
+
+`leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care.
+
+A longitudinal mixed-effects model can be fit directly to session-level observations:
 
 ```{r model, eval = FALSE}
 # mixed-effects growth model 
 fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
-### Visualize treatment trajectories
+Additional modeling functions support alternative representations of episode-level change: - `fit_lme()` fits longitudinal mixed-effects models to session-level observations. - `fit_sao()` models episode-specific rates of change using a slopes-as-outcomes framework. - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
-```{r visualize, eval = FALSE}
-# plot growth rates by episode 
-plot_episode_curves(episode_data)
-```
+Frequentist mixed-effects models are estimated using lme4 [@bates2015], whereas Bayesian multilevel models are estimated using brms [@burkner2017]. These approaches address related but distinct questions about change within and across repeated episodes of care
 
 ## Episode identification
 
