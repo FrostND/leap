@@ -4,9 +4,9 @@
 # leap <img src="inst/figures/logo.png" align="right" height="128"/>
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
-(`leap`) package provides tools for identifying, visualizing, and
+(`leap`) package provides R tools for identifying, visualizing, and
 modeling repeated treatment episodes in longitudinal behavioral health
-data, with particular applications to psychotherapy research.
+data, with particular applications to psychotherapy data.
 
 <!-- badges: start -->
 
@@ -26,28 +26,26 @@ data requires decisions about how episodes of care are defined,
 represented, and incorporated into statistical modeling and data
 analysis.
 
-The `leap` package was developed with two primary aims:
+`leap` was developed to support two related aspects of this process.
+First, it provides tools for preparing and exploring multi-episode data,
+including identifying breaks in treatment, constructing episode-level
+variables, describing patterns of service utilization.
 
-First, the package provides a set of tools for preparing and exploring
-multi-episode psychotherapy data. These functions support common tasks
-such as identifying temporal breaks in treatment, constructing
-episode-level variables, describing patterns of service utilization, and
-visualizing change within and between unique treatment episodes.
-
-Second, `leap` provides tools for investigating alternative approaches
-to modeling therapeutic change across repeated episodes of care. These
-include longitudinal mixed-effects models, slopes-as-outcomes models,
-and Bayesian multilevel models. Together, these approaches allow
-researchers to examine both change occurring within treatment episodes
-and patterns of change across different episodes.
+Second, leap provides flexible tools for modeling therapeutic change
+across repeated episodes of care. Supported approaches include
+longitudinal mixed-effects models, slopes-as-outcomes models, and
+Bayesian multilevel models, allowing researchers to examine both change
+within individual treatment episodes and patterns of change across
+episodes.
 
 ## What can leap do?
 
 - Identify treatment episodes from longitudinal session data
-- Describe within- and between-episode patterns
-- Visualize repeated treatment trajectories
-- Model change within and across episodes
-- Fit frequentist and Bayesian multilevel models
+- Construct and summarize episode-level variables
+- Describe patterns of treatment utilization across episodes
+- Visualize change within and across treatment episodes
+- Model repeated treatment trajectories using frequentist and Bayesian
+  approaches
 
 ## Installation
 
