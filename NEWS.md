@@ -1,3 +1,3 @@
 # leap (development version)
 
-* Initial CRAN submission.
+`leap` is under active development. Function names, arguments, and model specifications may change in future releases.
