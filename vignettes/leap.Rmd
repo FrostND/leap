@@ -7,19 +7,26 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-## Basic workflow
+# Overview
 
-A typical `leap` workflow consists of identifying unique treatment episodes in longitudinal health records data, describing the resulting episode structure, and then visualizing or modeling change across episodes.
+A typical leap workflow begins with longitudinal treatment data in which each row represents a treatment session. From these data, leap provides tools for identifying distinct episodes of care, describing the resulting episode structure, visualizing treatment trajectories, and modeling change within and across episodes.
+
+This guide provides a brief introduction to that workflow. More detailed discussions of each step are available in the package articles.
+
+# Example data
+
+leap includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
 
 ```{r data, include = FALSE, eval = FALSE}
 
 # package 
+library(leap)
 library(tidyverse)
 
-# create a small example data set.
+# load example data
 load("data/simulation_data.RData")
 
-# subset simulated data 
+# select subset for vignette 
 data <- data %>%
   pluck("unbalanced", "clinical", "diminishing_resp") %>%
   nest_by(client_id) %>%
@@ -29,7 +36,7 @@ data <- data %>%
 
 ```
 
-### Episode identification
+### Identify Treatment Episodes
 
 ```{r identify, eval = FALSE}
 # Data check 
@@ -43,6 +50,8 @@ check_eps(episode_data)
 ```
 
 ### Describe episodes
+
+Once episodes have been identified, each unique episode can be summarized using `describe_episodes()`
 
 ```{r describe, eval = FALSE}
 describe_episodes(episode_data)
