@@ -9,13 +9,15 @@ vignette: >
 
 # Overview
 
-A typical `leap` workflow begins with longitudinal treatment data in which each row represents a treatment session. From these data, `leap` provides functions for identifying distinct episodes of care, describing the resulting episode structure, visualizing treatment trajectories.
+A typical `leap` workflow begins with longitudinal treatment data in which each row represents a treatment session for a client. From these records, `leap` provides tools for identifying distinct episodes of care, describing and visualizing the resulting episode structure, and analyzing change within and across treatment episodes.
 
-This guide provides a brief introduction to that workflow. More detailed discussions of each step are available in the package articles.
+This guide provides a brief introduction to the core `leap` workflow. More detailed discussions of episode identification, visualization, and statistical modeling are available in the package articles.
 
 # Step 1: Check data
 
-To utilize all that is needed is a person-period longitudinal data frame. Below is an example from `leaps` built-in data. Important to note that leap will
+To get started, `leap` requires person-period longitudinal data, with one row representing each treatment session. At minimum, the data should contain variables identifying the client, session, session date, and outcome of interest.
+
+The example below uses a small data set included with leap:
 
 ```{r data, include = FALSE}
 
@@ -81,3 +83,4 @@ mod <- fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
 Additional modeling functions support alternative representations of episode-level change, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
+
