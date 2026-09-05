@@ -87,7 +87,7 @@ A longitudinal mixed-effects model can be fit directly to session-level observat
 fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
-Additional modeling functions support alternative representations of episode-level change:
+Additional modeling functions support alternative representations of episode-level change, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
 
 - `fit_lme()` fits longitudinal mixed-effects models to session-level observations.
 - `fit_sao()` models episode-specific rates of change using a slopes-as-outcomes framework.
