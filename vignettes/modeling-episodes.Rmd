@@ -1,0 +1,9 @@
+---
+title: "Modeling Treatment Episodes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Modeling Treatment Episodes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
