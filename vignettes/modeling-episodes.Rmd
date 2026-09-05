@@ -16,5 +16,3 @@ vignette: >
 - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
 Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
-
-`leap` includes simulated psychotherapy data for demonstrating episode identification, visualization, and statistical modeling. The simulated data illustrate common features of longitudinal treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in within- and between-episode change.
