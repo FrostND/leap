@@ -1,0 +1,9 @@
+---
+title: "Working with Longitudinal Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working with Longitudinal Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
