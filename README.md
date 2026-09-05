@@ -19,12 +19,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ## Why leap?
 
 Psychotherapy is often represented as a single, continuous course of
-treatment. In real world contexts, however, individuals may disengage
-from care and subsequently return for additional treatment, producing
-multiple distinct episodes of care. Analyzing these complex longitudinal
-data requires decisions about how episodes of care are defined,
-represented, and incorporated into statistical modeling and data
-analysis.
+treatment. In practice, however, individuals may disengage from care and
+subsequently return for additional treatment, producing multiple
+distinct episodes of care in naturalistic data. Analyzing these complex
+longitudinal data requires decisions about how episodes of care are
+defined and incorporated into statistical modeling and data analysis.
 
 `leap` was developed to support two related aspects of this process.
 First, it provides tools for preparing and exploring multi-episode data,

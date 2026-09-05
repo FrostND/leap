@@ -28,7 +28,7 @@ The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) packag
 
 ## Why leap?
 
-Psychotherapy is often represented as a single, continuous course of treatment. In real world contexts, however, individuals may disengage from care and subsequently return for additional treatment, producing multiple distinct episodes of care. Analyzing these complex longitudinal data requires decisions about how episodes of care are defined, represented, and incorporated into statistical modeling and data analysis.
+Psychotherapy is often represented as a single, continuous course of treatment. In practice, however, individuals may disengage from care and subsequently return for additional treatment, producing multiple distinct episodes of care in naturalistic data. Analyzing these complex longitudinal data requires decisions about how episodes of care are defined and incorporated into statistical modeling and data analysis.
 
 `leap` was developed to support two related aspects of this process. First, it provides tools for preparing and exploring multi-episode data, including identifying breaks in treatment, constructing episode-level variables, describing patterns of service utilization.
 
@@ -67,4 +67,3 @@ For a complete introduction to the `leap` workflow, see [Get Started with leap](
 pkgdown::build_site()
 
 ```
-
