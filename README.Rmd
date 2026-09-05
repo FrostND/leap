@@ -57,7 +57,7 @@ install_github("FrostND/leap")
 
 ## Get Started
 
-For a complete introduction to the `leap` workflow, see [Get Started](articles/leap.html).
+For a complete introduction to the `leap` workflow, see [Get Started]
 
 ## Development
 
@@ -70,4 +70,3 @@ pkgdown::build_site()
 ```
 
 ## References
-
