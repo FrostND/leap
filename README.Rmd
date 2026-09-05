@@ -146,6 +146,7 @@ Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas
 usethis::use_pkgdown_github_pages()
 pkgdown::build_site()
 
+
 ```
 
 ## References
