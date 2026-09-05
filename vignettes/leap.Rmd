@@ -1,0 +1,36 @@
+---
+title: "Get Started with leap"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Started with leap}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Overview
+
+Brief explanation of the problem `leap` addresses.
+
+# Installation
+
+Installation instructions.
+
+# Basic Workflow
+
+Load longitudinal data.
+
+# Define Treatment Episodes
+
+Show the core episode-identification workflow.
+
+# Visualize Treatment Episodes
+
+A simple visualization.
+
+# Model Treatment Episodes
+
+One basic model.
+
+# Next Steps
+
+Point readers toward the more detailed articles.
