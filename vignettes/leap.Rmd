@@ -15,17 +15,19 @@ This guide provides a brief introduction to that workflow. More detailed discuss
 
 # Data structure
 
-```{r data, include = FALSE, eval = FALSE}
+To utilize all that is needed is a person-period longitudinal data frame. Below is an example from `leaps` built-in data.
+
+```{r data, include = FALSE}
 
 # package 
-library(leap)
+# library(leap)
 library(tidyverse)
 
 # load example data
-load("data/simulation_data.RData")
+load("~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData")
 
 # select subset for vignette 
-data <- data %>%
+raw_df <- data %>%
   pluck("unbalanced", "clinical", "diminishing_resp") %>%
   nest_by(client_id) %>%
   ungroup() %>%
@@ -34,7 +36,13 @@ data <- data %>%
 
 ```
 
+```{r}
+head(raw_df)
+```
+
 # Identify Treatment Episodes
+
+From these raw data, data can be checked using the `check_` functions. Subsequently, the required variables to perform episode analyses can be calculated using the `add_` functions. These variables can derived one-by-one, or all at once as shown below:
 
 ```{r identify, eval = FALSE}
 # Data check 
@@ -49,7 +57,7 @@ check_eps(episode_data)
 
 # Describe episodes
 
-Once episodes have been identified, each unique episode can be summarized using `describe_episodes()`
+Once episodes have been identified, each unique episode can be summarized using `describe_episodes()` function shown below
 
 ```{r describe, eval = FALSE}
 describe_episodes(episode_data)
@@ -79,7 +87,11 @@ A longitudinal mixed-effects model can be fit directly to session-level observat
 fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
-Additional modeling functions support alternative representations of episode-level change: - `fit_lme()` fits longitudinal mixed-effects models to session-level observations. - `fit_sao()` models episode-specific rates of change using a slopes-as-outcomes framework. - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
+Additional modeling functions support alternative representations of episode-level change:
+
+- `fit_lme()` fits longitudinal mixed-effects models to session-level observations.
+- `fit_sao()` models episode-specific rates of change using a slopes-as-outcomes framework.
+- `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
 Frequentist mixed-effects models are estimated using lme4 [@bates2015], whereas Bayesian multilevel models are estimated using brms [@burkner2017]. These approaches address related but distinct questions about change within and across repeated episodes of care
 
