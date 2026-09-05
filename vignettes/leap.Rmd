@@ -9,7 +9,7 @@ vignette: >
 
 # Overview
 
-A typical leap workflow begins with longitudinal treatment data in which each row represents a treatment session. From these data, leap provides tools for identifying distinct episodes of care, describing the resulting episode structure, visualizing treatment trajectories, and modeling change within and across episodes.
+A typical `leap` workflow begins with longitudinal treatment data in which each row represents a treatment session. From these data, `leap` provides functions for identifying distinct episodes of care, describing the resulting episode structure, visualizing treatment trajectories.
 
 This guide provides a brief introduction to that workflow. More detailed discussions of each step are available in the package articles.
 
