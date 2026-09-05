@@ -25,7 +25,8 @@ Imports:
     ggplot2,
     lme4,
     mclust,
-    patchwork
+    patchwork, 
+    devtools
 Suggests:
     brms,
     testthat (>= 3.0.0)
