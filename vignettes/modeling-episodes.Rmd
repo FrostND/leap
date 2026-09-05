@@ -7,8 +7,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Modeling treatment episodes
-
 `leap` currently supports several complementary approaches to analyzing change across repeated treatment episodes:
 
 - `fit_lme()` fits longitudinal mixed-effects models directly to session-level observations.
