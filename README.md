@@ -9,27 +9,11 @@ visualizing, and analyzing repeated treatment episodes in longitudinal
 behavioral health data, with particular applications to psychotherapy
 research.
 
-`leap` supports a treatment episode workflow from episode identification
-through statistical analysis, including tools for defining episodes,
-characterizing within- and between-episode patterns patterns of change.
-
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-## Installation
-
-You can install the development version of `leap` from GitHub.
-
-``` r
-# install devtools 
-install.packages("devtools")
-
-# download development version 
-install_github("FrostND/leap")
-```
-
-## Motivation
+## Why leap?
 
 Psychotherapy is often represented as a single, continuous course of
 treatment. In real world contexts, however, individuals may disengage
@@ -54,99 +38,30 @@ and Bayesian multilevel models. Together, these approaches allow
 researchers to examine both change occurring within treatment episodes
 and patterns of change across different episodes.
 
-## Basic workflow
+## What can leap do?
 
-A typical `leap` workflow consists of identifying unique treatment
-episodes in longitudinal health records data, describing the resulting
-episode structure, and then visualizing or modeling change across
-episodes.
+- Identify treatment episodes from longitudinal session data
+- Describe within- and between-episode patterns
+- Visualize repeated treatment trajectories
+- Model change within and across episodes
+- Fit frequentist and Bayesian multilevel models
 
-### Episode identification
+## Installation
 
-``` r
-# Data check 
-check_raw(data)
-
-# Derive episodes from raw 
-episode_data <- add_episode_vars(data)
-
-# Check the episode structure 
-check_eps(episode_data)
-```
-
-### Describe episodes
+You can install the development version of `leap` from GitHub.
 
 ``` r
-describe_episodes(episode_data)
+# install devtools 
+install.packages("devtools")
+
+# download development version 
+install_github("FrostND/leap")
 ```
 
-### Model change within and between episodes
+## Get Started
 
-``` r
-# mixed-effects growth model 
-fit_lme(episode_data, cohort = "all", model = "episode")
-```
-
-### Visualize treatment trajectories
-
-``` r
-# plot growth rates by episode 
-plot_episode_curves(episode_data)
-```
-
-## Episode identification
-
-Treatment episodes are commonly defined using a predetermined period of
-inactivity, such as 90 days without treatment. `leap` supports this
-approach while also providing tools for examining the empirical
-distribution of time between sessions.
-
-Session lags can be calculated and inspected directly:
-
-``` r
-episode_data <- data |>
-  add_session_lag() |>
-  add_episode_id(delimiter = 90)
-```
-
-Candidate episode delimiters can also be estimated from the observed
-distribution of session lags:
-
-``` r
-lag_delimiter(data, method = "iqr")
-lag_delimiter(data, method = "quantile")
-lag_delimiter(data, method = "mixture")
-```
-
-The mixture-modeling approach, implemented using the `mclust` package
-(Scrucca et al. 2016), treats episode identification as an empirical
-classification problem by identifying relatively short- and long-gap
-components in the observed distribution of session lags. Estimated
-delimiters should be interpreted as data-informed candidate thresholds
-rather than definitive clinical boundaries between treatment episodes.
-
-## Modeling treatment episodes
-
-`leap` currently supports several complementary approaches to analyzing
-change across repeated treatment episodes:
-
-- `fit_lme()` fits longitudinal mixed-effects models directly to
-  session-level observations.
-- `fit_sao()` uses episode-specific rates of change as outcomes in a
-  slopes-as-outcomes framework.
-- `fit_brms()` fits Bayesian multilevel models of session-level
-  treatment trajectories.
-
-Frequentist mixed-effects models are estimated using `lme4` (Bates et
-al. 2015) whereas Bayesian multilevel models are estimated using `brms`
-(Bürkner 2017). These approaches address related but distinct questions
-about therapeutic change and the structure of repeated episodes of care.
-
-`leap` includes simulated psychotherapy data for demonstrating episode
-identification, visualization, and statistical modeling. The simulated
-data illustrate common features of longitudinal treatment records,
-including unequal numbers of sessions, repeated episodes of care, and
-variation in within- and between-episode change.
+For a complete introduction to the `leap` workflow, see [Get
+Started](#get-started)
 
 ## Development
 
@@ -154,31 +69,3 @@ variation in within- and between-episode change.
 specifications may change in future releases.
 
 ## References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-bates2015" class="csl-entry">
-
-Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015.
-“Fitting Linear Mixed-Effects Models Using Lme4.” *Journal of
-Statistical Software* 67 (1): 1–48.
-
-</div>
-
-<div id="ref-burkner2017" class="csl-entry">
-
-Bürkner, Paul-Christian. 2017. “Brms: An r Package for Bayesian
-Multilevel Models Using Stan.” *Journal of Statistical Software* 80 (1):
-1–28.
-
-</div>
-
-<div id="ref-scrucca2016" class="csl-entry">
-
-Scrucca, Luca, Michael Fop, T. Brendan Murphy, and Adrian E. Raftery.
-2016. “Mclust 5: Clustering, Classification and Density Estimation Using
-Gaussian Finite Mixture Models.” *The R Journal* 8 (1): 289–317.
-
-</div>
-
-</div>

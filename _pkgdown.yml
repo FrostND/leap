@@ -30,7 +30,7 @@ navbar:
         - text: Working with Longitudinal Data
           href: articles/longitudinal-data.html
         - text: Defining Treatment Episodes
-          href: articles/treatment-episodes.html
+          href: articles/define-episodes.html
         - text: Modeling Treatment Episodes
           href: articles/modeling-episodes.html
         - text: Visualizing Treatment Episodes

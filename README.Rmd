@@ -64,7 +64,7 @@ For a complete introduction to the `leap` workflow, see [Get Started]
 `leap` is under active development. Function names, arguments, and model specifications may change in future releases.
 
 ```{r webpage construction, eval = FALSE, include = FALSE}
-usethis::use_pkgdown_github_pages()
+#usethis::use_pkgdown_github_pages()
 pkgdown::build_site()
 
 ```
