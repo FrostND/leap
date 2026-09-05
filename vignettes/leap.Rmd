@@ -89,20 +89,3 @@ fit_lme(episode_data, cohort = "all", model = "episode")
 
 Additional modeling functions support alternative representations of episode-level change, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
 
-- `fit_lme()` fits longitudinal mixed-effects models to session-level observations.
-- `fit_sao()` models episode-specific rates of change using a slopes-as-outcomes framework.
-- `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
-
-Frequentist mixed-effects models are estimated using lme4 [@bates2015], whereas Bayesian multilevel models are estimated using brms [@burkner2017]. These approaches address related but distinct questions about change within and across repeated episodes of care
-
-# Modeling treatment episodes
-
-`leap` currently supports several complementary approaches to analyzing change across repeated treatment episodes:
-
-- `fit_lme()` fits longitudinal mixed-effects models directly to session-level observations.
-- `fit_sao()` uses episode-specific rates of change as outcomes in a slopes-as-outcomes framework.
-- `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
-
-Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
-
-`leap` includes simulated psychotherapy data for demonstrating episode identification, visualization, and statistical modeling. The simulated data illustrate common features of longitudinal treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in within- and between-episode change.
