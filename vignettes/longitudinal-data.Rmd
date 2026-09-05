@@ -7,3 +7,23 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+`leap` includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
+
+```{r data, include = FALSE, eval = FALSE}
+
+# package 
+library(leap)
+library(tidyverse)
+
+# load example data
+load("data/simulation_data.RData")
+
+# select subset for vignette 
+data <- data %>%
+  pluck("unbalanced", "clinical", "diminishing_resp") %>%
+  nest_by(client_id) %>%
+  ungroup() %>%
+  slice_head(n = 10) %>%
+  unnest(cols = data)
+
+```

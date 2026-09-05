@@ -13,9 +13,7 @@ A typical `leap` workflow begins with longitudinal treatment data in which each 
 
 This guide provides a brief introduction to that workflow. More detailed discussions of each step are available in the package articles.
 
-# Example data
-
-leap includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
+# Data structure
 
 ```{r data, include = FALSE, eval = FALSE}
 
