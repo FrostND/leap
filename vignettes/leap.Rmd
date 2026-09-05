@@ -36,7 +36,7 @@ data <- data %>%
 
 ```
 
-### Identify Treatment Episodes
+# Identify Treatment Episodes
 
 ```{r identify, eval = FALSE}
 # Data check 
@@ -49,7 +49,7 @@ episode_data <- add_episode_vars(data)
 check_eps(episode_data)
 ```
 
-### Describe episodes
+# Describe episodes
 
 Once episodes have been identified, each unique episode can be summarized using `describe_episodes()`
 
@@ -59,7 +59,7 @@ describe_episodes(episode_data)
 
 These summaries provide an initial description of treatment utilization and the organization of repeated episodes within clients.
 
-### Visualize treatment trajectories
+# Visualize treatment trajectories
 
 Episode-specific trajectories can be inspected before fitting statistical models:
 
@@ -70,7 +70,7 @@ plot_episode_curves(episode_data)
 
 Visualizing the data can help reveal differences in treatment duration, starting levels, rates of change, and patterns of return across episodes.
 
-### Model change within and between episodes
+# Model change within and between episodes
 
 `leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care.
 
@@ -85,7 +85,7 @@ Additional modeling functions support alternative representations of episode-lev
 
 Frequentist mixed-effects models are estimated using lme4 [@bates2015], whereas Bayesian multilevel models are estimated using brms [@burkner2017]. These approaches address related but distinct questions about change within and across repeated episodes of care
 
-## Episode identification
+# Episode identification
 
 Treatment episodes are commonly defined using a predetermined period of inactivity, such as 90 days without treatment. `leap` supports this approach while also providing tools for examining the empirical distribution of time between sessions.
 
@@ -107,7 +107,7 @@ lag_delimiter(data, method = "mixture")
 
 The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats episode identification as an empirical classification problem by identifying relatively short- and long-gap components in the observed distribution of session lags. Estimated delimiters should be interpreted as data-informed candidate thresholds rather than definitive clinical boundaries between treatment episodes.
 
-## Modeling treatment episodes
+# Modeling treatment episodes
 
 `leap` currently supports several complementary approaches to analyzing change across repeated treatment episodes:
 
