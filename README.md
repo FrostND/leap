@@ -25,7 +25,7 @@ You can install the development version of `leap` from GitHub.
 # install devtools 
 install.packages("devtools")
 
-# download developement version 
+# download development version 
 install_github("FrostND/leap")
 ```
 
