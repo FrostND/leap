@@ -19,22 +19,22 @@ To get started, `leap` requires person-period longitudinal data, with one row re
 
 The example below uses a small data set included with leap:
 
-```{r data, include = FALSE}
+```{r setup, include = FALSE}
 
-# package 
-# library(leap)
+# packages
 library(tidyverse)
+devtools::load_all()
 
 # load example data
 load("~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData")
 
 # select subset for vignette 
 raw_df <- data %>%
-  pluck("unbalanced", "clinical", "diminishing_resp") %>%
-  nest_by(client_id) %>%
-  ungroup() %>%
-  slice_head(n = 10) %>%
-  unnest(cols = data)
+  purrr::pluck("unbalanced", "clinical", "diminishing_resp") %>%
+  dplyr::nest_by(client_id) %>%
+  dplyr::ungroup() %>%
+  dplyr::slice_head(n = 10) %>%
+  tidyr::unnest(cols = data)
 
 ```
 
@@ -44,60 +44,57 @@ head(raw_df)
 
 `leap` uses a standardized set of variable names throughout its functions. If the original data use different names, `cols_standard()` can be used to rename the core variables before proceeding:
 
-```{r, eval = FALSE}
-data <- cols_standard(
+```{r, variables, eval = FALSE}
+raw_df <- cols_standard(
   data = raw_df, 
-  client = "case_id", 
-  session = "session_num", 
+  client = "client_id", 
+  session = "session_id", 
   date = "session_date",
-  outcome = "depression_score"
+  outcome = "outcome"
   )
 ```
 
 Once the variables have been standardized, `check_raw()` can be used to verify that the data contain the information required to identify treatment episodes:
 
-```{r, eval = FALSE}
-check_raw(data)
+```{r, check, eval = FALSE}
+check_raw(raw_df)
 ```
 
-This initial check helps identify missing or improperly structured variables before episode-level variables are derived.
+The output from this initial check helps identify missing or improperly structured variables before episode-level variables are derived.
 
 # Step 2: Identify Treatment Episodes
 
-Once the session-level data have been prepared, leap can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The check\_ functions evaluate the structure of the data before and after episode identification, while the add\_ functions derive treatment episode variables.
+Once the session-level data have been prepared, leap can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The `check_` functions evaluate the structure of the data before and after episode identification, while the `add_` functions derive treatment episode variables.
 
-Episode variables can be added individually or created together using add_episode_vars(). The complete workflow is shown below::
+The necessary episode variables can be added individually or created together using the wrapper `add_episode_vars()`. The complete workflow is shown below:
 
-```{r identify, eval = FALSE}
-# Check data prior to episode identification 
-check_raw(data) 
-
+```{r identify}
 # Identify treatment episodes and derive episode variables
-episode_data <- add_episode_vars(data) 
+episode_df <- add_episode_vars(raw_df) 
 
 # Check the resulting episode structure 
-check_eps(episode_data)
+check_eps(episode_df)
 ```
 
 # Step 3: Describe episodes
 
 Once episodes have been identified, each unique episode can be summarized using `describe_episodes()` function shown below
 
-```{r describe, eval = FALSE}
-describe_episodes(episode_data)
+```{r}
+describe_episodes(episode_df)
 ```
 
 These summaries provide an initial description of treatment utilization and the organization of repeated episodes within clients.
 
 # Step 4: Visualize treatment trajectories
 
-Episode-specific trajectories can be inspected before fitting statistical models:
+Before fitting statistical models, it is often useful to inspect the observed treatment trajectories across episodes. plot_episode_curves() displays individual client-episode trajectories alongside the average linear pattern within each episode number.
 
-```{r visualize, eval = FALSE}
-plot_episode_curves(episode_data)
+```{r, episode-curves, fig.width=7, fig.height=5, out.width="100%", fig.align="center"}
+plot_episode_curves(episode_df)
 ```
 
-Visualizing the data can help reveal differences in treatment duration, starting levels, rates of change, and patterns of return across episodes. For more see [Visualizing Treatment Episodes](articles/viz-episodes.html)
+Visualizing treatment trajectories can reveal differences in starting levels, treatment duration, rates of change, and variability across successive episodes. Because the clients contributing to each episode number may differ, these plots are primarily descriptive and should not be interpreted as adjusted within-client effects. For additional plotting options see [Visualizing Treatment Episodes](articles/viz-episodes.html)
 
 # Step 5: Model outcomes within and between episodes
 
