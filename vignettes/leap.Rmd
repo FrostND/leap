@@ -42,13 +42,40 @@ raw_df <- data %>%
 head(raw_df)
 ```
 
+`leap` uses a standardized set of variable names throughout its functions. If the original data use different names, `cols_standard()` can be used to rename the core variables before proceeding:
+
+```{r, eval = FALSE}
+data <- cols_standard(
+  data = raw_df, 
+  client = "case_id", 
+  session = "session_num", 
+  date = "session_date",
+  outcome = "depression_score"
+  )
+```
+
+Once the variables have been standardized, `check_raw()` can be used to verify that the data contain the information required to identify treatment episodes:
+
+```{r, eval = FALSE}
+check_raw(data)
+```
+
+This initial check helps identify missing or improperly structured variables before episode-level variables are derived.
+
 # Step 2: Identify Treatment Episodes
 
-From these raw data, data can be checked using the `check_` functions. Subsequently, the required variables to perform episode analyses can be calculated using the `add_` functions. These variables can derived one-by-one, or all at once as shown below:
+Once the session-level data have been prepared, leap can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The check\_ functions evaluate the structure of the data before and after episode identification, while the add\_ functions derive treatment episode variables.
+
+Episode variables can be added individually or created together using add_episode_vars(). The complete workflow is shown below::
 
 ```{r identify, eval = FALSE}
-check_raw(data)
-episode_data <- add_episode_vars(data)
+# Check data prior to episode identification 
+check_raw(data) 
+
+# Identify treatment episodes and derive episode variables
+episode_data <- add_episode_vars(data) 
+
+# Check the resulting episode structure 
 check_eps(episode_data)
 ```
 
@@ -83,4 +110,3 @@ mod <- fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
 Additional modeling functions support alternative representations of episode-level change, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
-
