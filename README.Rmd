@@ -30,7 +30,7 @@ The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) packag
 
 Psychotherapy is often represented as a single, continuous course of treatment. In practice, however, individuals may disengage from care and subsequently return for additional treatment, producing multiple distinct episodes of care in naturalistic data. Analyzing these complex longitudinal data requires decisions about how episodes of care are defined and incorporated into statistical modeling and data analysis.
 
-`leap` was developed to support two related aspects of this process. First, it provides tools for preparing and exploring multi-episode data, including identifying breaks in treatment, constructing episode-level variables, describing patterns of service utilization.
+`leap` was developed to support two related aspects of this process. First, it provides tools for preparing and exploring multi-episode data, including identifying breaks in treatment, constructing episode-level variables, describing patterns of service utilization both within and between episodes.
 
 Second, leap provides flexible tools for modeling therapeutic change across repeated episodes of care. Supported approaches include longitudinal mixed-effects models, slopes-as-outcomes models, and Bayesian multilevel models, allowing researchers to examine both change within individual treatment episodes and patterns of change across episodes.
 

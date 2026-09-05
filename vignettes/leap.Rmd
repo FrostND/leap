@@ -7,13 +7,15 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# Overview
+
 A typical `leap` workflow begins with longitudinal treatment data in which each row represents a treatment session. From these data, `leap` provides functions for identifying distinct episodes of care, describing the resulting episode structure, visualizing treatment trajectories.
 
 This guide provides a brief introduction to that workflow. More detailed discussions of each step are available in the package articles.
 
-# Data Structure
+## Step 1: Check data
 
-To utilize all that is needed is a person-period longitudinal data frame. Below is an example from `leaps` built-in data.
+To utilize all that is needed is a person-period longitudinal data frame. Below is an example from `leaps` built-in data. Important to note that leap will
 
 ```{r data, include = FALSE}
 
@@ -38,19 +40,17 @@ raw_df <- data %>%
 head(raw_df)
 ```
 
-# Step 1: Identify Treatment Episodes
+## Step 2: Identify Treatment Episodes
 
 From these raw data, data can be checked using the `check_` functions. Subsequently, the required variables to perform episode analyses can be calculated using the `add_` functions. These variables can derived one-by-one, or all at once as shown below:
 
 ```{r identify, eval = FALSE}
 check_raw(data)
-
 episode_data <- add_episode_vars(data)
-
 check_eps(episode_data)
 ```
 
-# Step 2: Describe episodes
+## Step 3: Describe episodes
 
 Once episodes have been identified, each unique episode can be summarized using `describe_episodes()` function shown below
 
@@ -60,7 +60,7 @@ describe_episodes(episode_data)
 
 These summaries provide an initial description of treatment utilization and the organization of repeated episodes within clients.
 
-# Step 3: Visualize treatment trajectories
+## Step 4: Visualize treatment trajectories
 
 Episode-specific trajectories can be inspected before fitting statistical models:
 
@@ -70,7 +70,7 @@ plot_episode_curves(episode_data)
 
 Visualizing the data can help reveal differences in treatment duration, starting levels, rates of change, and patterns of return across episodes. For more see [Visualizing Treatment Episodes](articles/viz-episodes.html)
 
-# Step 4: Model outcomes within and between episodes
+## Step 5: Model outcomes within and between episodes
 
 `leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care.
 
