@@ -56,7 +56,7 @@ raw_df <- cols_standard(
 
 Once the variables have been standardized, `check_raw()` can be used to verify that the data contain the information required to identify treatment episodes:
 
-```{r, check, eval = FALSE}
+```{r, check raw data}
 check_raw(raw_df)
 ```
 
