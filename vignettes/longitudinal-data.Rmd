@@ -7,6 +7,54 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# Overview
+
+leap is designed for longitudinal treatment data in which repeated observations are collected from individuals over time. In psychotherapy and other behavioral health settings, these observations commonly represent treatment sessions that may occur within one or more distinct episodes of care.
+
+This structure creates multiple levels of information within the same longitudinal record: sessions occur within treatment episodes, and treatment episodes occur within clients. Understanding this structure is important for preparing data for episode identification, visualization, and statistical modeling with leap.
+
+This article introduces the longitudinal data structure used throughout the package, including the organization of session-level records, the hierarchical structure of repeated treatment episodes, and the standardized variables expected by leap.
+
+# Session-level data
+
+The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following variables:
+
+| Variable       | Description                       |
+|----------------|-----------------------------------|
+| `client_id`    | Unique client identifier          |
+| `session_id`   | Session identifier or sequence    |
+| `session_date` | Date of the session               |
+| `outcome`      | Session-level outcome measurement |
+
+For example, longitudinal treatment records may have the following person-period format:
+
+| client_id | session_id | session_date | outcome |
+|:---------:|:----------:|:------------:|:-------:|
+|    001    |     1      |  2025-01-06  |  10.2   |
+|    001    |     2      |  2025-01-13  |  10.8   |
+|    001    |     3      |  2025-01-20  |  11.4   |
+|    001    |     4      |  2025-06-02  |   9.7   |
+|    001    |     5      |  2025-06-09  |  10.5   |
+|    002    |     1      |  2025-02-03  |  12.1   |
+|    002    |     2      |  2025-02-10  |  12.8   |
+|    ...    |    ...     |     ...      |   ...   |
+
+Importantly, treatment sessions do not need to be equally spaced, and clients do not need to contribute the same number of observations. These features are common in naturalistic treatment records and are accommodated by the episode-based structure used in leap.
+
+# Hierarchical structure
+
+A central feature of repeated treatment data is its hierarchical structure. Sessions are nested within treatment episodes, and treatment episodes are nested within clients:
+
+Client \| +-- Episode 1 \| +-- Session 1 \| +-- Session 2 \| +-- Session 3 \| +-- Episode 2 +-- Session 1 +-- Session 2 +-- Session 3
+
+The same structure can be expressed as three levels:
+
+Level 3: Client \| Level 2: Treatment episode \| Level 1: Treatment session
+
+This distinction is important because observations from the same episode are not independent, and multiple episodes contributed by the same client are also related. The hierarchical structure therefore informs both how treatment episodes are represented in the data and how repeated observations are incorporated into statistical models.
+
+# Overview
+
 `leap` includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
 
 ```{r data, include = FALSE, eval = FALSE}
@@ -27,3 +75,11 @@ data <- data %>%
   unnest(cols = data)
 
 ```
+
+# package data
+
+The data sets simulated are internal to leap and can be called by the user as seen below.
+
+# Nesting
+
+The core premise of leap, is that nesting occurs within longitudinal data, where sessions are nested within episodes and episodes nested within clients. Below is a visual illustration
