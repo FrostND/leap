@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# leap <img src="inst/figures/logo.png" align="right" height="128"/>
+# leap <img src="inst/figures/logo.png" align="right" height="138"/>
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides R tools for identifying, visualizing, and
@@ -28,7 +28,8 @@ defined and incorporated into statistical modeling and data analysis.
 `leap` was developed to support two related aspects of this process.
 First, it provides tools for preparing and exploring multi-episode data,
 including identifying breaks in treatment, constructing episode-level
-variables, describing patterns of service utilization.
+variables, describing patterns of service utilization both within and
+between episodes.
 
 Second, leap provides flexible tools for modeling therapeutic change
 across repeated episodes of care. Supported approaches include

@@ -13,7 +13,7 @@ A typical `leap` workflow begins with longitudinal treatment data in which each 
 
 This guide provides a brief introduction to the core `leap` workflow. More detailed discussions of episode identification, visualization, and statistical modeling are available in the package articles.
 
-# Step 1: Check data
+# Step 1: Check Data
 
 To get started, `leap` requires person-period longitudinal data, with one row representing each treatment session. At minimum, the data should contain variables identifying the client, session, session date, and outcome of interest.
 
@@ -109,4 +109,3 @@ mod <- fit_lme(episode_data, cohort = "all", model = "episode")
 This approach estimates change within treatment episodes while accounting for the hierarchical structure of sessions nested within episodes and clients.
 
 Alternative functions support slopes-as-outcomes and Bayesian multilevel approaches for examining change within and across episodes. For a detailed discussion of the available models and their interpretation, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
-
