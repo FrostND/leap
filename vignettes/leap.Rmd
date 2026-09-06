@@ -98,12 +98,15 @@ Visualizing treatment trajectories can reveal differences in starting levels, tr
 
 # Step 5: Model outcomes within and between episodes
 
-`leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care.
+`leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care. These methods differ in whether change is modeled directly from session-level observations or summarized at the episode level.
 
-A longitudinal mixed-effects model can be fit directly to session-level observations:
+For example, a longitudinal mixed-effects model can be fit directly to session-level data:
 
 ```{r model, eval = FALSE}
 mod <- fit_lme(episode_data, cohort = "all", model = "episode")
 ```
 
-Additional modeling functions support alternative representations of episode-level change, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
+This approach estimates change within treatment episodes while accounting for the hierarchical structure of sessions nested within episodes and clients.
+
+Alternative functions support slopes-as-outcomes and Bayesian multilevel approaches for examining change within and across episodes. For a detailed discussion of the available models and their interpretation, see [Modeling Treatment Episodes](articles/modeling-episodes.html)
+
