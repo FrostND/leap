@@ -13,7 +13,7 @@ A typical `leap` workflow begins with longitudinal treatment data in which each 
 
 This guide provides a brief introduction to the core `leap` workflow. More detailed discussions of episode identification, visualization, and statistical modeling are available in the package articles.
 
-# Step 1: Check Data
+# Step 1: Prepare and check data
 
 To get started, `leap` requires person-period longitudinal data, with one row representing each treatment session. At minimum, the data should contain variables identifying the client, session, session date, and outcome of interest.
 
@@ -62,7 +62,7 @@ check_raw(raw_df)
 
 The output from this initial check helps identify missing or improperly structured variables before episode-level variables are derived.
 
-# Step 2: Identify Treatment Episodes
+# Step 2: Identify treatment episodes
 
 Once the session-level data have been prepared, leap can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The `check_` functions evaluate the structure of the data before and after episode identification, while the `add_` functions derive treatment episode variables.
 
@@ -76,7 +76,7 @@ episode_df <- add_episode_vars(raw_df)
 check_eps(episode_df)
 ```
 
-# Step 3: Describe episodes
+# Step 3: Describe treatment episodes
 
 Once episodes have been identified, each unique episode can be summarized using `describe_episodes()` function shown below
 
@@ -86,9 +86,9 @@ describe_episodes(episode_df)
 
 These summaries provide an initial description of treatment utilization and the organization of repeated episodes within clients.
 
-# Step 4: Visualize treatment trajectories
+# Step 4: Visualize episodes
 
-Before fitting statistical models, it is often useful to inspect the observed treatment trajectories across episodes. plot_episode_curves() displays individual client-episode trajectories alongside the average linear pattern within each episode number.
+Before fitting statistical models, it is often useful to visually inspect patterns of change within and across treatment episodes. The `plot_` family of functions provides several ways to explore these patterns. For example, `plot_episode_curves()` displays individual client trajectories alongside the average linear pattern within each episode.
 
 ```{r, episode-curves, fig.width=7, fig.height=5, out.width="100%", fig.align="center"}
 plot_episode_curves(episode_df)
@@ -96,7 +96,7 @@ plot_episode_curves(episode_df)
 
 Visualizing treatment trajectories can reveal differences in starting levels, treatment duration, rates of change, and variability across successive episodes. Because the clients contributing to each episode number may differ, these plots are primarily descriptive and should not be interpreted as adjusted within-client effects. For additional plotting options see [Visualizing Treatment Episodes](articles/viz-episodes.html)
 
-# Step 5: Model outcomes within and between episodes
+# Step 5: Model treatment outcomes
 
 `leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care. These methods differ in whether change is modeled directly from session-level observations or summarized at the episode level.
 
