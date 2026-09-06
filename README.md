@@ -5,8 +5,8 @@
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides R tools for identifying, visualizing, and
-modeling repeated treatment episodes in longitudinal health records
-data, with particular emphasis on psychotherapy data.
+modeling repeated treatment episodes in longitudinal health records,
+with particular emphasis on psychotherapy data.
 
 <!-- badges: start -->
 
@@ -31,7 +31,7 @@ multi-episode data, including identifying breaks in treatment,
 constructing episode-level variables, describing patterns of service
 utilization both within and between episodes.
 
-Second, leap provides flexible tools for modeling therapeutic change
+Second, `leap` provides flexible tools for modeling therapeutic change
 across repeated episodes of care. Supported approaches include
 longitudinal mixed-effects models, slopes-as-outcomes models, and
 Bayesian multilevel models, allowing researchers to examine both change
