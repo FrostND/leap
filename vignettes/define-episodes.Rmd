@@ -13,7 +13,7 @@ Treatment episodes are commonly defined by identifying sufficiently long periods
 
 leap supports this approach while also providing tools for examining the empirical distribution of time between sessions and estimating data-informed episode delimiters. This article describes several approaches to defining treatment episodes and illustrates how alternative delimiters can be evaluated.
 
-# Predefined episode delimiters
+# Predefined delimiter
 
 The simplest approach is to specify an a priori amount of time between consecutive sessions that constitutes the beginning of a new treatment episode. By default, leap uses a 90-day delimiter. When the time since a client's preceding session meets or exceeds this threshold, the subsequent session is assigned to a new episode.
 
@@ -49,7 +49,7 @@ lag_delimiter(data, method = "quantile")
 
 These approaches provide simple distribution-based thresholds that can be used to examine whether the observed spacing of sessions supports alternative definitions of treatment episodes.
 
-# Estimated delimiters
+# Mixture-model delimiter
 
 `leap` also provides a mixture-modeling approach for estimating an episode delimiter:
 
@@ -60,3 +60,4 @@ lag_delimiter(data, method = "mixture")
 The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats the distribution of session lags as arising from distinct underlying components. In the context of treatment episodes, these components are used to distinguish relatively short gaps that are more consistent with continued treatment from longer gaps that may indicate a new episode of care.
 
 The estimated boundary between these components provides a data-informed candidate delimiter. Importantly, this value should not be interpreted as a definitive clinical boundary. Rather, it provides an empirical basis for evaluating how treatment episodes might be defined in a particular data set and can be considered alongside theoretical, clinical, or previously established thresholds.
+
