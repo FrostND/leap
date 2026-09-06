@@ -7,24 +7,56 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Episode identification
+# Overview
 
-Treatment episodes are commonly defined using a predetermined period of inactivity, such as 90 days without treatment. `leap` supports this approach while also providing tools for examining the empirical distribution of time between sessions.
+Treatment episodes are commonly defined by identifying sufficiently long periods of inactivity between consecutive treatment sessions. In psychotherapy and behavioral health research, this often involves applying an a priori threshold, such as 90 days without treatment, to distinguish a break in care from ordinary variation in the timing of sessions.
 
-Session lags can be calculated and inspected directly:
+leap supports this approach while also providing tools for examining the empirical distribution of time between sessions and estimating data-informed episode delimiters. This article describes several approaches to defining treatment episodes and illustrates how alternative delimiters can be evaluated.
 
-```{r lags, eval = FALSE}
+# Predefined episode delimiters
+
+The simplest approach is to specify an a priori amount of time between consecutive sessions that constitutes the beginning of a new treatment episode. By default, leap uses a 90-day delimiter. When the time since a client's preceding session meets or exceeds this threshold, the subsequent session is assigned to a new episode.
+
+The default can be applied by first calculating the number of days between consecutive sessions using add_session_lag() and then assigning episode membership with add_episode_id():
+
+```{r, default lag, eval = FALSE}
+# by default, episodes are distinguished 
+# by 90 days of inactivity
 episode_data <- data |>
   add_session_lag() |>
-  add_episode_id(delimiter = 90)
+  add_episode_id()
 ```
 
-Candidate episode delimiters can also be estimated from the observed distribution of session lags:
+Researchers may instead specify a different delimiter when another threshold is theoretically or clinically appropriate, or when examining the sensitivity of episode definitions to alternative thresholds. For example, a 180-day delimiter can be applied as follows:
+
+```{r bigger lag, eval = FALSE}
+episode_data <- data |>
+  add_session_lag() |>
+  add_episode_id(delimiter = 180)
+```
+
+The choice of delimiter determines which gaps in treatment are interpreted as breaks between episodes and can therefore affect the number, duration, and composition of episodes identified in the data. When no established threshold is available, or when the appropriateness of a predefined threshold is uncertain, the observed distribution of session lags can also be used to inform this decision.
+
+# Data-informed episode delimiters
+
+Rather than specifying an episode delimiter a priori, candidate thresholds can be estimated from the observed distribution of session lags. `lag_delimiter()` provides several approaches for doing so, including thresholds based on the standard deviation, interquartile range, and empirical quantiles of the observed session gaps.
 
 ```{r delimiter, eval = FALSE}
+lag_delimiter(data, method = "sd")
 lag_delimiter(data, method = "iqr")
 lag_delimiter(data, method = "quantile")
+```
+
+These approaches provide simple distribution-based thresholds that can be used to examine whether the observed spacing of sessions supports alternative definitions of treatment episodes.
+
+# Estimated delimiters
+
+`leap` also provides a mixture-modeling approach for estimating an episode delimiter:
+
+```{r, estimated delimiters, eval = FALSE}
 lag_delimiter(data, method = "mixture")
 ```
 
-The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats episode identification as an empirical classification problem by identifying relatively short- and long-gap components in the observed distribution of session lags. Estimated delimiters should be interpreted as data-informed candidate thresholds rather than definitive clinical boundaries between treatment episodes.
+The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats the distribution of session lags as arising from distinct underlying components. In the context of treatment episodes, these components are used to distinguish relatively short gaps that are more consistent with continued treatment from longer gaps that may indicate a new episode of care.
+
+The estimated boundary between these components provides a data-informed candidate delimiter. Importantly, this value should not be interpreted as a definitive clinical boundary. Rather, it provides an empirical basis for evaluating how treatment episodes might be defined in a particular data set and can be considered alongside theoretical, clinical, or previously established thresholds.
