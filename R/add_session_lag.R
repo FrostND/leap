@@ -24,14 +24,6 @@
 #' @examples
 #' # calculate session lags
 #' sorted <- add_session_lag(data = sorted, client = "client_id", date = "session_date")
-#'
-#' # with native R pipe
-#' sort_sessions(data = "unsorted", "client = "client_id", date = "session_id") |>
-#'    add_session_lag(client = "client_id", date = "session_id")
-#'
-#' # with maggritr pipe
-#' sort_sessions(data = "unsorted", "client = "client_id", date = "session_id") %>%
-#'    add_session_lag(client = "client_id", date = "session_id")
 
 add_session_lag <- function(data) {
 

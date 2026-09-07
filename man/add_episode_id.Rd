@@ -35,13 +35,4 @@ treatment episodes.
 }
 \examples{
 out <- add_episode_id(data = df, client = "client_id", session_lag = "lag")
-
-with native R pipe
-add_session_lag("client_id", "session_date") |>
-    add_episode_id("client_id", "session_lag")
-
-# with miggrtir pipe
-add_session_lag("client_id", "session_date") \%>\%
-    add_episode_id("client_id", "session_lag")
-
 }

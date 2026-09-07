@@ -18,7 +18,6 @@ Description: Provides tools for identifying, describing, visualizing, and
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 8.0.0
 Depends:
     R (>= 4.1.0)
 Imports:
@@ -34,3 +33,4 @@ Config/testthat/edition: 3
 LazyData: true
 URL: https://github.com/FrostND/leap, https://frostnd.github.io/leap/
 BugReports: https://github.com/FrostND/leap/issues
+Config/roxygen2/version: 8.1.0
