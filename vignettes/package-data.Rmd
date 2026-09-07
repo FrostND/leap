@@ -17,7 +17,7 @@ This article introduces the longitudinal data structure used throughout the pack
 
 # Session-level data
 
-The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following variables:
+The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following:
 
 | Variable       | Description                       |
 |:---------------|:----------------------------------|
