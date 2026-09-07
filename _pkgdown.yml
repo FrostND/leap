@@ -35,8 +35,8 @@ navbar:
           href: articles/modeling-episodes.html
         - text: Visualizing Treatment Episodes
           href: articles/viz-episodes.html
-        - text: Research Literature
-          href: articles/rx-literature.html
+        - text: Research Foundations
+          href: articles/rx-foundations.html
     news:
       text: News
       href: news/index.html

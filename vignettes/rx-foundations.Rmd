@@ -1,17 +1,17 @@
 ---
-title: "Research Literature"
+title: "Research Foundations"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Research Literature}
+  %\VignetteIndexEntry{Research Foundations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 This article provides a selected bibliography of research relevant to the definition and analysis of repeated treatment episodes. The literature is organized around two areas: approaches to defining distinct episodes of care and statistical methods for analyzing longitudinal psychotherapy outcomes.
 
-# Studies Using 90-days to demarcate episodes
+# Studies Using time to delimit treatment episodes
 
-Several studies have operationalized a new episode of behavioral health care following at least 90 days without treatment [citations]. This definition provides a clinically interpretable rule for distinguishing short interruptions in ongoing treatment from subsequent reengagement.
+Several studies have operationalized a new episode of behavioral health care following at least 90 days without treatment. This definition provides a clinically interpretable rule for distinguishing short interruptions in ongoing treatment from subsequent reengagement.
 
 1.  Goldberg, S. B., Rousmaniere, T., Miller, S. D., Whipple, J., Nielsen, S. L., Hoyt, W. T., & Wampold, B. E. (2016). Do psychotherapists improve with time and experience? A longitudinal analysis of outcomes in a clinical setting. *Journal of Counseling Psychology*, *63*(1), 1–11. <https://doi.org/10.1037/cou0000131>
 2.  Minami, T., Davies, D. R., Tierney, S. C., Bettmann, J. E., McAward, S. M., Averill, L. A., Huebner, L. A., Weitzman, L. M., Benbrook, A. R., Serlin, R. C., & Wampold, B. E. (2009). Preliminary evidence on the effectiveness of psychological treatments delivered at a university counseling center. *Journal of Counseling Psychology*, *56*(2), 309–320. <https://doi.org/10.1037/a0015398>
