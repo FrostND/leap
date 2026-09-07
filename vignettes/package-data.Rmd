@@ -1,8 +1,8 @@
 ---
-title: "Working with Longitudinal Data"
+title: "Package Data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Working with Longitudinal Data}
+  %\VignetteIndexEntry{Package Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

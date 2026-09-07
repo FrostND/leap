@@ -27,8 +27,8 @@ navbar:
     articles:
       text: Articles
       menu:
-        - text: Working with Longitudinal Data
-          href: articles/longitudinal-data.html
+        - text: Package Data
+          href: articles/package-data.html
         - text: Defining Treatment Episodes
           href: articles/define-episodes.html
         - text: Modeling Treatment Episodes
