@@ -1,0 +1,11 @@
+---
+title: "Research Literature"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Research Literature}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This article provides a selected bibliography of research relevant to the definition and analysis of repeated treatment episodes. The literature is organized around two areas: approaches to defining distinct episodes of care and statistical methods for analyzing longitudinal psychotherapy outcomes.
+
