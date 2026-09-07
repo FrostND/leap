@@ -9,15 +9,15 @@ vignette: >
 
 # Overview
 
-`leap` is designed for longitudinal treatment data in which repeated observations are collected from individuals over time. In psychotherapy and other behavioral health interventions, these observations commonly represent treatment sessions that may occur within one or more distinct episodes of care.
+`leap` is designed to work with data collected from the same individuals at multiple points in time. In psychotherapy and other behavioral health interventions, these data often consist of information collected at each treatment session, such as the session date and a measure of symptoms or well-being.
 
-This structure creates multiple levels of information within the same longitudinal record: sessions occur within treatment episodes, and treatment episodes occur within clients. Understanding this structure is important for preparing data for episode identification, visualization, and statistical modeling with leap.
+When individuals return to treatment over time, their sessions may belong to more than one distinct episode of care. This creates a natural hierarchical structure in the data: **sessions occur within treatment episodes, and treatment episodes occur within clients**. Recognizing this structure is an important first step in preparing data for analysis with `leap`.
 
-This article introduces the longitudinal data structure used throughout the package, including the organization of session-level records, the hierarchical structure of repeated treatment episodes, and the standardized variables expected by leap.
+This article introduces how longitudinal treatment data are organized in `leap`, including the structure of session-level records, how sessions and episodes are nested within clients, and the standard variables used throughout the package.
 
 # Session-level data
 
-The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following:
+The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following variables:
 
 | Variable       | Description                       |
 |:---------------|:----------------------------------|
@@ -35,6 +35,7 @@ library(tidyverse)
 
 # load example data
 load("~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData")
+
 
 # select subset for vignette 
 raw_data <- data %>%
@@ -58,19 +59,17 @@ Importantly, treatment sessions do not need to be equally spaced, and clients do
 
 A central feature of repeated treatment data is its hierarchical structure. Sessions are nested within treatment episodes, and treatment episodes are nested within clients:
 
-Client \| +-- Episode 1 \| +-- Session 1 \| +-- Session 2 \| +-- Session 3 \| +-- Episode 2 +-- Session 1 +-- Session 2 +-- Session 3
-
-The same structure can be expressed as three levels:
-
-Level 3: Client \| Level 2: Treatment episode \| Level 1: Treatment session
+![](images/eps_nesting.png){width="849"}
 
 This distinction is important because observations from the same episode are not independent, and multiple episodes contributed by the same client are also related. The hierarchical structure therefore informs both how treatment episodes are represented in the data and how repeated observations are incorporated into statistical models.
 
-# Overview
+# Overview of package data
 
 `leap` includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
 
-# package data
+## Design: Balanced vs. Unbalanced
+
+## Type: Stochastic vs. Clinical 
 
 The data sets simulated are internal to leap and can be called by the user as seen below.
 
