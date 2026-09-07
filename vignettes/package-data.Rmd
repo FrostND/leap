@@ -19,12 +19,12 @@ This article introduces the longitudinal data structure used throughout the pack
 
 The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following variables:
 
-|    Variable    |            Description            |
-|:--------------:|:---------------------------------:|
-|  `client_id`   |     Unique client identifier      |
-|  `session_id`  |  Session identifier or sequence   |
-| `session_date` |        Date of the session        |
-|   `outcome`    | Session-level outcome measurement |
+| Variable       | Description                       |
+|:---------------|:----------------------------------|
+| `client_id`    | Unique client identifier          |
+| `session_id`   | Session identifier or sequence    |
+| `session_date` | Date of the session               |
+| `outcome`      | Session-level outcome measurement |
 
 For example, longitudinal treatment records may have the following person-period format:
 
