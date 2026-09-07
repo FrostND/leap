@@ -5,8 +5,8 @@
 
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides tools for identifying, visualizing, and
-statistically modeling repeated treatment episodes in longitudinal data,
-with particular emphasis on psychotherapy and behavioral health records.
+statistically modeling repeated treatment episodes in longitudinal
+health records data.
 
 <!-- badges: start -->
 
@@ -19,25 +19,26 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ## Why leap?
 
 Behavioral health interventions, including psychotherapy, are often
-represented as a single, continuous course of treatment. In naturalistic
-settings, however, individuals may disengage from an intervention and
-subsequently reengage, resulting in multiple distinct periods of
-treatment exposure over time. When records accumulate across months or
-years, these patterns can produce complex longitudinal data structures
-that require decisions about how episodes of treatment are defined,
-represented, and statistically incorporated in intervention research.
+represented as a single, continuous course of treatment. In real-world
+settings, however, individuals often disengage and subsequently reengage
+in treatment over time, resulting in multiple distinct periods
+(i.e. episodes) of treatment exposure. These patterns can produce
+complex longitudinal data that require decisions about how episodes of
+treatment are defined, represented, and incorporated into statistical
+analyses.
 
 `leap` was developed to support two related components of this analytic
-workflow. First, it provides easy-to-use tools for preparing and
-exploring multi-episode data, including identifying breaks in treatment,
-constructing episode-level variables, describing patterns of service
-utilization.
+workflows. First, it provides easy-to-use tools for preparing and
+exploring health records data involving multiple episodes of treatment,
+including identifying breaks in treatment, constructing episode-level
+variables, and visualizing patterns within and across episodes.
 
 Second, `leap` provides flexible tools for modeling change across
 repeated episodes of care. Supported approaches include longitudinal
 mixed-effects models, slopes-as-outcomes models, and Bayesian multilevel
-models, allowing researchers to examine change within individual
-episodes as well as patterns of change across episodes.
+models. Taken together, these tools allowing researchers to examine
+change within individual episodes as well as patterns of change across
+episodes.
 
 ## What can leap do?
 
