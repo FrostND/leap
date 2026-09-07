@@ -9,11 +9,11 @@ vignette: >
 
 # Overview
 
-A typical `leap` workflow begins with longitudinal treatment records and progresses from preparing the data to identifying, describing, visualizing, and modeling repeated episodes of care. The package is designed to accommodate real-world treatment records in which clients may attend different numbers of sessions and episodes of care, with some completing a single episode and others returning for treatment multiple times over time.
+A typical `leap` workflow progresses from preparing the raw data to identifying, describing, visualizing, and modeling repeated episodes of care. The package is designed to accommodate real-world treatment records in which clients may attend different numbers of sessions and episodes of care, with some completing a single episode and others returning for treatment multiple times over time.
 
 # Step 1: Prepare and check data
 
-`leap` works with person-period longitudinal data, where each row represents a treatment session for a client. At minimum, the data should include variables identifying the client, session, session date, and outcome of interest.
+`leap` works with person-period longitudinal data, where each row represents a treatment session for a client. At minimum, the data should include variables identifying the `client`, `session`, `session date`, and `outcome` of interest.
 
 The example below uses a small data set included with the `leap` package:
 
@@ -60,21 +60,21 @@ check_raw(raw_df)
 
 The output from this initial check helps identify missing or improperly structured variables before episode-level variables are derived.
 
-# Step 2: Identify treatment episodes
+# Step 2: Identify episodes
 
-Once the session-level data have been prepared, leap can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The `check_` functions evaluate the structure of the data before and after episode identification, while the `add_` functions derive treatment episode variables.
+Once the session-level data have been prepared, `leap` can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The `check_` functions evaluate the structure of the data before and after episode identification, while the `add_` functions derive treatment episode variables.
 
 The necessary episode variables can be added individually or created together using the wrapper `add_episode_vars()`. The complete workflow is shown below:
 
 ```{r identify}
-# Identify treatment episodes and derive episode variables
+# create all episode variables
 episode_df <- add_episode_vars(raw_df) 
 
-# Check the resulting episode structure 
+# Check episode structure 
 check_eps(episode_df)
 ```
 
-# Step 3: Describe treatment episodes
+# Step 3: Describe episodes
 
 Once episodes have been identified, each unique episode can be summarized using `describe_episodes()` function shown below
 
@@ -94,7 +94,7 @@ plot_episode_curves(episode_df)
 
 Visualizing treatment trajectories can reveal differences in starting levels, treatment duration, rates of change, and variability across successive episodes. Because the clients contributing to each episode number may differ, these plots are primarily descriptive and should not be interpreted as adjusted within-client effects. For additional plotting options see [Visualizing Treatment Episodes](articles/viz-episodes.html)
 
-# Step 5: Model treatment outcomes
+# Step 5: Model episode outcomes
 
 `leap` provides several complementary approaches for modeling therapeutic change across repeated episodes of care. These methods differ in whether change is modeled directly from session-level observations or summarized at the episode level.
 
