@@ -59,7 +59,7 @@ Importantly, treatment sessions do not need to be equally spaced, and clients do
 
 A central feature of repeated treatment data is its hierarchical structure. Sessions are nested within treatment episodes, and treatment episodes are nested within clients:
 
-![](images/eps_nesting.png){width="849"}
+![](images/eps_nesting.png){width="639"}
 
 This distinction is important because observations from the same episode are not independent, and multiple episodes contributed by the same client are also related. The hierarchical structure therefore informs both how treatment episodes are represented in the data and how repeated observations are incorporated into statistical models.
 
