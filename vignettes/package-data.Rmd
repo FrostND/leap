@@ -9,24 +9,13 @@ vignette: >
 
 # Overview
 
-`leap` is designed to work with data collected from the same individuals at multiple points in time. In psychotherapy and other behavioral health interventions, these data often consist of information collected at each treatment session, such as the session date and a measure of symptoms or well-being.
+`leap` is designed for longitudinal treatment data in which individuals contribute repeated observations over time. In psychotherapy and other behavioral health settings, these observations typically represent treatment sessions. Clients may attend different numbers of sessions, and the time between sessions may vary considerably.
 
-When individuals return to treatment over time, their sessions may belong to more than one distinct episode of care. This creates a natural hierarchical structure in the data: **sessions occur within treatment episodes, and treatment episodes occur within clients**. Recognizing this structure is an important first step in preparing data for analysis with `leap`.
+When treatment occurs across multiple periods of care, `leap` can be used to identify distinct treatment episodes. This adds an additional level to the data structure: **sessions occur within treatment episodes, and treatment episodes occur within clients**.
 
-This article introduces how longitudinal treatment data are organized in `leap`, including the structure of session-level records, how sessions and episodes are nested within clients, and the standard variables used throughout the package.
+![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
 
-# Session-level data
-
-The starting point for most leap workflows is a person-period data set in which each row represents a treatment session for a client. A typical data set might contain the following variables:
-
-| Variable       | Description                       |
-|:---------------|:----------------------------------|
-| `client_id`    | Unique client identifier          |
-| `session_id`   | Session identifier or sequence    |
-| `session_date` | Date of the session               |
-| `outcome`      | Session-level outcome measurement |
-
-For example, longitudinal treatment records may have the following person-period format:
+This article introduces how longitudinal treatment data are structured in `leap`, the variables used to represent treatment episodes, and the simulated data included with the package.
 
 ```{r data, include = FALSE}
 
@@ -49,30 +38,42 @@ raw_data <- data %>%
   ungroup()
 ```
 
-```{r}
-print(raw_data)
-```
+# Longitudinal data structure
 
-Importantly, treatment sessions do not need to be equally spaced, and clients do not need to contribute the same number of observations. These features are common in naturalistic treatment records and are accommodated by the episode-based structure used in `leap`.
+The starting point for `leap` is session-level longitudinal data, where each row represents a treatment session for a client. At minimum, the data should contain information identifying the client, session, session date, and outcome of interest.
 
-# Hierarchical structure
+Importantly, longitudinal treatment records do not need to be balanced. Clients may contribute different numbers of sessions and treatment episodes, and the spacing between sessions may vary over time. These features are common in naturalistic treatment records and are accommodated by `leap`.
 
-A central feature of repeated treatment data is its hierarchical structure. Sessions are nested within treatment episodes, and treatment episodes are nested within clients:
+When episode variables are added, each session is linked to both the treatment episode in which it occurred and the client who received treatment. This structure allows `leap` to distinguish change occurring within a treatment episode from patterns that occur across repeated episodes of care.
 
-![](images/eps_nesting.png){width="639"}
+The resulting data can therefore be viewed as having three levels:
 
-This distinction is important because observations from the same episode are not independent, and multiple episodes contributed by the same client are also related. The hierarchical structure therefore informs both how treatment episodes are represented in the data and how repeated observations are incorporated into statistical models.
+- **Session:** an individual treatment visit or observation
 
-# Overview of package data
+- **Episode:** a distinct period of treatment containing one or more sessions
 
-`leap` includes simulated longitudinal psychotherapy data that illustrate common features of real-world treatment records, including unequal numbers of sessions, repeated episodes of care, and variation in treatment trajectories.
+- **Client:** an individual who may contribute one or more treatment episodes
 
-## Design: Balanced vs. Unbalanced
+This structure becomes particularly important when fitting statistical models because sessions from the same episode and episodes from the same client are related rather than independent observations.
 
-## Type: Stochastic vs. Clinical 
+# Simulated data
 
-The data sets simulated are internal to leap and can be called by the user as seen below.
+`leap` includes simulated longitudinal psychotherapy data for demonstrating package functions and illustrating common features of real-world treatment records. The simulated data vary along two dimensions: **design** and **scenario type**.
 
-# Nesting
+## Design: balanced and unbalanced
 
-The core premise of leap, is that nesting occurs within longitudinal data, where sessions are nested within episodes and episodes nested within clients. Below is a visual illustration
+The simulated data include both balanced and unbalanced longitudinal designs.
+
+In the **balanced design**, clients contribute the same number of treatment episodes and the same number of sessions within each episode. This provides a simplified data structure that is useful for demonstrating and evaluating statistical methods.
+
+In the **unbalanced design**, clients may contribute different numbers of sessions and episodes of care. This structure more closely resembles naturalistic treatment records, where treatment duration and patterns of reengagement vary across clients.
+
+## Scenario type: stochastic and clinical
+
+Within each design, `leap` provides simulations representing different sources and patterns of variation.
+
+**Stochastic scenarios** vary the amount of between-client and between-episode variability in treatment trajectories. These scenarios are useful for examining how different variance structures affect episode-based analyses.
+
+**Clinical scenarios** represent systematic patterns of treatment and reengagement across episodes, such as recurrence, efficient return to treatment, persistent difficulty, and diminishing response.
+
+Together, these simulated data provide controlled examples for demonstrating how `leap` functions behave across different longitudinal data structures and patterns of change.
