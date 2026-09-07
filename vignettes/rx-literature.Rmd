@@ -9,3 +9,24 @@ vignette: >
 
 This article provides a selected bibliography of research relevant to the definition and analysis of repeated treatment episodes. The literature is organized around two areas: approaches to defining distinct episodes of care and statistical methods for analyzing longitudinal psychotherapy outcomes.
 
+# Studies Using 90-days to demarcate episodes
+
+Several studies have operationalized a new episode of behavioral health care following at least 90 days without treatment [citations]. This definition provides a clinically interpretable rule for distinguishing short interruptions in ongoing treatment from subsequent reengagement.
+
+1.  Golberg
+2.  Minami
+3.  Kivlighan et al.,
+4.  Baldwin et al.,
+5.  Baldiwn et al.,
+6.  
+
+# Alternate Methods 
+
+1.  jfjjf
+2.  jfjfj
+
+# Analysis of Longitudinal data guides 
+
+1.  Curan and Bauer
+2.  Tasca et al.,
+3.  Tasca et al.,
