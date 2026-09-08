@@ -1,0 +1,14 @@
+pandoc: 3.8.3
+pkgdown: 2.2.1
+pkgdown_sha: ~
+articles:
+  define-episodes: define-episodes.html
+  leap: leap.html
+  modeling-episodes: modeling-episodes.html
+  package-data: package-data.html
+  rx-foundations: rx-foundations.html
+  viz-episodes: viz-episodes.html
+last_built: 2026-09-08T23:34Z
+urls:
+  reference: https://frostnd.github.io/leap/reference
+  article: https://frostnd.github.io/leap/articles

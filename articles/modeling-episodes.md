@@ -1,0 +1,279 @@
+# Model Episodes
+
+## Overview
+
+`leap` currently supports several complementary approaches:
+
+- [`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md)
+  fits longitudinal mixed-effects models directly to session-level
+  observations.
+- [`fit_sao()`](https://frostnd.github.io/leap/reference/fit_sao.md)
+  uses episode-specific rates of change as outcomes in a
+  slopes-as-outcomes framework.
+- [`fit_brms()`](https://frostnd.github.io/leap/reference/fit_brms.md)
+  fits Bayesian multilevel models of session-level treatment
+  trajectories.
+
+Frequentist mixed-effects models are estimated using `lme4` whereas
+Bayesian multilevel models are estimated using `brms`. These approaches
+address related but distinct questions about therapeutic change and the
+structure of repeated episodes of care.
+
+## Levels of analysis
+
+An important distinction among the modeling approaches in `leap` is the
+level at which change is analyzed. The **session-level models** retain
+each treatment session as the level-1 unit. This allows change over the
+course of treatment to be modeled directly while accounting for sessions
+belonging to the same episode and multiple episodes belonging to the
+same client. Both
+[`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md) and
+[`fit_brms()`](https://frostnd.github.io/leap/reference/fit_brms.md)
+utilize this approach.
+
+By contrast, **episode-level models** first summarize change within each
+treatment episode using a measure such as a pre-post change score or
+estimated rate of change. For example, a linear regression slope can be
+estimated for each client-episode to represent the rate of change across
+sessions. These episode-specific slopes can then serve as the outcome in
+a multilevel model where the level-1 unit is the episode of treatment.
+This slopes-as-outcomes approach is implemented in
+[`fit_sao()`](https://frostnd.github.io/leap/reference/fit_sao.md).
+
+The most appropriate model depends on the research question and aims of
+the analysis.
+
+## Longitudinal mixed-effects
+
+[`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md) fits
+a longitudinal mixed-effects model to the data with `lme4`. For example,
+a basic growth model can be fit using:
+
+``` r
+
+fit_lme(episode_data, model = "session")
+```
+
+In this particular model specification, the corresponding three-level
+equation is:
+
+``` math
+Y_{ijk} = \beta_0 + \beta_1(\text{Session}{ijk}) + \left[u{0k} + u_{1k}(\text{Session}{ijk}) + v{0jk} + v_{1jk}(\text{Session}{ijk}) \right] + \varepsilon{ijk}
+```
+
+where $`Y_{ijk}`$ is the outcome at session $`i`$ in episode $`j`$ for
+client $`k`$. The fixed effects $`\beta_0`$ and $`\beta_1`$ represent
+the average starting level and rate of change across sessions,
+respectively. The terms in brackets represent random effects, allowing
+starting levels and rates of change to vary across clients ($`u_{0k}`$
+and $`u_{1k}`$) and across episodes within clients ($`v_{0jk}`$ and
+$`v_{1jk}`$). The residual $`\varepsilon_{ijk}`$ represents remaining
+session-level variation.
+
+Episode number can be added as a fixed predictor to examine whether
+outcomes systematically differ across successive episodes:
+
+``` r
+
+fit_lme(episode_data, cohort = "all", model = "episode")
+```
+
+The available model specifications provide a progression from describing
+variation in outcomes to examining change within and across treatment
+episodes:
+
+| Model | Purpose |
+|:--:|:---|
+| “null” | Describe variation across clients and episodes without modeling change over time |
+| “session” | Estimate change across sessions within treatment episodes |
+| “episode” | Estimate within-episode change while accounting for episode number |
+| “full” | Examine whether within-episode change differs across successive episodes |
+
+The “full” model includes the interaction between session and episode
+number. This interaction addresses a particularly important
+multi-episode question: does the rate of change during treatment differ
+depending on which episode of care a client is attending?
+
+For example, a positive or negative interaction may indicate that
+treatment trajectories become steeper or flatter across successive
+episodes, depending on the direction and scaling of the outcome measure.
+
+## Slopes-as-outcomes
+
+An alternative approach is to summarize change separately within each
+treatment episode and then analyze those estimates at the episode level.
+[`fit_sao()`](https://frostnd.github.io/leap/reference/fit_sao.md)
+implements this slopes-as-outcomes approach. Conceptually, the analysis
+occurs in two stages. First, a OLS regression slope is estimated for
+each client in each episode using the
+[`episode_slopes()`](https://frostnd.github.io/leap/reference/episode_slopes.md)
+function. Second, those episode-specific slopes are modeled as outcomes
+using [`fit_sao()`](https://frostnd.github.io/leap/reference/fit_sao.md)
+function.
+
+This two step process can be implemented as follows:
+
+``` r
+
+# get slopes 
+slopes_df <- episode_slopes(raw_data)
+
+# fit sao model 
+fit_sao(slopes_df, model = "session")
+```
+
+For the “session” specification, the second-stage model can be written
+as:
+
+``` math
+Y_{ij} = \beta_{0} + \beta_{10}(Sessions_{ij}) + [U_{0j} + e_{ij}]
+```
+
+where $`Y_{ij}`$ is the estimated treatment slope in episode $`i`$ for
+client $`j`$. The fixed effect $`\beta_{0}`$ represents the expected
+episode-specific rate of change, while $`\beta_{10}`$ represents the
+association between the total number of sessions in an episode and the
+estimated rate of change. The random intercept $`u_{0j}`$ accounts for
+differences in average rates of change across clients, and $`e_{ij}`$
+represents remaining variation among episode-specific slopes within
+clients.
+
+Including the number of sessions is particularly relevant in a
+slopes-as-outcomes analysis because episodes may differ considerably in
+length. The `"session"` model therefore examines whether estimated rates
+of change systematically vary with the number of sessions contributing
+to each episode.
+
+Other model specifications extend this framework to examine whether
+rates of change differ across successive treatment episodes. For
+example:
+
+``` r
+
+fit_sao( slopes_df, model = "episode" )
+```
+
+adds episode number as a predictor, allowing the model to examine
+whether episode-specific rates of change systematically differ across
+repeated episodes of care.
+
+## Bayesian multilevel models
+
+[`fit_brms()`](https://frostnd.github.io/leap/reference/fit_brms.md)
+provides a Bayesian approach to modeling session-level treatment
+trajectories using `brms`. The general model structure parallels the
+longitudinal mixed-effects models available through
+[`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md):
+
+``` r
+
+fit_brms(episode_data, model = "episode")
+```
+
+For the `"episode"` specification, the outcome model can be written as:
+
+``` math
+\beta_0 + \beta_1(\text{Session}{ijk}) + \beta_2(\text{Episode}{jk}) + \left[u_{0k} + u_{1k}(\text{Session}{ijk}) + v{0jk} + v_{1jk}(\text{Session}{ijk}) \right] + \varepsilon{ijk}
+```
+
+where $`Y_{ijk}`$ is the outcome at session $`i`$ in episode $`j`$ for
+client $`k`$. The fixed effects $`\beta_0`$, $`\beta_1`$, and
+$`\beta_2`$ represent the average starting level, rate of change across
+sessions, and association between episode number and the outcome,
+respectively. The terms in brackets represent random effects that allow
+starting levels and rates of change to vary across clients and across
+episodes within clients.
+
+In a Bayesian model, these parameters are treated as unknown quantities
+described by probability distributions. For example, the model can be
+completed by specifying: \$\$
+
+``` math
+\varepsilon_{ijk} \sim \mathrm{N}(0,\sigma^2),
+```
+
+together with prior distributions such as
+
+``` math
+\beta_p \sim \mathrm{N} (0,\tau_\beta^2),
+```
+
+and multivariate normal distributions for the client- and episode-level
+random effects:
+
+``` math
+\begin{pmatrix} u_{0k} \ u_{1k} \end{pmatrix} \sim \mathrm{N} \left( \begin{pmatrix} 0 \ 0 \end{pmatrix}, \Sigma_{\text{client}} \right),
+```
+
+``` math
+\begin{pmatrix} v_{0jk} \ v_{1jk} \end{pmatrix} \sim \mathrm{N} \left(\begin{pmatrix} 0 \ 0 \end{pmatrix}, \Sigma_{\text{episode}} \right).
+```
+
+The primary distinction from
+[`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md) is
+therefore not the structure of the treatment trajectory itself, but how
+uncertainty about the model parameters is represented and estimated.
+Rather than producing point estimates and sampling-based confidence
+intervals, Bayesian estimation combines the likelihood with prior
+distributions to obtain posterior distributions for the model
+parameters.
+
+These posterior distributions can be used to summarize the most
+plausible values of treatment effects, quantify uncertainty using
+credible intervals, and calculate probabilities for quantities of
+substantive interest.
+
+Because Bayesian multilevel models can require substantially more
+computation than frequentist mixed-effects models,
+[`fit_lme()`](https://frostnd.github.io/leap/reference/fit_lme.md) can
+provide a useful starting point for evaluating model specification
+before fitting an analogous model with
+[`fit_brms()`](https://frostnd.github.io/leap/reference/fit_brms.md).
+
+## Cohort selection
+
+Not every research question requires the same set of clients. In
+particular, analyses of repeated treatment episodes may distinguish
+between the full sample versus clients who only contributed multiple
+episodes of care.
+
+All of the `fit_*()` include a cohort argument which provides a
+consistent way to specify the analytic sample desired for analysis:
+
+``` r
+
+fit_lme(episode_data, cohort = "multiple", model = "episode")
+```
+
+Using cohort = “multiple” restricts the analysis to clients who
+contributed more than one treatment episode. This can be useful when the
+research question specifically concerns patterns of change across
+repeated episodes.
+
+In contrast, cohort = “all” retains all eligible clients, including
+those observed for only one episode. The choice should be guided by the
+research question. Restricting analyses to clients who return for
+treatment changes the population being analyzed and should therefore be
+considered when interpreting results.
+
+## Centering predictors
+
+The interpretation of model coefficients depends partly on how session
+and episode number are coded.
+
+By default, leap can center these variables so that the first treatment
+session and first treatment episode provide meaningful reference points.
+Under this parameterization, the model intercept corresponds more
+closely to expected outcome levels at the beginning of the initial
+episode of care.
+
+Centering can be controlled using the center argument:
+
+``` r
+
+fit_lme(episode_data, center = TRUE, cohort = "all", model = "episode")
+```
+
+Centering does not change the underlying observations. Rather, it
+changes the reference point used to interpret model coefficients and can
+also improve the numerical behavior of models containing random slopes.
