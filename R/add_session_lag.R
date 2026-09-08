@@ -20,10 +20,6 @@
 #' calculating session lags.
 #'
 #' @export
-#'
-#' @examples
-#' # calculate session lags
-#' sorted <- add_session_lag(data = sorted, client = "client_id", date = "session_date")
 
 add_session_lag <- function(data) {
 

@@ -30,7 +30,3 @@ between consecutive session dates. Incorrect results may occur if records
 are not ordered chronologically within client. Use \code{\link[=order_sessions]{order_sessions()}} before
 calculating session lags.
 }
-\examples{
-# calculate session lags
-sorted <- add_session_lag(data = sorted, client = "client_id", date = "session_date")
-}
