@@ -33,6 +33,3 @@ that session lags have already been calculated. Users should first apply
 \code{\link[=order_sessions]{order_sessions()}} followed by \code{\link[=add_session_lag]{add_session_lag()}} before identifying
 treatment episodes.
 }
-\examples{
-out <- add_episode_id(data = df, client = "client_id", session_lag = "lag")
-}

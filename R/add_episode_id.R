@@ -22,11 +22,6 @@
 #' treatment episodes.
 #'
 #' @export
-#'
-#' @examples
-#' out <- add_episode_id(data = df, client = "client_id", session_lag = "lag")
-
-
 add_episode_id <- function(data, delimiter = 90) {
   # Validate required variables.
   cols_validate(data, required = c("client_id", "session_lag"))
