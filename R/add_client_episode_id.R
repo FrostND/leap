@@ -15,10 +15,6 @@
 #' @return The input data frame with an additional character variable
 #'   containing a unique identifier for each client-episode combination.
 #'
-#' @examples
-#' df <- add_client_episode_id(data = df)
-#'
-#' head(df$client_episode_id)
 #'
 #' @export
 
