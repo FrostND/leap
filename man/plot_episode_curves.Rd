@@ -19,7 +19,7 @@ reference threshold to display as a horizontal dashed line. Defaults to
 \code{10}. Set to \code{NULL} to omit the reference line.}
 }
 \value{
-A \code{ggplot} object displaying individual client-episode trajectories and
+A ggplot2 object displaying individual client-episode trajectories and
 pooled linear trends across treatment episodes.
 }
 \description{

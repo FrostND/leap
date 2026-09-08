@@ -15,7 +15,7 @@
 #'   `10`. Set to `NULL` to omit the reference line.
 #'
 #' @return
-#' A `ggplot` object displaying individual client-episode trajectories and
+#' A ggplot2 object displaying individual client-episode trajectories and
 #' pooled linear trends across treatment episodes.
 #'
 #' @details
