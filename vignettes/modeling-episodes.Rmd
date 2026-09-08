@@ -1,8 +1,8 @@
 ---
-title: "Modeling Treatment Episodes"
+title: "Model Episodes"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Modeling Treatment Episodes}
+  %\VignetteIndexEntry{Model Episodes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -48,7 +48,7 @@ fit_lme(episode_data, cohort = "all", model = "episode")
 The available model specifications provide a progression from describing variation in outcomes to examining change within and across treatment episodes:
 
 | Model | Purpose |
-|:----------------------------------:|:-----------------------------------|
+|:--:|:---|
 | "null" | Describe variation across clients and episodes without modeling change over time |
 | "session" | Estimate change across sessions within treatment episodes |
 | "episode" | Estimate within-episode change while accounting for episode number |
