@@ -52,9 +52,9 @@ The output from this initial check identifies the variables already present in t
 
 # Step 2: Identify episodes
 
-Once the session-level data have been prepared, `leap` can be used to identify distinct treatment episodes and derive the variables needed for subsequent episode analyses. The `check_` functions evaluate the structure of the data before and after episode identification, while the `add_` functions create episode indicator variables.
+Once the session-level data have been prepared, `leap` can be used to identify distinct treatment episodes and create the variables needed for subsequent episode analyses. The episode indicators can be added individually or in a single step using the wrapper `add_episode_vars()`.
 
-The necessary episode variables can be added individually or created together using the wrapper `add_episode_vars()`. The complete workflow is shown below:
+After all episode variables are added, the `check_eps()` function can be used to check the resulting data structure.
 
 ```{r identify}
 # create all episode variables
