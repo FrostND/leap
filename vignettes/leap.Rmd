@@ -13,7 +13,7 @@ A typical `leap` workflow progresses from preparing the raw data to identifying,
 
 # Step 1: Prepare and check
 
-`leap` works with person-period longitudinal data, where each row represents a treatment session for a client. At minimum, the data should include variables identifying the `client`, `session`, `session date`, and the `outcome` of interest measured at each session.
+`leap` works with person-period longitudinal data, where each row represents a treatment session for a client. At minimum, the raw data should include variables identifying the `client`, `session`, `session date`, and the `outcome` of interest measured at each session.
 
 The example below uses a small data set included with the `leap` package:
 
@@ -72,11 +72,11 @@ Once episode indicators have been added, each unique episode can be summarized u
 describe_episodes(episode_df)
 ```
 
-This summary provides an initial description of service utilization and the organization of repeated episodes within clients.
+This summary provides an initial description of service utilization and the characteristics of each treatment episode contained in the data.
 
 # Step 4: Visualize episodes
 
-Before fitting statistical models, it is often useful to visually inspect patterns of change within and across treatment episodes. The `plot_` family of functions provides several ways to explore these patterns. For example, `plot_episode_curves()` displays individual client trajectories alongside the average linear pattern within each episode.
+Before fitting statistical models, it is often useful to visually inspect patterns of change within and across treatment episodes. The `plot_*()` family of functions provides several ways to explore these patterns. For example, `plot_episode_curves()` displays individual client trajectories alongside the average linear pattern within each episode.
 
 ```{r, episode-curves, fig.width=7, fig.height=5, out.width="100%", fig.align="center"}
 plot_episode_curves(episode_df)
