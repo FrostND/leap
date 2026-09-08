@@ -29,11 +29,11 @@ navbar:
       menu:
         - text: Package Data
           href: articles/package-data.html
-        - text: Defining Treatment Episodes
+        - text: Define Episodes
           href: articles/define-episodes.html
-        - text: Modeling Treatment Episodes
+        - text: Model Episodes
           href: articles/modeling-episodes.html
-        - text: Visualizing Treatment Episodes
+        - text: Visualize Episodes
           href: articles/viz-episodes.html
         - text: Research Foundations
           href: articles/rx-foundations.html
