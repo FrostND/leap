@@ -75,6 +75,3 @@ plot_cohort_curves(
 }
 
 }
-\seealso{
-\code{\link[ggplot2:geom_smooth]{ggplot2::geom_smooth()}}, \code{\link[patchwork:wrap_plots]{patchwork::wrap_plots()}}
-}

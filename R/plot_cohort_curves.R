@@ -53,8 +53,6 @@
 #' )
 #' }
 #'
-#' @seealso [ggplot2::geom_smooth()], [patchwork::wrap_plots()]
-#'
 #' @export
 plot_cohort_curves <- function(
   data,
