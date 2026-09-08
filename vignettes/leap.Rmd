@@ -100,4 +100,4 @@ Alternative functions support slopes-as-outcomes and Bayesian multilevel approac
 
 # Summary
 
-This article has demonstrated a typical `leap` workflow. However, there are
+This article introduced a typical leap workflow. The package functions offer considerably more flexibility than can be demonstrated here. For additional options and guidance, consult the function documentation and the subsequent articles.
