@@ -71,44 +71,58 @@ plot_episode_curves <- function(
 ) {
 
   cols_validate(data, required = c("client_id", "episode_session", "episode_id", "outcome"))
-
-  ggplot(data, aes(x = episode_session, y = outcome, group = interaction(client_id, episode_id))) +
+  ggplot2::ggplot(
+    data,
+    ggplot2::aes(
+      x = episode_session,
+      y = outcome,
+      group = interaction(client_id, episode_id)
+    )
+  ) +
     # Individual client-episode trajectories
-    geom_line(
+    ggplot2::geom_line(
       color = "grey65",
       linewidth = 0.30,
       alpha = 0.08,
       lineend = "round"
     ) +
     # Clinical reference threshold
-    geom_hline(
+    ggplot2::geom_hline(
       yintercept = clinical_cutoff,
       color = "grey40",
       linetype = "dashed",
       linewidth = 0.45
-    )  +
+    ) +
     # Average trajectory within each episode
-    geom_smooth(
-      aes(group = 1),
+    ggplot2::geom_smooth(
+      ggplot2::aes(group = 1),
       method = "lm",
       formula = y ~ x,
       se = FALSE,
       color = "#2C3E50",
       linewidth = 1.15,
       lineend = "round"
-    )+
-    facet_wrap(vars(episode_id), labeller = labeller(.default = function(x) paste("Episode", x))) +
-    coord_cartesian(ylim = outcome_limits, expand = TRUE) +
-    scale_x_continuous(
+    ) +
+    ggplot2::facet_wrap(
+      ggplot2::vars(episode_id),
+      labeller = ggplot2::labeller(
+        .default = function(x) paste("Episode", x)
+      )
+    ) +
+    ggplot2::coord_cartesian(
+      ylim = outcome_limits,
+      expand = TRUE
+    ) +
+    ggplot2::scale_x_continuous(
       limits = c(1, NA),
       breaks = scales::breaks_pretty(n = 7),
-      expand = expansion(mult = c(0.02, 0.02))
+      expand = ggplot2::expansion(mult = c(0.02, 0.02))
     ) +
-    scale_y_continuous(
+    ggplot2::scale_y_continuous(
       breaks = scales::breaks_pretty(n = 6),
-      expand = expansion(add = 1)
+      expand = ggplot2::expansion(add = 1)
     ) +
-    labs(
+    ggplot2::labs(
       x = "Session within episode",
       y = "Mental Health Score",
       title = "Clinical growth trajectories in each treatment episode",
@@ -122,80 +136,85 @@ plot_episode_curves <- function(
         "."
       )
     ) +
-    theme_bw(
+    ggplot2::theme_bw(
       base_size = 11,
       base_family = "serif"
     ) +
-    theme(
+    ggplot2::theme(
       # Panel
-      panel.grid.minor = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.major.y = element_line(
+      panel.grid.minor = ggplot2::element_blank(),
+      panel.grid.major.x = ggplot2::element_blank(),
+      panel.grid.major.y = ggplot2::element_line(
         color = "grey88",
         linewidth = 0.20
-        ),
-      panel.border = element_rect(
+      ),
+      panel.border = ggplot2::element_rect(
         color = "black",
         fill = NA,
         linewidth = 0.45
       ),
+
       # Facets
-      panel.spacing = unit(0.8, "lines"),
-      strip.background = element_blank(),
-      strip.text = element_text(
+      panel.spacing = grid::unit(0.8, "lines"),
+      strip.background = ggplot2::element_blank(),
+      strip.text = ggplot2::element_text(
         face = "plain",
         size = 10,
         color = "black",
-        margin = margin(b = 5)
+        margin = ggplot2::margin(b = 5)
       ),
+
       # Axes
-      axis.title = element_text(
+      axis.title = ggplot2::element_text(
         face = "plain",
         size = 11,
         color = "black"
       ),
-      axis.title.x = element_text(
-        margin = margin(t = 8)
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 8)
       ),
-      axis.title.y = element_text(
-        margin = margin(r = 8)
+      axis.title.y = ggplot2::element_text(
+        margin = ggplot2::margin(r = 8)
       ),
-      axis.text = element_text(
+      axis.text = ggplot2::element_text(
         size = 9.5,
         color = "black"
       ),
-      axis.ticks = element_line(
+      axis.ticks = ggplot2::element_line(
         color = "black",
         linewidth = 0.35
       ),
-      axis.ticks.length = unit(0.12, "cm"),
+      axis.ticks.length = grid::unit(0.12, "cm"),
+
       # Titles
-      plot.title = element_text(
+      plot.title = ggplot2::element_text(
         face = "bold",
         size = 13,
         color = "black",
         hjust = 0,
-        margin = margin(b = 4)
+        margin = ggplot2::margin(b = 4)
       ),
-      plot.subtitle = element_text(
+      plot.subtitle = ggplot2::element_text(
         face = "plain",
         size = 10.5,
         color = "grey20",
         hjust = 0,
         lineheight = 1.1,
-        margin = margin(b = 10)
+        margin = ggplot2::margin(b = 10)
       ),
+
       # Caption
-      plot.caption = element_text(
+      plot.caption = ggplot2::element_text(
         face = "plain",
         size = 9,
         color = "grey25",
         hjust = 0,
         lineheight = 1.05,
-        margin = margin(t = 8)
+        margin = ggplot2::margin(t = 8)
       ),
+
       # Overall spacing
-      plot.margin = margin(
+      plot.margin = ggplot2::margin(
         t = 10,
         r = 12,
         b = 10,
