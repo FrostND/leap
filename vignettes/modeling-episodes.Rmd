@@ -7,10 +7,117 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-`leap` currently supports several complementary approaches to analyzing change across repeated treatment episodes:
+# Overview
+
+Repeated episodes of care introduce additional structure into longitudinal treatment data. Sessions occur within treatment episodes, and treatment episodes occur within clients. Statistical models can account for this structure while addressing questions about change both within individual episodes and across repeated episodes of care.
+
+`leap` currently supports several complementary approaches:
 
 - `fit_lme()` fits longitudinal mixed-effects models directly to session-level observations.
 - `fit_sao()` uses episode-specific rates of change as outcomes in a slopes-as-outcomes framework.
 - `fit_brms()` fits Bayesian multilevel models of session-level treatment trajectories.
 
-Frequentist mixed-effects models are estimated using `lme4` [@bates2015] whereas Bayesian multilevel models are estimated using `brms` [@burkner2017]. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
+Frequentist mixed-effects models are estimated using `lme4` whereas Bayesian multilevel models are estimated using `brms`. These approaches address related but distinct questions about therapeutic change and the structure of repeated episodes of care.
+
+# Session-level and episode-level approaches
+
+An important distinction among the modeling approaches in leap is the level at which treatment change is analyzed. Session-level models retain each treatment session as a level-1 observation. This allows change over the course of treatment to be modeled directly while accounting for sessions belonging to the same episode and multiple episodes belonging to the same client. Both `fit_lme()` and `fit_brms()` utilize this approach.
+
+Episode-level models first summarize change within each treatment episode. For example, a linear slope can be estimated for client describing their rate of change in an episode. These episode-specific estimates can then serve as outcomes in a subsequent model examining whether rates of change differ across repeated episodes. This approach is implemented in `fit_sao()`.
+
+The most appropriate model depends on the research question and aims of the analysis.
+
+# Longitudinal mixed-effects models
+
+`fit_lme()` fits frequentist longitudinal mixed-effects models to session-level treatment data using `lme4`. A basic model of change within treatment episodes can be fit using:
+
+```{r, eval = FALSE}
+fit_lme(episode_data, cohort = "all", model = "session")
+```
+
+In this model, session number represents time within the treatment episode. The model estimates the average rate of change across sessions while allowing treatment trajectories to vary across clients and episodes.
+
+# Modeling repeated episodes
+
+Episode number can be added to examine whether outcomes systematically differ across successive episodes:
+
+```{r, eval = FALSE}
+fit_lme(episode_data, cohort = "all", model = "episode")
+```
+
+The available model specifications provide a progression from describing variation in outcomes to examining change within and across treatment episodes:
+
+| Model | Purpose |
+|:--:|:---|
+| "null" | Describe variation across clients and episodes without modeling change over time |
+| "session" | Estimate change across sessions within treatment episodes |
+| "episode" | Estimate within-episode change while accounting for episode number |
+| "full" | Examine whether within-episode change differs across successive episodes |
+
+The "full" model includes the interaction between session and episode number. This interaction addresses a particularly important multi-episode question: does the rate of change during treatment differ depending on which episode of care a client is attending?
+
+For example, a positive or negative interaction may indicate that treatment trajectories become steeper or flatter across successive episodes, depending on the direction and scaling of the outcome measure.
+
+# Slopes-as-outcomes models
+
+An alternative approach is to summarize change separately within each treatment episode and then analyze those estimates at the episode level. `fit_sao()` implements this slopes-as-outcomes approach. Conceptually, the analysis occurs in two stages. First, a treatment slope is estimated for each client-specific episode. Second, those episode-specific slopes are modeled as outcomes.
+
+Episode-level slopes can be examined using:
+
+```{r, eval = FALSE}
+mod_sao <- fit_sao(episode_data, cohort = "all", model = "episode")
+```
+
+This approach shifts the focus from individual session observations to the rate of change characterizing each treatment episode. Episode number can then be used to examine whether rates of change differ across successive episodes of care.
+
+The slopes-as-outcomes framework can be especially useful when the research question is naturally expressed at the episode level. For example:
+
+> Do clients improve at a different rate during later episodes of treatment than during their initial episode?
+
+Because each episode is represented by an estimated slope, the interpretation can also be more intuitive when the primary interest is comparing treatment response across episodes.
+
+However, episode slopes are themselves estimates and may differ in precision when episodes contain different numbers of sessions. For this reason, slopes-as-outcomes models should be viewed as complementary to models that retain the complete session-level data rather than as interchangeable with them.
+
+# Bayesian multilevel models
+
+`fit_brms()` provides a Bayesian approach to modeling session-level treatment trajectories using `brms` [\@burkner2017].
+
+The general model structure parallels the longitudinal mixed-effects models available through `fit_lme()`:
+
+```{r, eval = FALSE}
+fit_brms(episode_data, cohort = "all", model = "episode")
+```
+
+Like `fit_lme()`, these models account for repeated sessions within treatment episodes and repeated episodes within clients. The primary difference is that model parameters are estimated using Bayesian inference rather than frequentist estimation.
+
+The Bayesian framework can be useful when researchers want to incorporate prior information, obtain posterior distributions for model parameters, or directly quantify uncertainty about effects of interest.
+
+Because Bayesian models can require substantially more computation than frequentist mixed-effects models, `fit_lme()` may provide a useful starting point for model development before fitting an analogous Bayesian specification.
+
+# Selecting clients for analysis
+
+Not every research question requires the same set of clients. In particular, analyses of repeated treatment episodes may distinguish between the full sample and clients who contributed multiple episodes of care.
+
+The cohort argument provides a consistent way to specify the analytic sample across modeling functions:
+
+```{r, eval = FALSE}
+fit_lme(episode_data, cohort = "multiple", model = "episode")
+```
+
+Using cohort = "multiple" restricts the analysis to clients who contributed more than one treatment episode. This can be useful when the research question specifically concerns patterns of change across repeated episodes.
+
+In contrast, cohort = "all" retains all eligible clients, including those observed for only one episode. The choice should be guided by the research question. Restricting analyses to clients who return for treatment changes the population being analyzed and should therefore be considered when interpreting results.
+
+# Centering time and episode number
+
+The interpretation of model coefficients depends partly on how session and episode number are coded.
+
+By default, leap can center these variables so that the first treatment session and first treatment episode provide meaningful reference points. Under this parameterization, the model intercept corresponds more closely to expected outcome levels at the beginning of the initial episode of care.
+
+Centering can be controlled using the center argument:
+
+```{r, eval = FALSE}
+fit_lme(episode_data, center = TRUE, cohort = "all", model = "episode")
+```
+
+Centering does not change the underlying observations. Rather, it changes the reference point used to interpret model coefficients and can also improve the numerical behavior of models containing random slopes.
