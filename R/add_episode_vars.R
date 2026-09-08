@@ -31,17 +31,6 @@
 #' treatment episode.
 #' @export
 #'
-#' @examples
-#' # load package data
-#' data("dat_unb")
-#'
-#' # identify treatment episodes
-#' df <- add_episode_vars(data = dat_unb, client = "client_id", date = "session_date")
-#'
-#' # Use a custom episode threshold
-#' df <- add_episode_vars(data = dat_unb, client = "client_id", date = "session_date", delimiter = 120)
-#'
-#'
 add_episode_vars <- function(data, delimiter = 90) {
   data |>
     order_sessions() |>

@@ -42,15 +42,3 @@ consecutive sessions meets or exceeds the specified threshold. By
 default, a gap of 90 or more days indicates the beginning of a new
 treatment episode.
 }
-\examples{
-# load package data
-data("dat_unb")
-
-# identify treatment episodes
-df <- add_episode_vars(data = dat_unb, client = "client_id", date = "session_date")
-
-# Use a custom episode threshold
-df <- add_episode_vars(data = dat_unb, client = "client_id", date = "session_date", delimiter = 120)
-
-
-}
