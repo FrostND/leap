@@ -6,7 +6,7 @@
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides tools to identify, visualize, and
 statistically model repeated treatment episodes in longitudinal health
-records.
+records data.
 
 <!-- badges: start -->
 
@@ -35,10 +35,11 @@ episode-level variables, and visualizing patterns within and across
 episodes.
 
 Second, `leap` supports several approaches for modeling change across
-repeated episodes of care, including longitudinal mixed-effects models,
-slopes-as-outcomes models, and Bayesian multilevel models. Together,
-these capabilities allow researchers to examine change within individual
-episodes as well as patterns of change across episodes over time.
+repeated episodes of treatment, including longitudinal mixed-effects
+models, slopes-as-outcomes models, and Bayesian multilevel models.
+Together, these capabilities allow researchers to examine change within
+individual episodes as well as patterns of change across episodes over
+time.
 
 ## What can leap do?
 
