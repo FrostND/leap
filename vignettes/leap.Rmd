@@ -19,20 +19,23 @@ The example below uses a small data set included with the `leap` package:
 
 ```{r setup, include = FALSE}
 
-# packages
-library(tidyverse)
+# use leap package 
 devtools::load_all()
 
-# load example data
-load("~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData")
+# tidyverse for simplicity
+library(tidyverse) 
 
-# select subset for vignette 
-raw_df <- data %>%
-  purrr::pluck("unbalanced", "clinical", "diminishing_resp") %>%
-  dplyr::nest_by(client_id) %>%
-  dplyr::ungroup() %>%
-  dplyr::slice_head(n = 10) %>%
+# Load simulated data from leap 
+data("simulation_data", package = "leap") 
+
+# Select a small subset for the vignette 
+raw_df <- data %>% 
+  purrr::pluck("unbalanced", "clinical", "diminishing_resp") %>% 
+  dplyr::nest_by(client_id) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::slice_head(n = 10) %>% 
   tidyr::unnest(cols = data)
+
 
 ```
 

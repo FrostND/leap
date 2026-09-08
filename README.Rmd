@@ -69,4 +69,15 @@ For a complete introduction to the `leap` workflow, see [Get Started with leap](
 pkgdown::build_site()
 
 
+
+
+
+# To save package data ~~~~~~~~~
+# Load the existing object
+# load("data/simulation_data.RData")
+# Rename it
+# simulation_data <- data
+# Save as package data
+# usethis::use_data(simulation_data, overwrite = TRUE)
+
 ```
