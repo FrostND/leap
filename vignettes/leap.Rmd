@@ -40,7 +40,7 @@ raw_df <- data %>%
 head(raw_df)
 ```
 
-`leap` uses a standardized set of variable names throughout its functions. If the original data use different names, `cols_standard()` can be used to rename the core variables before proceeding:
+It is important to be aware that `leap` uses a standardized set of variable names throughout its functions. If the original data use different names, `cols_standard()` can be used to rename the core variables before proceeding:
 
 ```{r, variables, eval = FALSE}
 raw_df <- cols_standard(

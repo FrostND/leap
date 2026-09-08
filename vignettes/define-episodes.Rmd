@@ -37,7 +37,7 @@ episode_data <- data |>
 
 The choice of delimiter determines which gaps in treatment are interpreted as breaks between episodes and can therefore affect the number, duration, and composition of episodes identified in the data. When no established threshold is available, or when the appropriateness of a predefined threshold is uncertain, the observed distribution of session lags can also be used to inform this decision.
 
-# Data-informed episode delimiters
+# Data-informed delimiters
 
 Rather than specifying an episode delimiter a priori, candidate thresholds can be estimated from the observed distribution of session lags. `lag_delimiter()` provides several approaches for doing so, including thresholds based on the standard deviation, interquartile range, and empirical quantiles of the observed session gaps.
 
@@ -60,4 +60,3 @@ lag_delimiter(data, method = "mixture")
 The mixture-modeling approach, implemented using the `mclust` package [@scrucca2016], treats the distribution of session lags as arising from distinct underlying components. In the context of treatment episodes, these components are used to distinguish relatively short gaps that are more consistent with continued treatment from longer gaps that may indicate a new episode of care.
 
 The estimated boundary between these components provides a data-informed candidate delimiter. Importantly, this value should not be interpreted as a definitive clinical boundary. Rather, it provides an empirical basis for evaluating how treatment episodes might be defined in a particular data set and can be considered alongside theoretical, clinical, or previously established thresholds.
-
