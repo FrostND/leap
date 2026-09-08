@@ -100,7 +100,9 @@ fit_brms(episode_data, model = "episode")
 
 For the `"episode"` specification, the outcome model can be written as:
 
-$$\beta_0 + \beta_1(\text{Session}{ijk}) + \beta_2(\text{Episode}{jk}) + \left[u_{0k} + u_{1k}(\text{Session}{ijk}) + v{0jk} + v_{1jk}(\text{Session}{ijk}) \right] + \varepsilon{ijk}$$ where $Y_{ijk}$ is the outcome at session $i$ in episode $j$ for client $k$. The fixed effects $\beta_0$, $\beta_1$, and $\beta_2$ represent the average starting level, rate of change across sessions, and association between episode number and the outcome, respectively. The terms in brackets represent random effects that allow starting levels and rates of change to vary across clients and across episodes within clients.
+$$\beta_0 + \beta_1(\text{Session}{ijk}) + \beta_2(\text{Episode}{jk}) + \left[u_{0k} + u_{1k}(\text{Session}{ijk}) + v{0jk} + v_{1jk}(\text{Session}{ijk}) \right] + \varepsilon{ijk}$$
+
+where $Y_{ijk}$ is the outcome at session $i$ in episode $j$ for client $k$. The fixed effects $\beta_0$, $\beta_1$, and $\beta_2$ represent the average starting level, rate of change across sessions, and association between episode number and the outcome, respectively. The terms in brackets represent random effects that allow starting levels and rates of change to vary across clients and across episodes within clients.
 
 In a Bayesian model, these parameters are treated as unknown quantities described by probability distributions. For example, the model can be completed by specifying: \$\$
 

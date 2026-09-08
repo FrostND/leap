@@ -9,7 +9,7 @@ vignette: >
 
 This article provides a selected bibliography of research relevant to the definition and analysis of repeated treatment episodes. The literature is organized around two areas: approaches to defining distinct episodes of care and statistical methods for analyzing longitudinal psychotherapy outcomes.
 
-# Studies Using time to delimit treatment episodes
+## Studies Using time to delimit treatment episodes
 
 Several studies have operationalized a new episode of behavioral health care following at least 90 days without treatment. This definition provides a clinically interpretable rule for distinguishing short interruptions in ongoing treatment from subsequent reengagement.
 
@@ -20,11 +20,11 @@ Several studies have operationalized a new episode of behavioral health care fol
 5.  Kilcullen, J., Castonguay, L. G., Janis, R. A., Hallquist, M. N., Hayes, J. A., & Locke, B. D. (2021). Predicting future courses of psychotherapy within a grouped LASSO framework. *Psychotherapy Research*, *31*(1), 63–77. <https://doi.org/10.1080/10503307.2020.1762948>
 6.  Siddall, L. B., Haffey, N. A., & Feinman, J. A. (1988). Intermittent brief psychotherapy in an HMO setting. *American Journal of Psychotherapy*, *42*(1), 96–106.
 7.  Owen, J., Adelson, J., Budge, S., Wampold, B., Kopta, M., Minami, T., & Miller, S. (2015). Trajectories of Change in Psychotherapy. *Journal of Clinical Psychology*, *71*(9), 817–827. <https://doi.org/10.1002/jclp.22191>
-8.  Reese, R. J., Toland, M. D. & Hopkins, N. B. (2011). Replicating and extending the good-enough level model of change: Considering session frequency. *Psychotherapy Research,* 21(5), 608-619. DOI: 10.1080/10503307.2011.598580
+8.  Reese, R. J., Toland, M. D. & Hopkins, N. B. (2011). Replicating and extending the good-enough level model of change: Considering session frequency. *Psychotherapy Research,* 21(5), 608-619. <https://doi.org/10.1080/10503307.2011.598580>
 9.  Hayes, J. A., McAleavey, A. A., Castonguay, L. G., & Locke, B. D. (2016). Psychotherapists’ outcomes with White and racial/ethnic minority clients: First, the good news. *Journal of Counseling Psychology*, *63*(3), 261–268. <https://doi.org/10.1037/cou0000098>
 
-# Analysis of Longitudinal data guides
+## Analysis of Longitudinal data guides
 
-1.  Curran, P. J. & Bauer, D. J. (2011). The disaggregation of within-person and between-person effects in longitudinal models of change. *62*, 583-619. 10.1146/annurev.psych.093008.100356
-2.  Tasca, G. A. & Gallop, R. (2009). Multilevel modeling of longitudinal data for psychotherapy researchers: I. The basics. *Psychotherapy Research*, 19(4), 429-437. 
-3.  Gallop, R. & Tasca, G. A. (2009). Multilevel modeling of longitudinal data for psychotherapy researchers II: The complexities. *Psychotherapy research*, 19(4), 438-452.
+1.  Curran, P. J. & Bauer, D. J. (2011). The disaggregation of within-person and between-person effects in longitudinal models of change. *62*, 583-619. <https://doi.org/10.1146/annurev.psych.093008.100356>
+2.  Tasca, G. A. & Gallop, R. (2009). Multilevel modeling of longitudinal data for psychotherapy researchers: I. The basics. *Psychotherapy Research*, 19(4), 429-437. <https://doi.org/10.1080/10503300802641444>
+3.  Gallop, R. & Tasca, G. A. (2009). Multilevel modeling of longitudinal data for psychotherapy researchers II: The complexities. *Psychotherapy research*, 19(4), 438-452. <https://doi.org/10.1080/10503300902849475>
