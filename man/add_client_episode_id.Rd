@@ -28,11 +28,7 @@ subsetting treatment episodes, and uniquely identifying observations
 belonging to the same episode.
 }
 \examples{
-df <- add_client_episode_id(
-  data = df,
-  client = client_id,
-  episode = episode_id
-)
+df <- add_client_episode_id(data = df)
 
 head(df$client_episode_id)
 
