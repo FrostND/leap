@@ -17,27 +17,6 @@ When treatment occurs across multiple periods of care, `leap` can be used to ide
 
 This article introduces how longitudinal treatment data are structured in `leap`, the variables used to represent treatment episodes, and the simulated data included with the package.
 
-```{r data, include = FALSE}
-
-# package 
-library(tidyverse)
-
-# load example data
-load("~/Library/CloudStorage/Dropbox/01_desk/04_personal/02_data_science/02_projects/01_pkgs/leap/data/simulation_data.RData")
-
-
-# select subset for vignette 
-raw_data <- data %>%
-  pluck("unbalanced", "clinical", "diminishing_resp") %>%
-  nest_by(client_id) %>%
-  ungroup() %>%
-  slice_head(n = 3) %>%
-  unnest(cols = data) %>% 
-  group_by(client_id) %>% 
-  slice_head(n = 3) %>% 
-  ungroup()
-```
-
 # Longitudinal data structure
 
 The starting point for `leap` is session-level longitudinal data, where each row represents a treatment session for a client. At minimum, the data should contain information identifying the client, session, session date, and outcome of interest.

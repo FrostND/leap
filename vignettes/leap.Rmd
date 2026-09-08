@@ -26,12 +26,7 @@ devtools::load_all()
 data("simulation_data", package = "leap") 
 
 # Select a small subset for the vignette 
-raw_df <- purrr::pluck(data, "unbalanced", "clinical", "diminishing_resp") %>% 
-  dplyr::nest_by(client_id) %>% 
-  dplyr::ungroup() %>% 
-  dplyr::slice_head(n = 10) %>% 
-  tidyr::unnest(cols = data)
-
+raw_df <- simulation_data$unbalanced$clinical$diminishing_resp
 
 ```
 
