@@ -27,7 +27,7 @@ By contrast, **episode-level models** first summarize change within each treatme
 
 The most appropriate model depends on the research question and aims of the analysis.
 
-# Longitudinal mixed-effects models
+# Longitudinal mixed-effects
 
 `fit_lme()` fits a longitudinal mixed-effects model to the data with `lme4`. For example, a basic growth model can be fit using:
 
@@ -60,7 +60,7 @@ The "full" model includes the interaction between session and episode number. Th
 
 For example, a positive or negative interaction may indicate that treatment trajectories become steeper or flatter across successive episodes, depending on the direction and scaling of the outcome measure.
 
-# Slopes-as-outcomes models
+# Slopes-as-outcomes 
 
 An alternative approach is to summarize change separately within each treatment episode and then analyze those estimates at the episode level. `fit_sao()` implements this slopes-as-outcomes approach. Conceptually, the analysis occurs in two stages. First, a OLS regression slope is estimated for each client in each episode using the `episode_slopes()` function. Second, those episode-specific slopes are modeled as outcomes using `fit_sao()` function.
 
@@ -122,7 +122,7 @@ These posterior distributions can be used to summarize the most plausible values
 
 Because Bayesian multilevel models can require substantially more computation than frequentist mixed-effects models, `fit_lme()` can provide a useful starting point for evaluating model specification before fitting an analogous model with `fit_brms()`.
 
-# Selecting clients for analysis
+# Cohort selection
 
 Not every research question requires the same set of clients. In particular, analyses of repeated treatment episodes may distinguish between the full sample versus clients who only contributed multiple episodes of care.
 
@@ -136,7 +136,7 @@ Using cohort = "multiple" restricts the analysis to clients who contributed more
 
 In contrast, cohort = "all" retains all eligible clients, including those observed for only one episode. The choice should be guided by the research question. Restricting analyses to clients who return for treatment changes the population being analyzed and should therefore be considered when interpreting results.
 
-# Centering time and episode number
+# Centering predictors
 
 The interpretation of model coefficients depends partly on how session and episode number are coded.
 
