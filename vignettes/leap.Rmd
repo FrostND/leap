@@ -22,15 +22,11 @@ The example below uses a small data set included with the `leap` package:
 # use leap package 
 devtools::load_all()
 
-# tidyverse for simplicity
-library(tidyverse) 
-
 # Load simulated data from leap 
 data("simulation_data", package = "leap") 
 
 # Select a small subset for the vignette 
-raw_df <- data %>% 
-  purrr::pluck("unbalanced", "clinical", "diminishing_resp") %>% 
+raw_df <- purrr::pluck(data, "unbalanced", "clinical", "diminishing_resp") %>% 
   dplyr::nest_by(client_id) %>% 
   dplyr::ungroup() %>% 
   dplyr::slice_head(n = 10) %>% 
