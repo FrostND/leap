@@ -30,7 +30,10 @@ Imports:
     scales
 Suggests:
     brms,
-    testthat (>= 3.0.0)
+    dplyr,
+    purrr,
+    testthat (>= 3.0.0),
+    tidyr
 Config/testthat/edition: 3
 LazyData: true
 URL: https://github.com/FrostND/leap, https://frostnd.github.io/leap/
