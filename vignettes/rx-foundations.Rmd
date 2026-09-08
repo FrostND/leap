@@ -33,8 +33,6 @@ Importantly, many studies using time-based episode definitions have not subseque
 
 9.  Hayes, J. A., McAleavey, A. A., Castonguay, L. G., & Locke, B. D. (2016). Psychotherapists’ outcomes with White and racial/ethnic minority clients: First, the good news. *Journal of Counseling Psychology*, *63*(3), 261–268. <https://doi.org/10.1037/cou0000098>
 
-10. Where are the Barkham studies?
-
 ## Analysis of Repeated Episodes
 
 A separate body of research has examined clients who engage in more than one episode of treatment. Definitions of an episode vary considerably across this literature, and many studies rely on retrospective reports of previous treatment experiences rather than longitudinal records of care. Consequently, although repeated treatment utilization has received substantial attention, relatively few studies have identified and analyzed multiple episodes of care for the same clients within a single longitudinal data set.
