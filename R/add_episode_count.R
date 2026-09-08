@@ -27,28 +27,6 @@
 #'
 #' @export
 #'
-#' @examples
-#' # Create attendance classification variables
-#' df <- add_episode_count(data = df, client = "client_id", episode = "episode_id")
-#'
-#' # with native R pipe
-#' add_episode_session(df, client = "client_id", episode = "episode_id") |>
-#'     add_episode_count("client_id", "episode_id")
-#'
-#' # with magrittr pipe
-#' add_episode_session(df, client = "client_id", episode = "episode_id") %>%
-#'     add_episode_count("client_id", "episode_id")
-#'
-#' # Select clients who attended multiple treatment episodes (n_episodes > 1)
-#' subset(df, n_episodes > 1)
-#'
-#' # Select clients who attended exactly three treatment episodes
-#' subset(df, n_episodes == 3)
-#'
-#' # Select clients who attended three or more treatment episodes
-#' subset(df, n_episodes >= 3)
-#'
-
 add_episode_count <- function(data) {
 
   # Validate required variables.

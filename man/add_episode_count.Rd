@@ -36,25 +36,3 @@ One variable is added to the data:
 This function assumes that treatment episodes have already been identified
 using \code{\link[=add_episode_id]{add_episode_id()}}
 }
-\examples{
-# Create attendance classification variables
-df <- add_episode_count(data = df, client = "client_id", episode = "episode_id")
-
-# with native R pipe
-add_episode_session(df, client = "client_id", episode = "episode_id") |>
-    add_episode_count("client_id", "episode_id")
-
-# with magrittr pipe
-add_episode_session(df, client = "client_id", episode = "episode_id") \%>\%
-    add_episode_count("client_id", "episode_id")
-
-# Select clients who attended multiple treatment episodes (n_episodes > 1)
-subset(df, n_episodes > 1)
-
-# Select clients who attended exactly three treatment episodes
-subset(df, n_episodes == 3)
-
-# Select clients who attended three or more treatment episodes
-subset(df, n_episodes >= 3)
-
-}
