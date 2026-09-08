@@ -9,7 +9,7 @@ vignette: >
 
 Below is a selected bibliography of research relevant to defining and analyzing treatment episodes in longitudinal behavioral health data. The literature is organized around two related methodological issues: how distinct episodes of care have been identified in longitudinal treatment records and how treatment outcomes have been analyzed when individuals contribute repeated episodes of care.
 
-## Time-based definitions of treatment episodes
+## Time-based episode definitions
 
 A large number of intervention studies have used the time between treatment contacts to distinguish separate episodes of behavioral health care. In psychotherapy research, a gap of at least 90 days without treatment has frequently been used to identify the beginning of a new episode of care. This approach provides a practical and clinically interpretable rule for distinguishing relatively short interruptions in ongoing treatment from subsequent reengagement.
 
