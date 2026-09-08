@@ -19,20 +19,6 @@
 #'
 #' @export
 #'
-#' @examples
-#' out <- add_episode_session(data = dat_unb, client = "client_id", episode = "episode_id")
-#'
-#' # native R pipe
-#' add_session_lag(data = dat_unb, client = "client_id", "session_date") |>
-#'     add_episode_id(client = "client_id", session = "session_lag") |>
-#'     add_episode_session(client = "client_id", episode = "episode_id")
-#'
-#' # magrittr pipe
-#' dat_unb %>%
-#'    add_session_lag(client_id, session_date) %>%
-#'    add_episode_id(client_id, session_lag) %>%
-#'    add_episode_session(client_id, episode_id)
-#'
 add_episode_session <- function(data, client, episode) {
 
   cols_validate(data, required = c("client_id", "episode_id"))
