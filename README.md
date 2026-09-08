@@ -34,12 +34,11 @@ this approach simplifies the analysis, it excludes information about
 subsequent treatment exposure and limits the ability to examine how
 patterns of change may differ across repeated episodes.
 
-`leap` was developed to support two related components of this analytic
-workflow. First, it provides easy-to-use tools for preparing and
-exploring health records data that contain multiple episodes of
-treatment, including identifying breaks in treatment, constructing
-episode-level variables, and visualizing patterns within and across
-episodes.
+`leap` was developed to address these challenges in two complementary
+ways. First, it provides easy-to-use tools for preparing and exploring
+health records that contain multiple episodes of treatment, including
+identifying breaks in care, constructing episode-level variables, and
+visualizing patterns within and across episodes.
 
 Second, `leap` supports several approaches for modeling change across
 repeated episodes of treatment, including longitudinal mixed-effects

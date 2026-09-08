@@ -9,8 +9,6 @@ vignette: >
 
 # Overview
 
-Repeated episodes of care introduce additional structure into longitudinal treatment data. Sessions occur within treatment episodes, and treatment episodes occur within clients. Statistical models can account for this structure while addressing questions about change both within individual episodes and across repeated episodes of care.
-
 `leap` currently supports several complementary approaches:
 
 - `fit_lme()` fits longitudinal mixed-effects models directly to session-level observations.
@@ -60,7 +58,7 @@ The "full" model includes the interaction between session and episode number. Th
 
 For example, a positive or negative interaction may indicate that treatment trajectories become steeper or flatter across successive episodes, depending on the direction and scaling of the outcome measure.
 
-# Slopes-as-outcomes 
+# Slopes-as-outcomes
 
 An alternative approach is to summarize change separately within each treatment episode and then analyze those estimates at the episode level. `fit_sao()` implements this slopes-as-outcomes approach. Conceptually, the analysis occurs in two stages. First, a OLS regression slope is estimated for each client in each episode using the `episode_slopes()` function. Second, those episode-specific slopes are modeled as outcomes using `fit_sao()` function.
 
