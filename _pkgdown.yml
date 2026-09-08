@@ -2,21 +2,21 @@ url: https://frostnd.github.io/leap/
 template:
   bootstrap: 5
   bootswatch: pulse
-  light-switch: true
+  light-switch: yes
   bslib:
-    link-color: "#183663"
+    link-color: '#183663'
     border-radius: 0.40rem
 navbar:
   structure:
     left:
-      - intro
-      - reference
-      - articles
-      - news
+    - intro
+    - reference
+    - articles
+    - news
     right:
-      - search
-      - github
-      - lightswitch
+    - search
+    - github
+    - lightswitch
   components:
     intro:
       text: Get Started
@@ -27,16 +27,17 @@ navbar:
     articles:
       text: Articles
       menu:
-        - text: Package Data
-          href: articles/package-data.html
-        - text: Define Episodes
-          href: articles/define-episodes.html
-        - text: Model Episodes
-          href: articles/modeling-episodes.html
-        - text: Visualize Episodes
-          href: articles/viz-episodes.html
-        - text: Research Foundations
-          href: articles/rx-foundations.html
+      - text: Package Data
+        href: articles/package-data.html
+      - text: Define Episodes
+        href: articles/define-episodes.html
+      - text: Model Episodes
+        href: articles/modeling-episodes.html
+      - text: Visualize Episodes
+        href: articles/viz-episodes.html
+      - text: Research Foundations
+        href: articles/rx-foundations.html
     news:
       text: News
       href: news/index.html
+
