@@ -49,11 +49,8 @@ Second, `leap` supports several approaches for modeling change across repeated e
 You can install the development version of `leap` from GitHub.
 
 ```{r installation, eval = FALSE}
-# install devtools 
-install.packages("devtools")
-
-# download development version 
-install_github("FrostND/leap")
+install.packages("remotes")
+remotes::install_github("FrostND/leap")
 ```
 
 ## Get Started
@@ -66,15 +63,8 @@ For a complete introduction to the `leap` workflow, see [Get Started with leap](
 # usethis::use_github_actions_badge("R-CMD-check")
 # usethis::use_lifecycle_badge("experimental")
 
+devtools::check()
 pkgdown::build_site()
 
-
-# To save package data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Load the existing object
-# load("data/simulation_data.RData")
-# Rename it
-# simulation_data <- data
-# Save as package data
-# usethis::use_data(simulation_data, overwrite = TRUE)
 
 ```
