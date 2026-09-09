@@ -25,7 +25,7 @@ third quartile plus \code{multiplier} times the interquartile range. For the
 SD method, the delimiter is calculated as the mean plus \code{multiplier}
 standard deviations. Defaults to \code{2}.}
 
-\item{probability}{Numeric value between 0 and 1 specifying the upper
+\item{prob}{Numeric value between 0 and 1 specifying the upper
 quantile used when \code{method = "quantile"}. Defaults to \code{0.95}.}
 }
 \value{
@@ -106,7 +106,7 @@ lag_delimiter(data = df, method = "sd", multiplier = 1.5)
 lag_delimiter(data = df, method = "iqr", multiplier = 1.5)
 
 # Use the 95th percentile of observed session lags
-lag_delimiter(data = df, method = "quantile", prob = 0.95)
+lag_delimiter(data = df, method = "quantile")
 
 # Estimate a delimiter using a
 # two-component finite mixture model

@@ -16,7 +16,7 @@
 #'   third quartile plus `multiplier` times the interquartile range. For the
 #'   SD method, the delimiter is calculated as the mean plus `multiplier`
 #'   standard deviations. Defaults to `2`.
-#' @param probability Numeric value between 0 and 1 specifying the upper
+#' @param prob Numeric value between 0 and 1 specifying the upper
 #'   quantile used when `method = "quantile"`. Defaults to `0.95`.
 #'
 #' @return
@@ -90,7 +90,7 @@
 #' lag_delimiter(data = df, method = "iqr", multiplier = 1.5)
 #'
 #' # Use the 95th percentile of observed session lags
-#' lag_delimiter(data = df, method = "quantile", prob = 0.95)
+#' lag_delimiter(data = df, method = "quantile")
 #'
 #' # Estimate a delimiter using a
 #' # two-component finite mixture model
