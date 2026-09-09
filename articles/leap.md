@@ -16,8 +16,7 @@ represents a treatment session for a client. At minimum, the raw data
 should include variables identifying the `client`, `session`,
 `session date`, and the `outcome` of interest measured at each session.
 
-The example below uses a small data set included with the `leap`
-package:
+The example below illustrates how the data can look:
 
 ``` r
 
