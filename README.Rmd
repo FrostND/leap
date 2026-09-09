@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # leap <img src="inst/figures/logo.png" align="right" height="138"/>
 
-The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools to identify, visualize, and statistically model repeated treatment episodes in longitudinal health records data.
+The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) package provides tools to identify, visualize, and statistically model repeated treatment episodes in longitudinal health records.
 
 <!-- badges: start -->
 
@@ -28,9 +28,7 @@ The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures (`leap`) packag
 
 ## Why leap?
 
-Behavioral health interventions, including psychotherapy, are often represented as a single, continuous course of treatment. In real-world settings, however, individuals often disengage and subsequently reengage in treatment over time, resulting in multiple distinct periods (i.e. episodes) of intervention exposure. These patterns can produce complex longitudinal data that require decisions about how episodes of treatment are defined, represented, and incorporated into statistical analyses.
-
-Despite the occurrence of repeated treatment episodes, longitudinal intervention studies often restrict analyses to a single episode of care, such as an individual's first or most recent episode. Although this approach simplifies the analysis, it excludes information about subsequent treatment exposure and limits the ability to examine how patterns of change may differ across repeated episodes.
+Behavioral health interventions, including psychotherapy, are often represented as a single, discrete period of treatment. In real-world settings, however, individuals may disengage and subsequently reengage in treatment over time, resulting in multiple distinct periods (i.e. episodes) of treatment exposure. These patterns can produce complex longitudinal data that require decisions about how episodes of treatment are defined, represented, and incorporated into statistical analyses.
 
 `leap` was developed to address these challenges in two complementary ways. First, it provides easy-to-use tools for preparing and exploring health records that contain multiple episodes of treatment, including identifying breaks in care, constructing episode-level variables, and visualizing patterns within and across episodes.
 
