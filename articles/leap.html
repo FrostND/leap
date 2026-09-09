@@ -139,29 +139,42 @@ identify treatment episodes:</p>
 <span><span class="co">## 8     Run add_episode_count()</span></span></code></pre>
 <p>The output from this initial check identifies the variables already
 present in the data, the episode-related variables that still need to be
-created, and the corresponding <code>add_*()</code> function to creating
+created, and the corresponding <code>add_*()</code> function to create
 each of the missing variables.</p>
 </div>
 <div class="section level2">
 <h2 id="step-2-identify-episodes">Step 2: Identify episodes<a class="anchor" aria-label="anchor" href="#step-2-identify-episodes"></a>
 </h2>
-<p>Once the session-level data have been prepared, <code>leap</code> can
-identify distinct treatment episodes and generate the episode-level
-variables required for subsequent analyses. By default, a new episode is
-identified when 90 or more days have elapsed between consecutive
-sessions. See <a href="articles/define-episodes.html">Define
-Episodes</a> for additional details.</p>
-<p>The episode indicators can be added individually or in a single step
-using the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. After all
-episode variables are added, the <code><a href="../reference/check_eps.html">check_eps()</a></code> function can
-be used to check the resulting data structure. Importantly,
-<code><a href="../reference/check_eps.html">check_eps()</a></code> will also warn the user when episodes contain
-too few observations to reliably estimate change.</p>
+<p>Once the session-level data have been prepared, leap can identify
+distinct treatment episodes and generate the episode-level variables
+required for subsequent analyses. By default, <code>leap</code>
+demarcates episodes based on periods of treatment inactivity,
+specifically the number of days between consecutive sessions. See <a href="articles/define-episodes.html">Define Episodes</a> for additional
+details.</p>
+<p>Episode indicators can be added individually or simultaneously using
+the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. The new variables
+this function creates are</p>
+<ul>
+<li>
+<code>session_lag</code>: identifies the number of days elapsed
+since last session</li>
+<li>
+<code>episode_id</code>: identifies each distinct treatment episode
+for a client</li>
+<li>
+<code>episode_session</code>: identifies the consecutive session
+number in each episode</li>
+<li>
+<code>n_episodes</code>: indicates the total number of treatment
+episodes a client attended</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create all episode variables</span></span>
-<span><span class="va">episode_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_episode_vars.html">add_episode_vars</a></span><span class="op">(</span><span class="va">raw_df</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># check episode structure </span></span>
+<span><span class="va">episode_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_episode_vars.html">add_episode_vars</a></span><span class="op">(</span><span class="va">raw_df</span><span class="op">)</span> </span></code></pre></div>
+<p>After all episode variables are added, the <code><a href="../reference/check_eps.html">check_eps()</a></code>
+function can be used to check the resulting data structure.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># check episode structure </span></span>
 <span><span class="fu"><a href="../reference/check_eps.html">check_eps</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning: 57 episode(s) contain only one session.</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: 191 episode(s) contain four or fewer sessions.</span></span></code></pre>
@@ -169,6 +182,8 @@ too few observations to reliably estimate change.</p>
 <span><span class="co">## 1 7599     400        3      400           0        0              TRUE</span></span>
 <span><span class="co">##   sequential_sessions chronological_dates</span></span>
 <span><span class="co">## 1                TRUE                TRUE</span></span></code></pre>
+<p>Importantly, <code><a href="../reference/check_eps.html">check_eps()</a></code> will also warn the user when
+episodes contain too few observations to reliably estimate change.</p>
 </div>
 <div class="section level2">
 <h2 id="step-3-describe-episodes">Step 3: Describe episodes<a class="anchor" aria-label="anchor" href="#step-3-describe-episodes"></a>
@@ -176,7 +191,7 @@ too few observations to reliably estimate change.</p>
 <p>Once episode indicators have been added, each unique episode can be
 summarized using <code><a href="../reference/describe_episodes.html">describe_episodes()</a></code> function shown
 below</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe_episodes.html">describe_episodes</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   episode_id n_clients n_sessions mean_sessions mean_duration_days</span></span>
 <span><span class="co">## 1          1       400       4663         11.66             197.34</span></span>
@@ -199,7 +214,7 @@ inspect patterns of change within and across treatment episodes. The
 explore these patterns. For example, <code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code>
 displays individual client trajectories alongside the average linear
 pattern within each episode.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_curves.html">plot_episode_curves</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <p><img src="leap_files/figure-html/episode-curves-1.png" class="r-plt" alt="" width="100%" style="display: block; margin: auto;"></p>
 <p>Visualizing treatment trajectories can reveal differences in starting
@@ -219,7 +234,7 @@ methods differ in whether change is modeled directly from session-level
 observations or summarized at the episode level.</p>
 <p>For example, a longitudinal mixed-effects model can be fit directly
 to session-level data:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_lme.html">fit_lme</a></span><span class="op">(</span><span class="va">episode_data</span>, cohort <span class="op">=</span> <span class="st">"all"</span>, model <span class="op">=</span> <span class="st">"episode"</span><span class="op">)</span></span></code></pre></div>
 <p>This approach estimates change within treatment episodes while
 accounting for the hierarchical structure of sessions nested within

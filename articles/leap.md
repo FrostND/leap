@@ -68,33 +68,43 @@ check_raw(raw_df)
 
 The output from this initial check identifies the variables already
 present in the data, the episode-related variables that still need to be
-created, and the corresponding `add_*()` function to creating each of
-the missing variables.
+created, and the corresponding `add_*()` function to create each of the
+missing variables.
 
 ## Step 2: Identify episodes
 
-Once the session-level data have been prepared, `leap` can identify
+Once the session-level data have been prepared, leap can identify
 distinct treatment episodes and generate the episode-level variables
-required for subsequent analyses. By default, a new episode is
-identified when 90 or more days have elapsed between consecutive
-sessions. See [Define
+required for subsequent analyses. By default, `leap` demarcates episodes
+based on periods of treatment inactivity, specifically the number of
+days between consecutive sessions. See [Define
 Episodes](https://frostnd.github.io/leap/articles/articles/define-episodes.md)
 for additional details.
 
-The episode indicators can be added individually or in a single step
-using the wrapper function
+Episode indicators can be added individually or simultaneously using the
+wrapper function
 [`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md).
-After all episode variables are added, the
-[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-function can be used to check the resulting data structure. Importantly,
-[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-will also warn the user when episodes contain too few observations to
-reliably estimate change.
+The new variables this function creates are
+
+- `session_lag`: identifies the number of days elapsed since last
+  session
+- `episode_id`: identifies each distinct treatment episode for a client
+- `episode_session`: identifies the consecutive session number in each
+  episode
+- `n_episodes`: indicates the total number of treatment episodes a
+  client attended
 
 ``` r
 
 # create all episode variables
 episode_df <- add_episode_vars(raw_df) 
+```
+
+After all episode variables are added, the
+[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
+function can be used to check the resulting data structure.
+
+``` r
 
 # check episode structure 
 check_eps(episode_df)
@@ -108,6 +118,11 @@ check_eps(episode_df)
     ## 1 7599     400        3      400           0        0              TRUE
     ##   sequential_sessions chronological_dates
     ## 1                TRUE                TRUE
+
+Importantly,
+[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
+will also warn the user when episodes contain too few observations to
+reliably estimate change.
 
 ## Step 3: Describe episodes
 
