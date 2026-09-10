@@ -195,7 +195,7 @@ Episodes](https://frostnd.github.io/leap/articles/articles/modeling-episodes.md)
 
 ## Summary
 
-This article introduced a typical leap workflow. The package functions
+This article introduced a typical `leap` workflow. The package functions
 offer considerably more flexibility than can be demonstrated here. For
 additional options and guidance, consult the function documentation and
 the subsequent articles.
