@@ -3,11 +3,11 @@
 ## Overview
 
 Treatment episodes are commonly defined by identifying sufficiently long
-periods of inactivity between consecutive treatment sessions. In
+periods of inactivity between longitudinal observations. In
 psychotherapy and behavioral health research, this often involves
-applying an a priori threshold, such as 90 days without treatment, to
-distinguish a break in care from ordinary variation in the timing of
-sessions.
+applying an a priori threshold, such as 90 days without a treatment
+session, to distinguish a break in care from ordinary variation in the
+timing of sessions.
 
 `leap` supports this approach while also providing tools for examining
 the empirical distribution of time between sessions and estimating
