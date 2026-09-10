@@ -19,10 +19,6 @@ clients.](images/eps_nesting.png)
 Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.
 
-This article introduces how longitudinal treatment data are structured
-in `leap`, the variables used to represent treatment episodes, and the
-simulated data included with the package.
-
 ## Longitudinal data structure
 
 The starting point for `leap` is session-level longitudinal data, where

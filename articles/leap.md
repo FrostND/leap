@@ -72,11 +72,7 @@ missing variables.
 
 Once the session-level data have been prepared, `leap` can identify
 distinct treatment episodes and generate the episode-level variables
-required for subsequent analyses. By default, `leap` demarcates episodes
-based on periods of treatment inactivity, specifically the number of
-days between consecutive sessions. See [Define
-Episodes](https://frostnd.github.io/leap/articles/articles/define-episodes.md)
-for additional details.
+required for subsequent analyses.
 
 Episode indicators can be added individually or simultaneously using the
 wrapper function
