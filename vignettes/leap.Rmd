@@ -54,6 +54,7 @@ Episode indicators can be added individually or simultaneously using the wrapper
 - `episode_id`: identifies each distinct treatment episode for a client
 - `episode_session`: identifies the consecutive session number in each episode
 - `n_episodes`: indicates the total number of treatment episodes a client attended
+- `client_episode_id`: identifies unique client and episode
 
 ```{r, adding episode variables}
 # create all episode variables
