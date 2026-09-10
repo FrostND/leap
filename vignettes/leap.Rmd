@@ -46,7 +46,7 @@ The output from this initial check identifies the variables already present in t
 
 # Identify episodes
 
-Once the session-level data have been prepared, `leap` can identify distinct treatment episodes and generate the episode-level variables required for subsequent analyses. By default, `leap` demarcates episodes based on periods of treatment inactivity, specifically the number of days between consecutive sessions. See [Define Episodes](articles/define-episodes.html) for additional details.
+Once the session-level data have been prepared, `leap` can identify distinct treatment episodes and generate the episode-level variables required for subsequent analyses.
 
 Episode indicators can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
 
