@@ -90,7 +90,7 @@ raw data to identifying, describing, visualizing, and modeling repeated
 episodes of treatment.</p>
 </div>
 <div class="section level2">
-<h2 id="step-1-prepare-data">Step 1: Prepare data<a class="anchor" aria-label="anchor" href="#step-1-prepare-data"></a>
+<h2 id="prepare-data">Prepare data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
 </h2>
 <p><code>leap</code> works with person-period longitudinal data, where
 each row represents a treatment session for a client. At minimum, the
@@ -140,14 +140,15 @@ created, and the corresponding <code>add_*()</code> function to create
 each of the missing variables.</p>
 </div>
 <div class="section level2">
-<h2 id="step-2-identify-episodes">Step 2: Identify episodes<a class="anchor" aria-label="anchor" href="#step-2-identify-episodes"></a>
+<h2 id="identify-episodes">Identify episodes<a class="anchor" aria-label="anchor" href="#identify-episodes"></a>
 </h2>
-<p>Once the session-level data have been prepared, leap can identify
-distinct treatment episodes and generate the episode-level variables
-required for subsequent analyses. By default, <code>leap</code>
-demarcates episodes based on periods of treatment inactivity,
-specifically the number of days between consecutive sessions. See <a href="articles/define-episodes.html">Define Episodes</a> for additional
-details.</p>
+<p>Once the session-level data have been prepared, <code>leap</code> can
+identify distinct treatment episodes and generate the episode-level
+variables required for subsequent analyses. By default,
+<code>leap</code> demarcates episodes based on periods of treatment
+inactivity, specifically the number of days between consecutive
+sessions. See <a href="articles/define-episodes.html">Define
+Episodes</a> for additional details.</p>
 <p>Episode indicators can be added individually or simultaneously using
 the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. The new variables
 this function creates are</p>
@@ -183,7 +184,7 @@ treatment episodes contain too few observations to estimate change or
 when the number of observations may result in unreliable estimates.</p>
 </div>
 <div class="section level2">
-<h2 id="step-3-describe-episodes">Step 3: Describe episodes<a class="anchor" aria-label="anchor" href="#step-3-describe-episodes"></a>
+<h2 id="describe-episodes">Describe episodes<a class="anchor" aria-label="anchor" href="#describe-episodes"></a>
 </h2>
 <p>Once episode indicators have been added, each unique episode can be
 summarized using <code><a href="../reference/describe_episodes.html">describe_episodes()</a></code> function shown
@@ -203,7 +204,7 @@ and the characteristics of each treatment episode contained in the
 data.</p>
 </div>
 <div class="section level2">
-<h2 id="step-4-visualize-episodes">Step 4: Visualize episodes<a class="anchor" aria-label="anchor" href="#step-4-visualize-episodes"></a>
+<h2 id="visualize-episodes">Visualize episodes<a class="anchor" aria-label="anchor" href="#visualize-episodes"></a>
 </h2>
 <p>Before fitting statistical models, it is often useful to visually
 inspect patterns of change within and across treatment episodes. The
@@ -223,7 +224,7 @@ plotting options see <a href="articles/viz-episodes.html">Visualize
 Episodes</a></p>
 </div>
 <div class="section level2">
-<h2 id="step-5-model-outcomes">Step 5: Model outcomes<a class="anchor" aria-label="anchor" href="#step-5-model-outcomes"></a>
+<h2 id="model-outcomes">Model outcomes<a class="anchor" aria-label="anchor" href="#model-outcomes"></a>
 </h2>
 <p><code>leap</code> provides several complementary approaches for
 modeling therapeutic change across repeated episodes of care. These

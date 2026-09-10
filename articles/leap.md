@@ -6,7 +6,7 @@ A typical `leap` workflow progresses from preparing the raw data to
 identifying, describing, visualizing, and modeling repeated episodes of
 treatment.
 
-## Step 1: Prepare data
+## Prepare data
 
 `leap` works with person-period longitudinal data, where each row
 represents a treatment session for a client. At minimum, the raw data
@@ -68,9 +68,9 @@ present in the data, the episode-related variables that still need to be
 created, and the corresponding `add_*()` function to create each of the
 missing variables.
 
-## Step 2: Identify episodes
+## Identify episodes
 
-Once the session-level data have been prepared, leap can identify
+Once the session-level data have been prepared, `leap` can identify
 distinct treatment episodes and generate the episode-level variables
 required for subsequent analyses. By default, `leap` demarcates episodes
 based on periods of treatment inactivity, specifically the number of
@@ -119,7 +119,7 @@ will warns users when some treatment episodes contain too few
 observations to estimate change or when the number of observations may
 result in unreliable estimates.
 
-## Step 3: Describe episodes
+## Describe episodes
 
 Once episode indicators have been added, each unique episode can be
 summarized using
@@ -143,7 +143,7 @@ describe_episodes(episode_df)
 This summary provides an initial description of service utilization and
 the characteristics of each treatment episode contained in the data.
 
-## Step 4: Visualize episodes
+## Visualize episodes
 
 Before fitting statistical models, it is often useful to visually
 inspect patterns of change within and across treatment episodes. The
@@ -168,7 +168,7 @@ be interpreted as adjusted within-client effects. For additional
 plotting options see [Visualize
 Episodes](https://frostnd.github.io/leap/articles/articles/viz-episodes.md)
 
-## Step 5: Model outcomes
+## Model outcomes
 
 `leap` provides several complementary approaches for modeling
 therapeutic change across repeated episodes of care. These methods
