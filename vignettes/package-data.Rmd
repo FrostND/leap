@@ -15,8 +15,6 @@ When treatment occurs across multiple periods of care, `leap` can be used to ide
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
 
-This article introduces how longitudinal treatment data are structured in `leap`, the variables used to represent treatment episodes, and the simulated data included with the package.
-
 # Longitudinal data structure
 
 The starting point for `leap` is session-level longitudinal data, where each row represents a treatment session for a client. At minimum, the data should contain information identifying the client, session, session date, and outcome of interest.
