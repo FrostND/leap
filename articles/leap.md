@@ -86,6 +86,7 @@ The new variables this function creates are
   episode
 - `n_episodes`: indicates the total number of treatment episodes a
   client attended
+- `client_episode_id`: identifies unique client and episode
 
 ``` r
 
