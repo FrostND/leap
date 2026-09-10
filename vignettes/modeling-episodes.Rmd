@@ -124,6 +124,8 @@ Because Bayesian multilevel models can require substantially more computation th
 
 # Cohort selection
 
+The `leap` package is designed to accommodate real-world treatment records in which clients may attend different numbers of sessions and episodes of care, with some completing a single episode and others returning for treatment multiple times over time.
+
 Not every research question requires the same set of clients. In particular, analyses of repeated treatment episodes may distinguish between the full sample versus clients who only contributed multiple episodes of care.
 
 All of the `fit_*()` include a cohort argument which provides a consistent way to specify the analytic sample desired for analysis:
