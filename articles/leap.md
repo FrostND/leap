@@ -4,12 +4,9 @@
 
 A typical `leap` workflow progresses from preparing the raw data to
 identifying, describing, visualizing, and modeling repeated episodes of
-treatment. The package is designed to accommodate real-world treatment
-records in which clients may attend different numbers of sessions and
-episodes of care, with some completing a single episode and others
-returning for treatment multiple times over time.
+treatment.
 
-## Step 1: Prepare and check
+## Step 1: Prepare data
 
 `leap` works with person-period longitudinal data, where each row
 represents a treatment session for a client. At minimum, the raw data

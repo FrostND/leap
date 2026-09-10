@@ -232,6 +232,11 @@ before fitting an analogous model with
 
 ## Cohort selection
 
+The `leap` package is designed to accommodate real-world treatment
+records in which clients may attend different numbers of sessions and
+episodes of care, with some completing a single episode and others
+returning for treatment multiple times over time.
+
 Not every research question requires the same set of clients. In
 particular, analyses of repeated treatment episodes may distinguish
 between the full sample versus clients who only contributed multiple
