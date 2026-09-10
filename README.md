@@ -16,16 +16,15 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- badges: end -->
 
-## Why leap?
+### Why leap?
 
 Behavioral health interventions, including psychotherapy, are often
 represented as a single, discrete period of treatment. In real-world
 settings, however, individuals may disengage and subsequently reengage
 in treatment over time, resulting in multiple distinct periods
-(i.e. episodes) of treatment exposure. These patterns can produce
-complex longitudinal data that require decisions about how episodes of
-treatment are defined, represented, and incorporated into statistical
-analyses.
+(i.e. episodes) of treatment exposure. These patterns require decisions
+about how episodes of treatment are defined, represented, and
+incorporated into statistical analyses.
 
 `leap` was developed to address these challenges in two complementary
 ways. First, it provides easy-to-use tools for preparing and exploring
@@ -40,7 +39,7 @@ Together, these capabilities allow researchers to examine change within
 individual episodes as well as patterns of change across episodes over
 time.
 
-## What can leap do?
+### What can leap do?
 
 - Identify treatment episodes from longitudinal session data
 - Construct and summarize episode-level variables
@@ -49,7 +48,7 @@ time.
 - Model repeated treatment trajectories using Frequentist and Bayesian
   approaches
 
-## Installation
+### Installation
 
 You can install the development version of `leap` from GitHub.
 
@@ -58,7 +57,7 @@ install.packages("remotes")
 remotes::install_github("FrostND/leap")
 ```
 
-## Get Started
+### Get started
 
 For a complete introduction to the `leap` workflow, see [Get Started
 with leap](articles/leap.html)
