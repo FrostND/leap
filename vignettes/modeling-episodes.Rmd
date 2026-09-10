@@ -76,7 +76,7 @@ For the "session" specification, the second-stage model can be written as:
 
 $$Y_{ij} = \beta_{0} + \beta_{10}(Sessions_{ij}) + [U_{0j} + e_{ij}]$$
 
-where $Y_{ij}$ is the estimated treatment slope in episode $i$ for client $j$. The fixed effect $\beta_{0}$ represents the expected episode-specific rate of change, while $\beta_{10}$ represents the association between the total number of sessions in an episode and the estimated rate of change. The random intercept $u_{0j}$ accounts for differences in average rates of change across clients, and $e_{ij}$ represents remaining variation among episode-specific slopes within clients.
+where $Y_{ij}$ is the estimated treatment slope in episode *i* for client *j*. The fixed effect $\beta_{0}$ represents the expected episode-specific rate of change, while $\beta_{10}$ represents the association between the total number of sessions in an episode and the estimated rate of change. The random intercept $U_{0j}$ accounts for differences in average rates of change across clients, and $e_{ij}$ represents remaining variation among episode-specific slopes within clients.
 
 Including the number of sessions is particularly relevant in a slopes-as-outcomes analysis because episodes may differ considerably in length. The `"session"` model therefore examines whether estimated rates of change systematically vary with the number of sessions contributing to each episode.
 
