@@ -15,7 +15,7 @@ data-informed episode delimiters. This article describes several
 approaches to defining treatment episodes and illustrates how
 alternative delimiters can be evaluated.
 
-## Predefined delimiters
+## Predefined delimiter
 
 The simplest approach is to specify an a priori amount of time between
 consecutive sessions that constitutes the beginning of a new treatment
@@ -55,7 +55,7 @@ When no established threshold is available, or when the appropriateness
 of a predefined threshold is uncertain, the observed distribution of
 session lags can also be used to inform this decision.
 
-## Empirical delimiters
+## Empirical delimiter
 
 Rather than specifying an episode delimiter a priori, candidate
 thresholds can be estimated from the observed distribution of session
@@ -76,7 +76,7 @@ These approaches provide simple distribution-based thresholds that can
 be used to examine whether the observed spacing of sessions supports
 alternative definitions of treatment episodes.
 
-## Estimated delimiter
+## Estimate delimiter
 
 `leap` also provides a mixture-modeling approach for estimating an
 episode delimiter:
