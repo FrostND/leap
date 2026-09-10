@@ -6,7 +6,7 @@
 The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
 (`leap`) package provides tools to identify, visualize, and
 statistically model repeated treatment episodes in longitudinal health
-records data.
+records.
 
 <!-- badges: start -->
 
@@ -19,20 +19,13 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ## Why leap?
 
 Behavioral health interventions, including psychotherapy, are often
-represented as a single, continuous course of treatment. In real-world
-settings, however, individuals often disengage and subsequently reengage
+represented as a single, discrete period of treatment. In real-world
+settings, however, individuals may disengage and subsequently reengage
 in treatment over time, resulting in multiple distinct periods
-(i.e. episodes) of intervention exposure. These patterns can produce
+(i.e. episodes) of treatment exposure. These patterns can produce
 complex longitudinal data that require decisions about how episodes of
 treatment are defined, represented, and incorporated into statistical
 analyses.
-
-Despite the occurrence of repeated treatment episodes, longitudinal
-intervention studies often restrict analyses to a single episode of
-care, such as an individual’s first or most recent episode. Although
-this approach simplifies the analysis, it excludes information about
-subsequent treatment exposure and limits the ability to examine how
-patterns of change may differ across repeated episodes.
 
 `leap` was developed to address these challenges in two complementary
 ways. First, it provides easy-to-use tools for preparing and exploring
@@ -61,11 +54,8 @@ time.
 You can install the development version of `leap` from GitHub.
 
 ``` r
-# install devtools 
-install.packages("devtools")
-
-# download development version 
-install_github("FrostND/leap")
+install.packages("remotes")
+remotes::install_github("FrostND/leap")
 ```
 
 ## Get Started
