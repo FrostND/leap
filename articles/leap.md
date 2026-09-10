@@ -102,17 +102,14 @@ episode_df <- add_episode_vars(raw_df)
 
 After all episode variables are added, the
 [`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-function can be used to check the resulting data structure.
+function can be used to check the resulting data structure, including
+appropriate sessions order, missing values and more.
 
 ``` r
 
 # check episode structure 
 check_eps(episode_df)
 ```
-
-    ## Warning: 57 episode(s) contain only one session.
-
-    ## Warning: 191 episode(s) contain four or fewer sessions.
 
     ##    obs clients episodes na_total na_outcomes na_dates correctly_ordered
     ## 1 7599     400        3      400           0        0              TRUE
@@ -121,8 +118,9 @@ check_eps(episode_df)
 
 Importantly,
 [`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-will also warn the user when episodes contain too few observations to
-reliably estimate change.
+will warns users when some treatment episodes contain too few
+observations to estimate change or when the number of observations may
+result in unreliable estimates.
 
 ## Step 3: Describe episodes
 

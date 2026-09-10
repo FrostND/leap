@@ -129,11 +129,11 @@ as:
 Y_{ij} = \beta_{0} + \beta_{10}(Sessions_{ij}) + [U_{0j} + e_{ij}]
 ```
 
-where $`Y_{ij}`$ is the estimated treatment slope in episode $`i`$ for
-client $`j`$. The fixed effect $`\beta_{0}`$ represents the expected
+where $`Y_{ij}`$ is the estimated treatment slope in episode *i* for
+client *j*. The fixed effect $`\beta_{0}`$ represents the expected
 episode-specific rate of change, while $`\beta_{10}`$ represents the
 association between the total number of sessions in an episode and the
-estimated rate of change. The random intercept $`u_{0j}`$ accounts for
+estimated rate of change. The random intercept $`U_{0j}`$ accounts for
 differences in average rates of change across clients, and $`e_{ij}`$
 represents remaining variation among episode-specific slopes within
 clients.
