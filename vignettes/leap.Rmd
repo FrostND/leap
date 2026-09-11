@@ -44,11 +44,11 @@ check_raw(raw_df)
 
 The output from this initial check identifies the variables already present in the data, the episode-related variables that still need to be created, and the corresponding `add_*()` function to create each of the missing variables.
 
-# Identify episodes
+# Add episode variables
 
 Once the session-level data have been prepared, `leap` can identify distinct treatment episodes and generate the episode-level variables required for subsequent analyses.
 
-Episode indicators can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
+Episode variables can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
 
 - `session_lag`: identifies the number of days elapsed since last session
 - `episode_id`: identifies each distinct treatment episode for a client
@@ -63,14 +63,14 @@ episode_df <- add_episode_vars(raw_df)
 
 # Describe episodes
 
-After all episode variables are added, the `check_eps()` function can be used to check the resulting data structure, including appropriate sessions order, missing values and more.
+After all episode variables have been added, it is useful to check and describe the resulting data before proceeding. The `check_episodes()` function provides a summary of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
 
-```{r, check episode variables, warning = FALSE}
+```{r, check episodes, warning = FALSE}
 # check episode structure 
 check_eps(episode_df)
 ```
 
-Importantly, `check_eps()` will warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
+Importantly, `check_eps()` also warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
 
 Once episode indicators have been added, each unique episode can be summarized using `describe_episodes()` function shown below
 

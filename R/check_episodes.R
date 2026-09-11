@@ -78,7 +78,7 @@
 #' @seealso [describe_episodes()], [episode_slopes()]
 #'
 #' @export
-check_eps <- function(
+check_episodes <- function(
     data,
     client = "client_id",
     episode = "episode_id",
