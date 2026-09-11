@@ -68,13 +68,13 @@ present in the data, the episode-related variables that still need to be
 created, and the corresponding `add_*()` function to create each of the
 missing variables.
 
-## Identify episodes
+## Add episode variables
 
 Once the session-level data have been prepared, `leap` can identify
 distinct treatment episodes and generate the episode-level variables
 required for subsequent analyses.
 
-Episode indicators can be added individually or simultaneously using the
+Episode variables can be added individually or simultaneously using the
 wrapper function
 [`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md).
 The new variables this function creates are
@@ -96,15 +96,17 @@ episode_df <- add_episode_vars(raw_df)
 
 ## Describe episodes
 
-After all episode variables are added, the
-[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-function can be used to check the resulting data structure, including
-appropriate sessions order, missing values and more.
+After all episode variables have been added, it is useful to check and
+describe the resulting data before proceeding. The
+[`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
+function provides a summary of the episode structure and evaluates
+several potential data issues, including sample size, the number of
+treatment episodes, session and chronological ordering, and missing
+values.
 
 ``` r
 
-# check episode structure 
-check_eps(episode_df)
+check_episodes(episode_df)
 ```
 
     ##    obs clients episodes na_total na_outcomes na_dates correctly_ordered
@@ -113,8 +115,8 @@ check_eps(episode_df)
     ## 1                TRUE                TRUE
 
 Importantly,
-[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
-will warns users when some treatment episodes contain too few
+[`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
+also warns users when some treatment episodes contain too few
 observations to estimate change or when the number of observations may
 result in unreliable estimates.
 

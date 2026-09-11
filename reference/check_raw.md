@@ -87,7 +87,7 @@ The function does not modify the supplied data.
 
 ## See also
 
-[`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md),
+`check_eps()`,
 [`add_session_lag()`](https://frostnd.github.io/leap/reference/add_session_lag.md),
 [`add_episode_id()`](https://frostnd.github.io/leap/reference/add_episode_id.md),
 [`add_episode_session()`](https://frostnd.github.io/leap/reference/add_episode_session.md),

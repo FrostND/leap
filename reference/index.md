@@ -15,7 +15,7 @@
   longitudinal data.
 - [`add_session_lag()`](https://frostnd.github.io/leap/reference/add_session_lag.md)
   : Calculates the number of days between psychotherapy sessions.
-- [`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
+- [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
   : Check treatment episode data
 - [`check_raw()`](https://frostnd.github.io/leap/reference/check_raw.md)
   : Check whether raw treatment data are ready for episode preparation

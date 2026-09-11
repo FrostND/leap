@@ -140,12 +140,12 @@ created, and the corresponding <code>add_*()</code> function to create
 each of the missing variables.</p>
 </div>
 <div class="section level2">
-<h2 id="identify-episodes">Identify episodes<a class="anchor" aria-label="anchor" href="#identify-episodes"></a>
+<h2 id="add-episode-variables">Add episode variables<a class="anchor" aria-label="anchor" href="#add-episode-variables"></a>
 </h2>
 <p>Once the session-level data have been prepared, <code>leap</code> can
 identify distinct treatment episodes and generate the episode-level
 variables required for subsequent analyses.</p>
-<p>Episode indicators can be added individually or simultaneously using
+<p>Episode variables can be added individually or simultaneously using
 the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. The new variables
 this function creates are</p>
 <ul>
@@ -172,17 +172,19 @@ episode</li>
 <div class="section level2">
 <h2 id="describe-episodes">Describe episodes<a class="anchor" aria-label="anchor" href="#describe-episodes"></a>
 </h2>
-<p>After all episode variables are added, the <code><a href="../reference/check_eps.html">check_eps()</a></code>
-function can be used to check the resulting data structure, including
-appropriate sessions order, missing values and more.</p>
+<p>After all episode variables have been added, it is useful to check
+and describe the resulting data before proceeding. The
+<code><a href="../reference/check_episodes.html">check_episodes()</a></code> function provides a summary of the episode
+structure and evaluates several potential data issues, including sample
+size, the number of treatment episodes, session and chronological
+ordering, and missing values.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># check episode structure </span></span>
-<span><span class="fu"><a href="../reference/check_eps.html">check_eps</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/check_episodes.html">check_episodes</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    obs clients episodes na_total na_outcomes na_dates correctly_ordered</span></span>
 <span><span class="co">## 1 7599     400        3      400           0        0              TRUE</span></span>
 <span><span class="co">##   sequential_sessions chronological_dates</span></span>
 <span><span class="co">## 1                TRUE                TRUE</span></span></code></pre>
-<p>Importantly, <code><a href="../reference/check_eps.html">check_eps()</a></code> will warns users when some
+<p>Importantly, <code><a href="../reference/check_episodes.html">check_episodes()</a></code> also warns users when some
 treatment episodes contain too few observations to estimate change or
 when the number of observations may result in unreliable estimates.</p>
 <p>Once episode indicators have been added, each unique episode can be
