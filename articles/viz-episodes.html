@@ -85,10 +85,9 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Longitudinal psychotherapy data can contain multiple distinct
-episodes of care for the same client. Visualizing these data can help
-researchers understand when episodes occur, how outcomes change within
-episodes, and what happens during periods between episodes.</p>
+<p>Visualizing episodes can help researchers understand when episodes
+occur, how outcomes change within episodes, and what happens during
+periods between episodes.</p>
 <p><code>leap</code> provides plotting functions for several
 complementary features of multi-episode data:</p>
 <ul>
@@ -111,77 +110,32 @@ episode- or transition-level summaries produced by other
 <code>leap</code> functions.</p>
 </div>
 <div class="section level2">
-<h2 id="preparing-treatment-episode-data">Preparing treatment episode data<a class="anchor" aria-label="anchor" href="#preparing-treatment-episode-data"></a>
-</h2>
-<p>Most visualization functions assume that the core treatment episode
-variables have already been added to the longitudinal data.</p>
-<p>A typical workflow begins by checking the input data and deriving the
-episode structure:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/check_raw.html">check_raw</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">episode_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_episode_vars.html">add_episode_vars</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/check_eps.html">check_eps</a></span><span class="op">(</span><span class="va">episode_data</span><span class="op">)</span></span></code></pre></div>
-<p>The resulting data contain standardized variables such as:</p>
-<ul>
-<li><code>client_id</code></li>
-<li><code>session_id</code></li>
-<li><code>session_date</code></li>
-<li><code>session_lag</code></li>
-<li><code>episode_id</code></li>
-<li><code>episode_session</code></li>
-<li><code>client_episode_id</code></li>
-<li><code>n_episodes</code></li>
-<li><code>outcome</code></li>
-</ul>
-<p>These variables provide the structure needed to visualize treatment
-both within and between episodes.</p>
-</div>
-<div class="section level2">
-<h2 id="visualizing-session-lags">Visualizing session lags<a class="anchor" aria-label="anchor" href="#visualizing-session-lags"></a>
+<h2 id="plot-session-lags">Plot session lags<a class="anchor" aria-label="anchor" href="#plot-session-lags"></a>
 </h2>
 <p>Treatment episodes are commonly distinguished by the amount of
 elapsed time between consecutive sessions. Before selecting an episode
 delimiter, it can be useful to inspect the empirical distribution of
 session lags.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_lag_density.html">plot_lag_density</a></span><span class="op">(</span><span class="va">episode_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/lag-density-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 <p><code><a href="../reference/plot_lag_density.html">plot_lag_density()</a></code> displays the density of positive
 <code>session_lag</code> values. The first session observed for each
 client has an undefined lag and is excluded from the distribution.</p>
 <p>A candidate delimiter can also be displayed directly:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_lag_density.html">plot_lag_density</a></span><span class="op">(</span><span class="va">episode_data</span>, delimiter <span class="op">=</span> <span class="fl">90</span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, a candidate delimiter can be estimated empirically
-using <code><a href="../reference/lag_delimiter.html">lag_delimiter()</a></code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">delimiter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">episode_data</span>, method <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/plot_lag_density.html">plot_lag_density</a></span><span class="op">(</span><span class="va">episode_data</span>, delimiter <span class="op">=</span> <span class="va">delimiter</span><span class="op">)</span></span></code></pre></div>
-<p>Several delimiter-estimation approaches are available:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">episode_data</span>, method <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">episode_data</span>, method <span class="op">=</span> <span class="st">"sd"</span>, multiplier <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">episode_data</span>, method <span class="op">=</span> <span class="st">"quantile"</span>, probability <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">episode_data</span>, method <span class="op">=</span> <span class="st">"mixture"</span><span class="op">)</span></span></code></pre></div>
-<p>The mixture-modeling approach uses the observed distribution of
-session lags to identify relatively short- and long-gap components.
-Regardless of method, estimated delimiters should be treated as
-data-informed candidate thresholds rather than definitive clinical
-boundaries between treatment episodes.</p>
+<p><img src="viz-episodes_files/figure-html/lag-density-delimiter-1.png" class="r-plt" alt="" width="576" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
-<h2 id="visualizing-trajectories-within-treatment-episodes">Visualizing trajectories within treatment episodes<a class="anchor" aria-label="anchor" href="#visualizing-trajectories-within-treatment-episodes"></a>
+<h2 id="plot-episode-growth-curves">Plot episode growth curves<a class="anchor" aria-label="anchor" href="#plot-episode-growth-curves"></a>
 </h2>
 <p>Once episodes have been identified,
 <code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code> provides a direct view of
 session-level change within successive episodes.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_curves.html">plot_episode_curves</a></span><span class="op">(</span><span class="va">episode_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/episode-curves-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>Each panel represents a treatment episode number. Individual
 client-episode trajectories are displayed in the background, while a
 pooled linear trend is superimposed within each episode.</p>
@@ -192,14 +146,9 @@ the sample may differ across panels.</p>
 <p>The plot is therefore primarily descriptive. Differences between
 episode-specific trends should not automatically be interpreted as
 adjusted within-client effects.</p>
-<p>The displayed outcome range and clinical reference value can also be
-modified:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_curves.html">plot_episode_curves</a></span><span class="op">(</span><span class="va">episode_data</span>, outcome_limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span>, clinical_cutoff <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
-<p>The clinical reference line can be omitted when it is not meaningful
-for the outcome being analyzed:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_curves.html">plot_episode_curves</a></span><span class="op">(</span><span class="va">episode_data</span>, clinical_cutoff <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/episode-curves-no-cutoff-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p><code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code> is particularly useful during
 exploratory analysis because it makes several features of the data
 visible simultaneously, including variability in baseline scores, rates
@@ -207,11 +156,11 @@ of change, episode length, and the number of clients contributing to
 successive episodes.</p>
 </div>
 <div class="section level2">
-<h2 id="visualizing-change-across-treatment-episodes">Visualizing change across treatment episodes<a class="anchor" aria-label="anchor" href="#visualizing-change-across-treatment-episodes"></a>
+<h2 id="plot-episode-change-scores">Plot episode change scores<a class="anchor" aria-label="anchor" href="#plot-episode-change-scores"></a>
 </h2>
 <p>Session-level trajectories can also be reduced to episode-level
 summaries using <code><a href="../reference/episode_slopes.html">episode_slopes()</a></code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">episode_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/episode_slopes.html">episode_slopes</a></span><span class="op">(</span><span class="va">episode_data</span>, higher_is_better <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>The returned data contain one row per client-specific treatment
 episode and include variables such as:</p>
@@ -224,25 +173,20 @@ episode and include variables such as:</p>
 </ul>
 <p>These episode-level summaries can be passed directly to
 <code><a href="../reference/plot_episode_change.html">plot_episode_change()</a></code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_change.html">plot_episode_change</a></span><span class="op">(</span><span class="va">episode_summary</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/episode-change-1.png" class="r-plt" alt="" width="480" style="display: block; margin: auto;"></p>
 <p>The plot displays individual client change scores across successive
 treatment episodes and superimposes the mean change for each episode
 number with approximate 95% confidence intervals.</p>
 <p>Positive values represent improvement when the episode summaries were
 created so that higher values consistently indicate favorable
 change.</p>
-<p>The plot can be restricted to clients who attended multiple
-episodes:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_change.html">plot_episode_change</a></span><span class="op">(</span><span class="va">episode_summary</span>, cohort <span class="op">=</span> <span class="st">"multiple"</span><span class="op">)</span></span></code></pre></div>
-<p>The number of episodes displayed can also be restricted:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_change.html">plot_episode_change</a></span><span class="op">(</span><span class="va">episode_summary</span>, cohort <span class="op">=</span> <span class="st">"multiple"</span>, max_episodes <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>For larger samples, individual trajectories can be hidden to
 emphasize the episode-level summaries:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_change.html">plot_episode_change</a></span><span class="op">(</span><span class="va">episode_summary</span>, show_individuals <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/episode-change-summary-1.png" class="r-plt" alt="" width="480" style="display: block; margin: auto;"></p>
 <p>An important distinction is that <code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code>
 and <code><a href="../reference/plot_episode_change.html">plot_episode_change()</a></code> operate at different levels of
 the data:</p>
@@ -256,14 +200,14 @@ summarizes how the amount of treatment change varies across episode
 number.</p>
 </div>
 <div class="section level2">
-<h2 id="visualizing-loss-between-treatment-episodes">Visualizing loss between treatment episodes<a class="anchor" aria-label="anchor" href="#visualizing-loss-between-treatment-episodes"></a>
+<h2 id="plot-episode-decline">Plot episode decline<a class="anchor" aria-label="anchor" href="#plot-episode-decline"></a>
 </h2>
 <p>Treatment change can also occur outside active treatment. Clients may
 leave treatment at one level of functioning and return later with some
 degree of deterioration.</p>
 <p><code><a href="../reference/episode_breaks.html">episode_breaks()</a></code> summarizes these transitions between
 successive episodes:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/episode_breaks.html">episode_breaks</a></span><span class="op">(</span><span class="va">episode_data</span><span class="op">)</span></span></code></pre></div>
 <p>Each row of the resulting data represents the transition from one
 treatment episode to the next for a client and includes variables such
@@ -279,20 +223,23 @@ as:</p>
 </ul>
 <p>These data can be visualized using
 <code>plot_breaks_loss()</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot_breaks_loss</span><span class="op">(</span><span class="va">breaks</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/breaks-loss-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>The plot connects the discharge score from one episode with the
 intake score at the subsequent episode. This provides a visual
 representation of the amount of outcome loss occurring between
 episodes.</p>
 <p>When time is displayed, horizontal spacing can reflect the relative
 amount of time between episodes:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot_breaks_loss</span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/breaks-loss-time-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>Equal spacing can instead be used when the primary interest is the
 magnitude of change:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">plot_breaks_loss</span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="viz-episodes_files/figure-html/breaks-loss-equal-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>Because only clients with multiple episodes can contribute
 between-episode transitions, a separate multiple-episode cohort
 restriction is not required.</p>

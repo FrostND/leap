@@ -2,10 +2,9 @@
 
 ## Overview
 
-Longitudinal psychotherapy data can contain multiple distinct episodes
-of care for the same client. Visualizing these data can help researchers
-understand when episodes occur, how outcomes change within episodes, and
-what happens during periods between episodes.
+Visualizing episodes can help researchers understand when episodes
+occur, how outcomes change within episodes, and what happens during
+periods between episodes.
 
 `leap` provides plotting functions for several complementary features of
 multi-episode data:
@@ -25,39 +24,7 @@ Some use session-level observations directly, whereas others use
 episode- or transition-level summaries produced by other `leap`
 functions.
 
-## Preparing treatment episode data
-
-Most visualization functions assume that the core treatment episode
-variables have already been added to the longitudinal data.
-
-A typical workflow begins by checking the input data and deriving the
-episode structure:
-
-``` r
-
-check_raw(data)
-
-episode_data <- add_episode_vars(data)
-
-check_eps(episode_data)
-```
-
-The resulting data contain standardized variables such as:
-
-- `client_id`
-- `session_id`
-- `session_date`
-- `session_lag`
-- `episode_id`
-- `episode_session`
-- `client_episode_id`
-- `n_episodes`
-- `outcome`
-
-These variables provide the structure needed to visualize treatment both
-within and between episodes.
-
-## Visualizing session lags
+## Plot session lags
 
 Treatment episodes are commonly distinguished by the amount of elapsed
 time between consecutive sessions. Before selecting an episode
@@ -68,6 +35,8 @@ session lags.
 
 plot_lag_density(episode_data)
 ```
+
+![](viz-episodes_files/figure-html/lag-density-1.png)
 
 [`plot_lag_density()`](https://frostnd.github.io/leap/reference/plot_lag_density.md)
 displays the density of positive `session_lag` values. The first session
@@ -81,36 +50,9 @@ A candidate delimiter can also be displayed directly:
 plot_lag_density(episode_data, delimiter = 90)
 ```
 
-Alternatively, a candidate delimiter can be estimated empirically using
-[`lag_delimiter()`](https://frostnd.github.io/leap/reference/lag_delimiter.md):
+![](viz-episodes_files/figure-html/lag-density-delimiter-1.png)
 
-``` r
-
-delimiter <- lag_delimiter(episode_data, method = "iqr")
-
-plot_lag_density(episode_data, delimiter = delimiter)
-```
-
-Several delimiter-estimation approaches are available:
-
-``` r
-
-lag_delimiter(episode_data, method = "iqr")
-
-lag_delimiter(episode_data, method = "sd", multiplier = 2)
-
-lag_delimiter(episode_data, method = "quantile", probability = 0.95)
-
-lag_delimiter(episode_data, method = "mixture")
-```
-
-The mixture-modeling approach uses the observed distribution of session
-lags to identify relatively short- and long-gap components. Regardless
-of method, estimated delimiters should be treated as data-informed
-candidate thresholds rather than definitive clinical boundaries between
-treatment episodes.
-
-## Visualizing trajectories within treatment episodes
+## Plot episode growth curves
 
 Once episodes have been identified,
 [`plot_episode_curves()`](https://frostnd.github.io/leap/reference/plot_episode_curves.md)
@@ -121,6 +63,8 @@ episodes.
 
 plot_episode_curves(episode_data)
 ```
+
+![](viz-episodes_files/figure-html/episode-curves-1.png)
 
 Each panel represents a treatment episode number. Individual
 client-episode trajectories are displayed in the background, while a
@@ -135,21 +79,12 @@ The plot is therefore primarily descriptive. Differences between
 episode-specific trends should not automatically be interpreted as
 adjusted within-client effects.
 
-The displayed outcome range and clinical reference value can also be
-modified:
-
-``` r
-
-plot_episode_curves(episode_data, outcome_limits = c(0, 20), clinical_cutoff = 8)
-```
-
-The clinical reference line can be omitted when it is not meaningful for
-the outcome being analyzed:
-
 ``` r
 
 plot_episode_curves(episode_data, clinical_cutoff = NULL)
 ```
+
+![](viz-episodes_files/figure-html/episode-curves-no-cutoff-1.png)
 
 [`plot_episode_curves()`](https://frostnd.github.io/leap/reference/plot_episode_curves.md)
 is particularly useful during exploratory analysis because it makes
@@ -157,7 +92,7 @@ several features of the data visible simultaneously, including
 variability in baseline scores, rates of change, episode length, and the
 number of clients contributing to successive episodes.
 
-## Visualizing change across treatment episodes
+## Plot episode change scores
 
 Session-level trajectories can also be reduced to episode-level
 summaries using
@@ -185,26 +120,14 @@ These episode-level summaries can be passed directly to
 plot_episode_change(episode_summary)
 ```
 
+![](viz-episodes_files/figure-html/episode-change-1.png)
+
 The plot displays individual client change scores across successive
 treatment episodes and superimposes the mean change for each episode
 number with approximate 95% confidence intervals.
 
 Positive values represent improvement when the episode summaries were
 created so that higher values consistently indicate favorable change.
-
-The plot can be restricted to clients who attended multiple episodes:
-
-``` r
-
-plot_episode_change(episode_summary, cohort = "multiple")
-```
-
-The number of episodes displayed can also be restricted:
-
-``` r
-
-plot_episode_change(episode_summary, cohort = "multiple", max_episodes = 3)
-```
 
 For larger samples, individual trajectories can be hidden to emphasize
 the episode-level summaries:
@@ -213,6 +136,8 @@ the episode-level summaries:
 
 plot_episode_change(episode_summary, show_individuals = FALSE)
 ```
+
+![](viz-episodes_files/figure-html/episode-change-summary-1.png)
 
 An important distinction is that
 [`plot_episode_curves()`](https://frostnd.github.io/leap/reference/plot_episode_curves.md)
@@ -233,7 +158,7 @@ displays the observed treatment trajectories within episodes, whereas
 summarizes how the amount of treatment change varies across episode
 number.
 
-## Visualizing loss between treatment episodes
+## Plot episode decline
 
 Treatment change can also occur outside active treatment. Clients may
 leave treatment at one level of functioning and return later with some
@@ -263,8 +188,10 @@ These data can be visualized using `plot_breaks_loss()`:
 
 ``` r
 
-plot_breaks_loss(breaks)
+plot_episode_loss(breaks)
 ```
+
+![](viz-episodes_files/figure-html/breaks-loss-1.png)
 
 The plot connects the discharge score from one episode with the intake
 score at the subsequent episode. This provides a visual representation
@@ -275,16 +202,20 @@ amount of time between episodes:
 
 ``` r
 
-plot_breaks_loss(breaks, show_time = TRUE)
+plot_episode_loss(breaks, show_time = TRUE)
 ```
+
+![](viz-episodes_files/figure-html/breaks-loss-time-1.png)
 
 Equal spacing can instead be used when the primary interest is the
 magnitude of change:
 
 ``` r
 
-plot_breaks_loss(breaks, show_time = FALSE)
+plot_episode_loss(breaks, show_time = FALSE)
 ```
+
+![](viz-episodes_files/figure-html/breaks-loss-equal-1.png)
 
 Because only clients with multiple episodes can contribute
 between-episode transitions, a separate multiple-episode cohort
