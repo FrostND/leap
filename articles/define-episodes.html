@@ -85,17 +85,18 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Treatment episodes are commonly defined by identifying sufficiently
-long periods of inactivity between longitudinal observations. In
-psychotherapy and behavioral health research, this often involves
-applying an a priori threshold, such as 90 days without a treatment
-session, to distinguish a break in care from ordinary variation in the
-timing of sessions.</p>
-<p><code>leap</code> supports this approach while also providing tools
+<p>When longitudinal health records are collected over months or years,
+distinct treatment episodes are commonly identified based on periods of
+inactivity between observations. This involves specifying a time
+interval long enough to sufficiently distinguish the end of one
+treatment episode from the beginning of another.</p>
+<p><code>leap</code> supports this time-based approach to delimiting
+treatment episodes while providing greater flexibility than simply
+specifying a time delimiter a priori. Specifically, leap provides tools
 for examining the empirical distribution of time between sessions and
 estimating data-informed episode delimiters. This article describes
-several approaches to defining treatment episodes and illustrates how
-alternative delimiters can be evaluated.</p>
+these approaches and demonstrates how alternative delimiters can be
+evaluated and compared.</p>
 </div>
 <div class="section level2">
 <h2 id="predefined-delimiter">Predefined delimiter<a class="anchor" aria-label="anchor" href="#predefined-delimiter"></a>
@@ -138,20 +139,24 @@ lags. <code><a href="../reference/lag_delimiter.html">lag_delimiter()</a></code>
 so, including thresholds based on the standard deviation, interquartile
 range, and empirical quantiles of the observed session gaps.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"sd"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># standard deviation </span></span>
+<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"sd"</span><span class="op">)</span></span>
+<span><span class="co"># interquartile range</span></span>
 <span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span></span>
+<span><span class="co"># quantile </span></span>
 <span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
 <p>These approaches provide simple distribution-based thresholds that
 can be used to examine whether the observed spacing of sessions supports
 alternative definitions of treatment episodes.</p>
 </div>
 <div class="section level2">
-<h2 id="estimate-delimiter">Estimate delimiter<a class="anchor" aria-label="anchor" href="#estimate-delimiter"></a>
+<h2 id="estimated-delimiter">Estimated delimiter<a class="anchor" aria-label="anchor" href="#estimated-delimiter"></a>
 </h2>
 <p><code>leap</code> also provides a mixture-modeling approach for
 estimating an episode delimiter:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"mixture"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># mixture modeling </span></span>
+<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"mixture"</span><span class="op">)</span></span></code></pre></div>
 <p>The mixture-modeling approach, implemented using the
 <code>mclust</code> package <span class="citation">[@scrucca2016]</span>, treats the distribution of
 session lags as arising from distinct underlying components. In the

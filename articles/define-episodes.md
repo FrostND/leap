@@ -2,18 +2,19 @@
 
 ## Overview
 
-Treatment episodes are commonly defined by identifying sufficiently long
-periods of inactivity between longitudinal observations. In
-psychotherapy and behavioral health research, this often involves
-applying an a priori threshold, such as 90 days without a treatment
-session, to distinguish a break in care from ordinary variation in the
-timing of sessions.
+When longitudinal health records are collected over months or years,
+distinct treatment episodes are commonly identified based on periods of
+inactivity between observations. This involves specifying a time
+interval long enough to sufficiently distinguish the end of one
+treatment episode from the beginning of another.
 
-`leap` supports this approach while also providing tools for examining
+`leap` supports this time-based approach to delimiting treatment
+episodes while providing greater flexibility than simply specifying a
+time delimiter a priori. Specifically, leap provides tools for examining
 the empirical distribution of time between sessions and estimating
-data-informed episode delimiters. This article describes several
-approaches to defining treatment episodes and illustrates how
-alternative delimiters can be evaluated.
+data-informed episode delimiters. This article describes these
+approaches and demonstrates how alternative delimiters can be evaluated
+and compared.
 
 ## Predefined delimiter
 
@@ -67,8 +68,11 @@ the observed session gaps.
 
 ``` r
 
+# standard deviation 
 lag_delimiter(data, method = "sd")
+# interquartile range
 lag_delimiter(data, method = "iqr")
+# quantile 
 lag_delimiter(data, method = "quantile")
 ```
 
@@ -76,13 +80,14 @@ These approaches provide simple distribution-based thresholds that can
 be used to examine whether the observed spacing of sessions supports
 alternative definitions of treatment episodes.
 
-## Estimate delimiter
+## Estimated delimiter
 
 `leap` also provides a mixture-modeling approach for estimating an
 episode delimiter:
 
 ``` r
 
+# mixture modeling 
 lag_delimiter(data, method = "mixture")
 ```
 
