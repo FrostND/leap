@@ -142,12 +142,12 @@ each of the missing variables.</p>
 <div class="section level2">
 <h2 id="add-episode-variables">Add episode variables<a class="anchor" aria-label="anchor" href="#add-episode-variables"></a>
 </h2>
-<p>Once the session-level data have been prepared, <code>leap</code> can
-identify distinct treatment episodes and generate the episode-level
-variables required for subsequent analyses.</p>
-<p>Episode variables can be added individually or simultaneously using
-the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. The new variables
-this function creates are</p>
+<p>Once the session-level data have been prepared, the
+<code>add_*()</code> family of functions can be used to generate the
+episode-level variables required for subsequent analyses.</p>
+<p>The episode variables can be added individually or simultaneously
+using the wrapper function <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code>. The new
+variables this function creates are</p>
 <ul>
 <li>
 <code>session_lag</code>: identifies the number of days elapsed
@@ -166,7 +166,7 @@ episodes a client attended</li>
 episode</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># create all episode variables</span></span>
+<code class="sourceCode R"><span><span class="co"># add variables simultaneously </span></span>
 <span><span class="va">episode_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_episode_vars.html">add_episode_vars</a></span><span class="op">(</span><span class="va">raw_df</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level2">

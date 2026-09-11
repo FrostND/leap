@@ -70,12 +70,12 @@ missing variables.
 
 ## Add episode variables
 
-Once the session-level data have been prepared, `leap` can identify
-distinct treatment episodes and generate the episode-level variables
-required for subsequent analyses.
+Once the session-level data have been prepared, the `add_*()` family of
+functions can be used to generate the episode-level variables required
+for subsequent analyses.
 
-Episode variables can be added individually or simultaneously using the
-wrapper function
+The episode variables can be added individually or simultaneously using
+the wrapper function
 [`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md).
 The new variables this function creates are
 
@@ -90,7 +90,7 @@ The new variables this function creates are
 
 ``` r
 
-# create all episode variables
+# add variables simultaneously 
 episode_df <- add_episode_vars(raw_df) 
 ```
 
