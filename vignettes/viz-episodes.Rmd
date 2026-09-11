@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Overview
+# Overview
 
-Longitudinal psychotherapy data can contain multiple distinct episodes of care for the same client. Visualizing these data can help researchers understand when episodes occur, how outcomes change within episodes, and what happens during periods between episodes.
+Visualizing episodes can help researchers understand when episodes occur, how outcomes change within episodes, and what happens during periods between episodes.
 
 `leap` provides plotting functions for several complementary features of multi-episode data:
 
@@ -27,39 +27,29 @@ Longitudinal psychotherapy data can contain multiple distinct episodes of care f
 
 These functions operate at different levels of the treatment record. Some use session-level observations directly, whereas others use episode- or transition-level summaries produced by other `leap` functions.
 
-## Preparing treatment episode data
+```{r, load data, include = FALSE}
 
-Most visualization functions assume that the core treatment episode variables have already been added to the longitudinal data.
+library(ggplot2)
+library(scales)
 
-A typical workflow begins by checking the input data and deriving the episode structure:
+# leap functions
+devtools::load_all()
 
-```{r prepare-data, eval = FALSE}
-check_raw(data)
+# simulated data 
+data("simulation_data", package = "leap") 
 
-episode_data <- add_episode_vars(data)
+# select one dataframe
+episode_data <- simulation_data$unbalanced$clinical$diminishing_resp
+episode_data <- add_episode_vars(data = episode_data)
 
-check_eps(episode_data)
+
 ```
 
-The resulting data contain standardized variables such as:
-
-- `client_id`
-- `session_id`
-- `session_date`
-- `session_lag`
-- `episode_id`
-- `episode_session`
-- `client_episode_id`
-- `n_episodes`
-- `outcome`
-
-These variables provide the structure needed to visualize treatment both within and between episodes.
-
-## Visualizing session lags
+# Plot session lags
 
 Treatment episodes are commonly distinguished by the amount of elapsed time between consecutive sessions. Before selecting an episode delimiter, it can be useful to inspect the empirical distribution of session lags.
 
-```{r lag-density, eval = FALSE}
+```{r, lag-density, warning=FALSE, fig.width=6, fig.height=4, fig.align="center"}
 plot_lag_density(episode_data)
 ```
 
@@ -67,37 +57,15 @@ plot_lag_density(episode_data)
 
 A candidate delimiter can also be displayed directly:
 
-```{r lag-density-delimiter, eval = FALSE}
+```{r, lag-density-delimiter, warning = FALSE, fig.width=6, fig.height=4, fig.align="center"}
 plot_lag_density(episode_data, delimiter = 90)
 ```
 
-Alternatively, a candidate delimiter can be estimated empirically using `lag_delimiter()`:
-
-```{r lag-delimiter, eval = FALSE}
-delimiter <- lag_delimiter(episode_data, method = "iqr")
-
-plot_lag_density(episode_data, delimiter = delimiter)
-```
-
-Several delimiter-estimation approaches are available:
-
-```{r delimiter-methods, eval = FALSE}
-lag_delimiter(episode_data, method = "iqr")
-
-lag_delimiter(episode_data, method = "sd", multiplier = 2)
-
-lag_delimiter(episode_data, method = "quantile", probability = 0.95)
-
-lag_delimiter(episode_data, method = "mixture")
-```
-
-The mixture-modeling approach uses the observed distribution of session lags to identify relatively short- and long-gap components. Regardless of method, estimated delimiters should be treated as data-informed candidate thresholds rather than definitive clinical boundaries between treatment episodes.
-
-## Visualizing trajectories within treatment episodes
+# Plot episode growth curves
 
 Once episodes have been identified, `plot_episode_curves()` provides a direct view of session-level change within successive episodes.
 
-```{r episode-curves, eval = FALSE}
+```{r episode-curves, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
 plot_episode_curves(episode_data)
 ```
 
@@ -107,25 +75,17 @@ For example, the Episode 2 panel contains observations from clients who contribu
 
 The plot is therefore primarily descriptive. Differences between episode-specific trends should not automatically be interpreted as adjusted within-client effects.
 
-The displayed outcome range and clinical reference value can also be modified:
-
-```{r episode-curves-options, eval = FALSE}
-plot_episode_curves(episode_data, outcome_limits = c(0, 20), clinical_cutoff = 8)
-```
-
-The clinical reference line can be omitted when it is not meaningful for the outcome being analyzed:
-
-```{r episode-curves-no-cutoff, eval = FALSE}
+```{r episode-curves-no-cutoff, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
 plot_episode_curves(episode_data, clinical_cutoff = NULL)
 ```
 
 `plot_episode_curves()` is particularly useful during exploratory analysis because it makes several features of the data visible simultaneously, including variability in baseline scores, rates of change, episode length, and the number of clients contributing to successive episodes.
 
-## Visualizing change across treatment episodes
+# Plot episode change scores
 
 Session-level trajectories can also be reduced to episode-level summaries using `episode_slopes()`.
 
-```{r episode-slopes, eval = FALSE}
+```{r episode-slopes, warning = FALSE, fig.width=5, fig.height=4, fig.align="center"}
 episode_summary <- episode_slopes(episode_data, higher_is_better = TRUE)
 ```
 
@@ -139,7 +99,7 @@ The returned data contain one row per client-specific treatment episode and incl
 
 These episode-level summaries can be passed directly to `plot_episode_change()`:
 
-```{r episode-change, eval = FALSE}
+```{r episode-change, warning = FALSE, fig.width=5, fig.height=4, fig.align="center"}
 plot_episode_change(episode_summary)
 ```
 
@@ -147,21 +107,9 @@ The plot displays individual client change scores across successive treatment ep
 
 Positive values represent improvement when the episode summaries were created so that higher values consistently indicate favorable change.
 
-The plot can be restricted to clients who attended multiple episodes:
-
-```{r episode-change-multiple, eval = FALSE}
-plot_episode_change(episode_summary, cohort = "multiple")
-```
-
-The number of episodes displayed can also be restricted:
-
-```{r episode-change-max, eval = FALSE}
-plot_episode_change(episode_summary, cohort = "multiple", max_episodes = 3)
-```
-
 For larger samples, individual trajectories can be hidden to emphasize the episode-level summaries:
 
-```{r episode-change-summary, eval = FALSE}
+```{r episode-change-summary, warning = FALSE, fig.width=5, fig.height=4, fig.align="center"}
 plot_episode_change(episode_summary, show_individuals = FALSE)
 ```
 
@@ -176,13 +124,13 @@ session-level data
 
 `plot_episode_curves()` displays the observed treatment trajectories within episodes, whereas `plot_episode_change()` summarizes how the amount of treatment change varies across episode number.
 
-## Visualizing loss between treatment episodes
+# Plot episode decline
 
 Treatment change can also occur outside active treatment. Clients may leave treatment at one level of functioning and return later with some degree of deterioration.
 
 `episode_breaks()` summarizes these transitions between successive episodes:
 
-```{r episode-breaks, eval = FALSE}
+```{r, episode-breaks, warning = FALSE, fig.width=5, fig.height=4, fig.align="center"}
 breaks <- episode_breaks(episode_data)
 ```
 
@@ -198,27 +146,27 @@ Each row of the resulting data represents the transition from one treatment epis
 
 These data can be visualized using `plot_breaks_loss()`:
 
-```{r breaks-loss, eval = FALSE}
-plot_breaks_loss(breaks)
+```{r, breaks-loss, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
+plot_episode_loss(breaks)
 ```
 
 The plot connects the discharge score from one episode with the intake score at the subsequent episode. This provides a visual representation of the amount of outcome loss occurring between episodes.
 
 When time is displayed, horizontal spacing can reflect the relative amount of time between episodes:
 
-```{r breaks-loss-time, eval = FALSE}
-plot_breaks_loss(breaks, show_time = TRUE)
+```{r, breaks-loss-time, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
+plot_episode_loss(breaks, show_time = TRUE)
 ```
 
 Equal spacing can instead be used when the primary interest is the magnitude of change:
 
-```{r breaks-loss-equal, eval = FALSE}
-plot_breaks_loss(breaks, show_time = FALSE)
+```{r breaks-loss-equal, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
+plot_episode_loss(breaks, show_time = FALSE)
 ```
 
 Because only clients with multiple episodes can contribute between-episode transitions, a separate multiple-episode cohort restriction is not required.
 
-## Summary
+# Summary
 
 The visualization functions in `leap` provide complementary views of repeated treatment episodes:
 
