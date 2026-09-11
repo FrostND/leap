@@ -24,14 +24,14 @@ client’s preceding session meets or exceeds this threshold, the
 subsequent session is assigned to a new episode.
 
 The default can be applied by first calculating the number of days
-between consecutive sessions using add_session_lag() and then assigning
-episode membership with add_episode_id():
+between consecutive sessions using
+[`add_session_lag()`](https://frostnd.github.io/leap/reference/add_session_lag.md)
+and then assigning episode membership with
+[`add_episode_id()`](https://frostnd.github.io/leap/reference/add_episode_id.md):
 
 ``` r
 
-# by default, episodes are distinguished 
-# by 90 days of inactivity
-episode_data <- data |>
+data |>
   add_session_lag() |>
   add_episode_id()
 ```
@@ -43,7 +43,7 @@ example, a 180-day delimiter can be applied as follows:
 
 ``` r
 
-episode_data <- data |>
+data |>
   add_session_lag() |>
   add_episode_id(delimiter = 180)
 ```
@@ -58,20 +58,17 @@ session lags can also be used to inform this decision.
 ## Empirical delimiter
 
 Rather than specifying an episode delimiter a priori, candidate
-thresholds can be estimated from the observed distribution of session
+delimiters can be calculated from the observed distribution of session
 lags.
 [`lag_delimiter()`](https://frostnd.github.io/leap/reference/lag_delimiter.md)
 provides several approaches for doing so, including thresholds based on
 the standard deviation, interquartile range, and empirical quantiles of
-the observed session gaps.
+the observed session lags.
 
 ``` r
 
-# standard deviation 
 lag_delimiter(data, method = "sd")
-# interquartile range
 lag_delimiter(data, method = "iqr")
-# quantile 
 lag_delimiter(data, method = "quantile")
 ```
 
@@ -86,7 +83,6 @@ episode delimiter:
 
 ``` r
 
-# mixture modeling 
 lag_delimiter(data, method = "mixture")
 ```
 

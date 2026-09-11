@@ -107,12 +107,11 @@ treatment episode. By default, leap uses a 90-day delimiter. When the
 time since a client’s preceding session meets or exceeds this threshold,
 the subsequent session is assigned to a new episode.</p>
 <p>The default can be applied by first calculating the number of days
-between consecutive sessions using add_session_lag() and then assigning
-episode membership with add_episode_id():</p>
+between consecutive sessions using <code><a href="../reference/add_session_lag.html">add_session_lag()</a></code> and
+then assigning episode membership with
+<code><a href="../reference/add_episode_id.html">add_episode_id()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># by default, episodes are distinguished </span></span>
-<span><span class="co"># by 90 days of inactivity</span></span>
-<span><span class="va">episode_data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_session_lag.html">add_session_lag</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_episode_id.html">add_episode_id</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Researchers may instead specify a different delimiter when another
@@ -120,7 +119,7 @@ threshold is theoretically or clinically appropriate, or when examining
 the sensitivity of episode definitions to alternative thresholds. For
 example, a 180-day delimiter can be applied as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">episode_data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_session_lag.html">add_session_lag</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_episode_id.html">add_episode_id</a></span><span class="op">(</span>delimiter <span class="op">=</span> <span class="fl">180</span><span class="op">)</span></span></code></pre></div>
 <p>The choice of delimiter determines which gaps in treatment are
@@ -134,16 +133,13 @@ session lags can also be used to inform this decision.</p>
 <h2 id="empirical-delimiter">Empirical delimiter<a class="anchor" aria-label="anchor" href="#empirical-delimiter"></a>
 </h2>
 <p>Rather than specifying an episode delimiter a priori, candidate
-thresholds can be estimated from the observed distribution of session
+delimiters can be calculated from the observed distribution of session
 lags. <code><a href="../reference/lag_delimiter.html">lag_delimiter()</a></code> provides several approaches for doing
 so, including thresholds based on the standard deviation, interquartile
-range, and empirical quantiles of the observed session gaps.</p>
+range, and empirical quantiles of the observed session lags.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># standard deviation </span></span>
-<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"sd"</span><span class="op">)</span></span>
-<span><span class="co"># interquartile range</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"sd"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span></span>
-<span><span class="co"># quantile </span></span>
 <span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></span></code></pre></div>
 <p>These approaches provide simple distribution-based thresholds that
 can be used to examine whether the observed spacing of sessions supports
@@ -155,8 +151,7 @@ alternative definitions of treatment episodes.</p>
 <p><code>leap</code> also provides a mixture-modeling approach for
 estimating an episode delimiter:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># mixture modeling </span></span>
-<span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"mixture"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/lag_delimiter.html">lag_delimiter</a></span><span class="op">(</span><span class="va">data</span>, method <span class="op">=</span> <span class="st">"mixture"</span><span class="op">)</span></span></code></pre></div>
 <p>The mixture-modeling approach, implemented using the
 <code>mclust</code> package <span class="citation">[@scrucca2016]</span>, treats the distribution of
 session lags as arising from distinct underlying components. In the
