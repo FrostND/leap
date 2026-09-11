@@ -94,6 +94,8 @@ The new variables this function creates are
 episode_df <- add_episode_vars(raw_df) 
 ```
 
+## Describe episodes
+
 After all episode variables are added, the
 [`check_eps()`](https://frostnd.github.io/leap/reference/check_eps.md)
 function can be used to check the resulting data structure, including
@@ -115,8 +117,6 @@ Importantly,
 will warns users when some treatment episodes contain too few
 observations to estimate change or when the number of observations may
 result in unreliable estimates.
-
-## Describe episodes
 
 Once episode indicators have been added, each unique episode can be
 summarized using
