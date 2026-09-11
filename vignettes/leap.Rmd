@@ -46,15 +46,15 @@ The output from this initial check identifies the variables already present in t
 
 # Add episode variables
 
-Once the session-level data have been prepared, the `add_*()` family of functions can be used to generate the episode-level variables required for subsequent analyses.
+Once the session-level data have been prepared, the `add_*()` family of functions can be used to generate the variables needed to represent treatment episodes in the data. These variables include:
 
-The episode variables can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
+- **session_lag**: number of days elapsed since the previous session
+- **episode_id**: identifies each distinct treatment episode within a client
+- **episode_session:** identifies the consecutive session number within each treatment episode
+- **n_episodes:** indicates the total number of treatment episodes for each client
+- **client_episode_id:** provides a unique identifier for each client-episode combination
 
-- `session_lag`: identifies the number of days elapsed since last session
-- `episode_id`: identifies each distinct treatment episode for a client
-- `episode_session`: identifies the consecutive session number in each episode
-- `n_episodes`: indicates the total number of treatment episodes a client attended
-- `client_episode_id`: identifies unique client and episode
+These variables can be added individually using their respective `add_*()` functions or created simultaneously using the `add_episode_vars()` wrapper function:
 
 ```{r, adding episode variables}
 # add variables simultaneously 
@@ -63,7 +63,7 @@ episode_df <- add_episode_vars(raw_df)
 
 # Summarize episodes
 
-After all episode variables have been added, it is useful to check and summarize the resulting data before proceeding with subsequent analyses. The `check_episodes()` function provides an overview of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
+After all episode variables have been added, it is useful to check and summarize the resulting data before proceeding. The `check_episodes()` function provides an overview of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
 
 ```{r, check episodes, warning = FALSE}
 check_episodes(episode_df)
@@ -85,7 +85,7 @@ Before fitting statistical models, it is often useful to visually inspect patter
 plot_episode_curves(episode_df)
 ```
 
-Visualizing treatment trajectories can reveal differences in starting levels, treatment duration, rates of change, and variability across successive episodes. Because the clients contributing to each episode number may differ, these plots are primarily descriptive and should not be interpreted as adjusted within-client effects. For additional plotting options see [Visualize Episodes](articles/viz-episodes.html)
+Visualizing treatment trajectories can reveal differences in starting levels, treatment duration, rates of change, and variability across successive episodes. Because the clients contributing to each episode number may differ, these plots are primarily descriptive and should not be interpreted as adjusted within-client effects.
 
 # Model outcomes
 
@@ -99,8 +99,13 @@ mod <- fit_lme(episode_data, cohort = "all", model = "episode")
 
 This approach estimates change within treatment episodes while accounting for the hierarchical structure of sessions nested within episodes and clients.
 
-Alternative functions support slopes-as-outcomes and Bayesian multilevel approaches for examining change within and across episodes. For a detailed discussion of the available models and their interpretation, see [Model Episodes](articles/modeling-episodes.html)
+Alternative functions support slopes-as-outcomes and Bayesian multilevel approaches for examining change within and across episodes. For a detailed discussion of the available models and their interpretation.
 
 # Summary
 
 This article introduced a typical `leap` workflow. The package functions offer considerably more flexibility than can be demonstrated here. For additional options and guidance, consult the function documentation and the subsequent articles.
+
+- [Define Episodes](articles/define-episodes.html)
+- [Visualize Episodes](articles/viz-episodes.html)
+- [Model Episodes](articles/modeling-episodes.html)
+- [Research Foundations](articles/rx-foundations.html)
