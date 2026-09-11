@@ -61,29 +61,27 @@ The episode variables can be added individually or simultaneously using the wrap
 episode_df <- add_episode_vars(raw_df) 
 ```
 
-# Describe episodes
+# Summarize episodes
 
-After all episode variables have been added, it is useful to check and describe the resulting data before proceeding. The `check_episodes()` function provides a summary of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
+After all episode variables have been added, it is useful to check and summarize the resulting data before proceeding with subsequent analyses. The `check_episodes()` function provides an overview of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
 
 ```{r, check episodes, warning = FALSE}
 check_episodes(episode_df)
 ```
 
-Importantly, `check_episodes()` also warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
+Importantly, `check_episodes()` also warns users when treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
 
-Once episode indicators have been added, each unique episode can be summarized using `describe_episodes()` function shown below
+Treatment episodes can be further summarized using the `describe_episodes()` function. Whereas `check_episodes()` focuses primarily on data structure and potential issues, `describe_episodes()` provides descriptive summaries of treatment utilization and the characteristics of each treatment episode represented in the data.
 
 ```{r}
 describe_episodes(episode_df)
 ```
 
-This summary provides an initial description of service utilization and the characteristics of each treatment episode contained in the data.
-
 # Visualize episodes
 
 Before fitting statistical models, it is often useful to visually inspect patterns of change within and across treatment episodes. The `plot_*()` family of functions provides several ways to explore these patterns. For example, `plot_episode_curves()` displays individual client trajectories alongside the average linear pattern within each episode.
 
-```{r, episode-curves, fig.width=7, fig.height=5, out.width="100%", fig.align="center"}
+```{r, episode-curves, fig.width=7, fig.height=4, fig.align="center"}
 plot_episode_curves(episode_df)
 ```
 
