@@ -9,9 +9,9 @@ vignette: >
 
 # Overview
 
-When longitudinal health records are collected over months or years, distinct treatment episodes are commonly identified based on periods of inactivity between observations. This involves specifying a time interval long enough to sufficiently distinguish the end of one treatment episode from the beginning of another.
+When longitudinal health records are collected over months or years, distinct treatment episodes are commonly identified based on periods of inactivity between observations. In practice, this involves specifying a time interval long enough to distinguish the end of one treatment episode from the beginning of another within each client's record.
 
-`leap` supports this time-based approach to delimiting treatment episodes while providing greater flexibility than simply specifying a time delimiter a priori. Specifically, leap provides tools for examining the empirical distribution of time between sessions and estimating data-informed episode delimiters. This article describes these approaches and demonstrates how alternative delimiters can be evaluated and compared.
+`leap` supports this time-based approach while providing greater flexibility than simply specifying a time delimiter a priori. Specifically, `leap` provides tools for examining the empirical distribution of time between sessions and estimating an episode delimiters. This article describes these approaches and demonstrates how alternative delimiters can be evaluated and compared.
 
 # Predefined delimiter
 
