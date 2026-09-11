@@ -94,12 +94,13 @@ The new variables this function creates are
 episode_df <- add_episode_vars(raw_df) 
 ```
 
-## Describe episodes
+## Summarize episodes
 
 After all episode variables have been added, it is useful to check and
-describe the resulting data before proceeding. The
+summarize the resulting data before proceeding with subsequent analyses.
+The
 [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
-function provides a summary of the episode structure and evaluates
+function provides an overview of the episode structure and evaluates
 several potential data issues, including sample size, the number of
 treatment episodes, session and chronological ordering, and missing
 values.
@@ -116,14 +117,18 @@ check_episodes(episode_df)
 
 Importantly,
 [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
-also warns users when some treatment episodes contain too few
-observations to estimate change or when the number of observations may
-result in unreliable estimates.
+also warns users when treatment episodes contain too few observations to
+estimate change or when the number of observations may result in
+unreliable estimates.
 
-Once episode indicators have been added, each unique episode can be
-summarized using
+Treatment episodes can be further summarized using the
 [`describe_episodes()`](https://frostnd.github.io/leap/reference/describe_episodes.md)
-function shown below
+function. Whereas
+[`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
+focuses primarily on data structure and potential issues,
+[`describe_episodes()`](https://frostnd.github.io/leap/reference/describe_episodes.md)
+provides descriptive summaries of treatment utilization and the
+characteristics of each treatment episode represented in the data.
 
 ``` r
 
@@ -138,9 +143,6 @@ describe_episodes(episode_df)
     ## 1         18.52        13.59
     ## 2         30.78        11.87
     ## 3         34.78        12.07
-
-This summary provides an initial description of service utilization and
-the characteristics of each treatment episode contained in the data.
 
 ## Visualize episodes
 
