@@ -46,9 +46,9 @@ The output from this initial check identifies the variables already present in t
 
 # Add episode variables
 
-Once the session-level data have been prepared, `leap` can identify distinct treatment episodes and generate the episode-level variables required for subsequent analyses.
+Once the session-level data have been prepared, the `add_*()` family of functions can be used to generate the episode-level variables required for subsequent analyses.
 
-Episode variables can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
+The episode variables can be added individually or simultaneously using the wrapper function `add_episode_vars()`. The new variables this function creates are
 
 - `session_lag`: identifies the number of days elapsed since last session
 - `episode_id`: identifies each distinct treatment episode for a client
@@ -57,7 +57,7 @@ Episode variables can be added individually or simultaneously using the wrapper 
 - `client_episode_id`: identifies unique client and episode
 
 ```{r, adding episode variables}
-# create all episode variables
+# add variables simultaneously 
 episode_df <- add_episode_vars(raw_df) 
 ```
 
