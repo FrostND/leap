@@ -71,22 +71,23 @@ missing variables.
 ## Add episode variables
 
 Once the session-level data have been prepared, the `add_*()` family of
-functions can be used to generate the episode-level variables required
-for subsequent analyses.
+functions can be used to generate the variables needed to represent
+treatment episodes in the data. These variables include:
 
-The episode variables can be added individually or simultaneously using
-the wrapper function
-[`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md).
-The new variables this function creates are
+- **session_lag**: number of days elapsed since the previous session
+- **episode_id**: identifies each distinct treatment episode within a
+  client
+- **episode_session:** identifies the consecutive session number within
+  each treatment episode
+- **n_episodes:** indicates the total number of treatment episodes for
+  each client
+- **client_episode_id:** provides a unique identifier for each
+  client-episode combination
 
-- `session_lag`: identifies the number of days elapsed since last
-  session
-- `episode_id`: identifies each distinct treatment episode for a client
-- `episode_session`: identifies the consecutive session number in each
-  episode
-- `n_episodes`: indicates the total number of treatment episodes a
-  client attended
-- `client_episode_id`: identifies unique client and episode
+These variables can be added individually using their respective
+`add_*()` functions or created simultaneously using the
+[`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md)
+wrapper function:
 
 ``` r
 
@@ -97,8 +98,7 @@ episode_df <- add_episode_vars(raw_df)
 ## Summarize episodes
 
 After all episode variables have been added, it is useful to check and
-summarize the resulting data before proceeding with subsequent analyses.
-The
+summarize the resulting data before proceeding. The
 [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
 function provides an overview of the episode structure and evaluates
 several potential data issues, including sample size, the number of
@@ -165,9 +165,7 @@ Visualizing treatment trajectories can reveal differences in starting
 levels, treatment duration, rates of change, and variability across
 successive episodes. Because the clients contributing to each episode
 number may differ, these plots are primarily descriptive and should not
-be interpreted as adjusted within-client effects. For additional
-plotting options see [Visualize
-Episodes](https://frostnd.github.io/leap/articles/articles/viz-episodes.md)
+be interpreted as adjusted within-client effects.
 
 ## Model outcomes
 
@@ -190,9 +188,7 @@ episodes and clients.
 
 Alternative functions support slopes-as-outcomes and Bayesian multilevel
 approaches for examining change within and across episodes. For a
-detailed discussion of the available models and their interpretation,
-see [Model
-Episodes](https://frostnd.github.io/leap/articles/articles/modeling-episodes.md)
+detailed discussion of the available models and their interpretation.
 
 ## Summary
 
@@ -200,3 +196,12 @@ This article introduced a typical `leap` workflow. The package functions
 offer considerably more flexibility than can be demonstrated here. For
 additional options and guidance, consult the function documentation and
 the subsequent articles.
+
+- [Define
+  Episodes](https://frostnd.github.io/leap/articles/articles/define-episodes.md)
+- [Visualize
+  Episodes](https://frostnd.github.io/leap/articles/articles/viz-episodes.md)
+- [Model
+  Episodes](https://frostnd.github.io/leap/articles/articles/modeling-episodes.md)
+- [Research
+  Foundations](https://frostnd.github.io/leap/articles/articles/rx-foundations.md)
