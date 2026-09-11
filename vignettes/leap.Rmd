@@ -61,6 +61,8 @@ Episode indicators can be added individually or simultaneously using the wrapper
 episode_df <- add_episode_vars(raw_df) 
 ```
 
+# Describe episodes
+
 After all episode variables are added, the `check_eps()` function can be used to check the resulting data structure, including appropriate sessions order, missing values and more.
 
 ```{r, check episode variables, warning = FALSE}
@@ -69,8 +71,6 @@ check_eps(episode_df)
 ```
 
 Importantly, `check_eps()` will warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
-
-# Describe episodes
 
 Once episode indicators have been added, each unique episode can be summarized using `describe_episodes()` function shown below
 
