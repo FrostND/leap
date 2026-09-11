@@ -17,12 +17,10 @@ When longitudinal health records are collected over months or years, distinct tr
 
 The simplest approach is to specify an a priori amount of time between consecutive sessions that constitutes the beginning of a new treatment episode. By default, leap uses a 90-day delimiter. When the time since a client's preceding session meets or exceeds this threshold, the subsequent session is assigned to a new episode.
 
-The default can be applied by first calculating the number of days between consecutive sessions using add_session_lag() and then assigning episode membership with add_episode_id():
+The default can be applied by first calculating the number of days between consecutive sessions using `add_session_lag()` and then assigning episode membership with `add_episode_id()`:
 
 ```{r, default lag, eval = FALSE}
-# by default, episodes are distinguished 
-# by 90 days of inactivity
-episode_data <- data |>
+data |>
   add_session_lag() |>
   add_episode_id()
 ```
@@ -30,7 +28,7 @@ episode_data <- data |>
 Researchers may instead specify a different delimiter when another threshold is theoretically or clinically appropriate, or when examining the sensitivity of episode definitions to alternative thresholds. For example, a 180-day delimiter can be applied as follows:
 
 ```{r bigger lag, eval = FALSE}
-episode_data <- data |>
+data |>
   add_session_lag() |>
   add_episode_id(delimiter = 180)
 ```
@@ -39,14 +37,11 @@ The choice of delimiter determines which gaps in treatment are interpreted as br
 
 # Empirical delimiter
 
-Rather than specifying an episode delimiter a priori, candidate thresholds can be estimated from the observed distribution of session lags. `lag_delimiter()` provides several approaches for doing so, including thresholds based on the standard deviation, interquartile range, and empirical quantiles of the observed session gaps.
+Rather than specifying an episode delimiter a priori, candidate delimiters can be calculated from the observed distribution of session lags. `lag_delimiter()` provides several approaches for doing so, including thresholds based on the standard deviation, interquartile range, and empirical quantiles of the observed session lags.
 
 ```{r delimiter, eval = FALSE}
-# standard deviation 
 lag_delimiter(data, method = "sd")
-# interquartile range
 lag_delimiter(data, method = "iqr")
-# quantile 
 lag_delimiter(data, method = "quantile")
 ```
 
@@ -57,7 +52,6 @@ These approaches provide simple distribution-based thresholds that can be used t
 `leap` also provides a mixture-modeling approach for estimating an episode delimiter:
 
 ```{r, estimated delimiters, eval = FALSE}
-# mixture modeling 
 lag_delimiter(data, method = "mixture")
 ```
 
