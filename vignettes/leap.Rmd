@@ -66,11 +66,10 @@ episode_df <- add_episode_vars(raw_df)
 After all episode variables have been added, it is useful to check and describe the resulting data before proceeding. The `check_episodes()` function provides a summary of the episode structure and evaluates several potential data issues, including sample size, the number of treatment episodes, session and chronological ordering, and missing values.
 
 ```{r, check episodes, warning = FALSE}
-# check episode structure 
-check_eps(episode_df)
+check_episodes(episode_df)
 ```
 
-Importantly, `check_eps()` also warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
+Importantly, `check_episodes()` also warns users when some treatment episodes contain too few observations to estimate change or when the number of observations may result in unreliable estimates.
 
 Once episode indicators have been added, each unique episode can be summarized using `describe_episodes()` function shown below
 
