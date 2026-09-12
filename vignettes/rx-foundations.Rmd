@@ -7,6 +7,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+# Overview
+
 Below is a selected bibliography of research relevant to defining and analyzing treatment episodes in longitudinal behavioral health data. The literature is organized around two related methodological issues: how distinct episodes of care have been identified in longitudinal treatment records and how treatment outcomes have been analyzed when individuals contribute repeated episodes of care.
 
 ## Time-based episode definitions

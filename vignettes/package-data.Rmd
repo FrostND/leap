@@ -9,13 +9,13 @@ vignette: >
 
 # Overview
 
-leap is designed for longitudinal treatment data in which individuals contribute repeated observations over time. In psychotherapy and other behavioral health settings, these observations typically correspond to treatment sessions. This article describes the hierarchical structure of longitudinal psychotherapy data and introduces the example datasets included with leap.
+`leap` is designed for longitudinal treatment data in which individuals contribute repeated observations over time. In psychotherapy and other behavioral health settings, these observations typically correspond to treatment sessions. This article describes the hierarchical structure of longitudinal psychotherapy data and introduces the example datasets included with `leap`.
+
+# Longitudinal data
 
 When treatment occurs across multiple periods of care, `leap` can be used to identify distinct treatment episodes. This adds an additional level to the data structure: **sessions occur within treatment episodes, and treatment episodes occur within clients**.
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
-
-# Longitudinal data structure
 
 The starting point for `leap` is session-level longitudinal data, where each row represents a treatment session for a client. At minimum, the data should contain information identifying the client, session, session date, and outcome of interest.
 
@@ -33,7 +33,7 @@ The resulting data can therefore be viewed as having three levels:
 
 This structure becomes particularly important when fitting statistical models because sessions from the same episode and episodes from the same client are related rather than independent observations.
 
-# Simulated data
+# Package data
 
 `leap` includes simulated longitudinal psychotherapy data for demonstrating package functions and illustrating common features of real-world treatment records. The simulated data vary along two dimensions: **design** and **scenario type**.
 
@@ -54,3 +54,7 @@ Within each design, `leap` provides simulations representing different sources a
 **Clinical scenarios** represent systematic patterns of treatment and reengagement across episodes, such as recurrence, efficient return to treatment, persistent difficulty, and diminishing response.
 
 Together, these simulated data provide controlled examples for demonstrating how `leap` functions behave across different longitudinal data structures and patterns of change.
+
+# Summary
+
+Readers interested in learning more about longitudinal data analysis of psychotherapy can find guides in the [Research Foundations](articles/rx-foundations.html) article.
