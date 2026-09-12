@@ -85,19 +85,20 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>A typical <code>leap</code> workflow progresses from preparing the
-raw data to identifying, describing, visualizing, and modeling repeated
-episodes of treatment.</p>
+<p>This article introduces a typical <code>leap</code> workflow,
+progressing from preparing raw data to identifying, describing,
+visualizing, and modeling repeated episodes of treatment.</p>
 </div>
 <div class="section level2">
 <h2 id="prepare-data">Prepare data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
 </h2>
-<p><code>leap</code> works with person-period longitudinal data, where
-each row represents a treatment session for a client. At minimum, the
-raw data should include variables identifying the <code>client</code>,
-<code>session</code>, <code>session date</code>, and the
-<code>outcome</code> of interest measured at each session.</p>
-<p>The example below illustrates how the data can look:</p>
+<p><code>leap</code> works with longitudinal data frames, in which each
+row represents a treatment session for one client. At minimum, the raw
+data should include a core set of variables identifying the client,
+session, session date, along with one or more outcomes measured during
+treatment.</p>
+<p>The example below uses simulated data included with <code>leap</code>
+to illustrate the expected data structure:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">raw_df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   client_id session_id session_date  outcome</span></span>
@@ -137,33 +138,27 @@ identify treatment episodes:</p>
 <p>The output from this initial check identifies the variables already
 present in the data, the episode-related variables that still need to be
 created, and the corresponding <code>add_*()</code> function to create
-each of the missing variables.</p>
+the new variable.</p>
 </div>
 <div class="section level2">
-<h2 id="add-episode-variables">Add episode variables<a class="anchor" aria-label="anchor" href="#add-episode-variables"></a>
+<h2 id="add-variables">Add variables<a class="anchor" aria-label="anchor" href="#add-variables"></a>
 </h2>
 <p>Once the session-level data have been prepared, the
 <code>add_*()</code> family of functions can be used to generate the
 variables needed to represent treatment episodes in the data. These
-variables include:</p>
+additional variables are:</p>
 <ul>
-<li>
-<strong>session_lag</strong>: number of days elapsed since the
-previous session</li>
-<li>
-<strong>episode_id</strong>: identifies each distinct treatment
-episode within a client</li>
-<li>
-<strong>episode_session:</strong> identifies the consecutive session
-number within each treatment episode</li>
-<li>
-<strong>n_episodes:</strong> indicates the total number of treatment
-episodes for each client</li>
-<li>
-<strong>client_episode_id:</strong> provides a unique identifier for
-each client-episode combination</li>
+<li>session_lag: number of days elapsed since the previous session</li>
+<li>episode_id: identifies each distinct treatment episode within a
+client</li>
+<li>episode_session: identifies the consecutive session number within
+each treatment episode</li>
+<li>n_episodes: indicates the total number of treatment episodes for
+each client</li>
+<li>client_episode_id: provides a unique identifier for each
+client-episode combination</li>
 </ul>
-<p>These variables can be added individually using their respective
+<p>Each variable can be added individually using their respective
 <code>add_*()</code> functions or created simultaneously using the
 <code><a href="../reference/add_episode_vars.html">add_episode_vars()</a></code> wrapper function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -173,12 +168,12 @@ each client-episode combination</li>
 <div class="section level2">
 <h2 id="summarize-episodes">Summarize episodes<a class="anchor" aria-label="anchor" href="#summarize-episodes"></a>
 </h2>
-<p>After all episode variables have been added, it is useful to check
-and summarize the resulting data before proceeding. The
-<code><a href="../reference/check_episodes.html">check_episodes()</a></code> function provides an overview of the
-episode structure and evaluates several potential data issues, including
-sample size, the number of treatment episodes, session and chronological
-ordering, and missing values.</p>
+<p>After all episode variables have been added, it is useful to examine
+the resulting data before proceeding. The <code><a href="../reference/check_episodes.html">check_episodes()</a></code>
+function provides an overview of the episode structure and evaluates
+several potential data issues, including total number of observations,
+unique clients, unique treatment episodes, the number of treatment
+episodes, session and chronological ordering, and missing values.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/check_episodes.html">check_episodes</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    obs clients episodes na_total na_outcomes na_dates correctly_ordered</span></span>
@@ -192,7 +187,7 @@ when the number of observations may result in unreliable estimates.</p>
 <code><a href="../reference/describe_episodes.html">describe_episodes()</a></code> function. Whereas
 <code><a href="../reference/check_episodes.html">check_episodes()</a></code> focuses primarily on data structure and
 potential issues, <code><a href="../reference/describe_episodes.html">describe_episodes()</a></code> provides descriptive
-summaries of treatment utilization and the characteristics of each
+summaries of service utilization and the characteristics of each
 treatment episode represented in the data.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe_episodes.html">describe_episodes</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
@@ -212,16 +207,16 @@ treatment episode represented in the data.</p>
 inspect patterns of change within and across treatment episodes. The
 <code>plot_*()</code> family of functions provides several ways to
 explore these patterns. For example, <code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code>
-displays individual client trajectories alongside the average linear
-pattern within each episode.</p>
+displays individual client growth curves alongside the average linear
+growth curve within each episode.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_curves.html">plot_episode_curves</a></span><span class="op">(</span><span class="va">episode_df</span><span class="op">)</span></span></code></pre></div>
 <p><img src="leap_files/figure-html/episode-curves-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
-<p>Visualizing treatment trajectories can reveal differences in starting
-levels, treatment duration, rates of change, and variability across
-successive episodes. Because the clients contributing to each episode
-number may differ, these plots are primarily descriptive and should not
-be interpreted as adjusted within-client effects.</p>
+<p>Visualizing each episode growth curve can reveal differences in
+starting levels, episode duration, rates of change, and variability
+between different episodes. Because the clients contributing to each
+episode number may differ, these plots are primarily descriptive and
+should not be interpreted as adjusted within-client effects.</p>
 </div>
 <div class="section level2">
 <h2 id="model-outcomes">Model outcomes<a class="anchor" aria-label="anchor" href="#model-outcomes"></a>
@@ -240,7 +235,8 @@ episodes and clients.</p>
 <p>Alternative functions support slopes-as-outcomes and Bayesian
 multilevel approaches for examining change within and across episodes.
 For a detailed discussion of the available models and their
-interpretation.</p>
+interpretation see <a href="articles/modeling-episodes.html">Model
+Episodes</a> article.</p>
 </div>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>

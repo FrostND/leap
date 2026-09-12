@@ -2,18 +2,19 @@
 
 ## Overview
 
-A typical `leap` workflow progresses from preparing the raw data to
-identifying, describing, visualizing, and modeling repeated episodes of
-treatment.
+This article introduces a typical `leap` workflow, progressing from
+preparing raw data to identifying, describing, visualizing, and modeling
+repeated episodes of treatment.
 
 ## Prepare data
 
-`leap` works with person-period longitudinal data, where each row
-represents a treatment session for a client. At minimum, the raw data
-should include variables identifying the `client`, `session`,
-`session date`, and the `outcome` of interest measured at each session.
+`leap` works with longitudinal data frames, in which each row represents
+a treatment session for one client. At minimum, the raw data should
+include a core set of variables identifying the client, session, session
+date, along with one or more outcomes measured during treatment.
 
-The example below illustrates how the data can look:
+The example below uses simulated data included with `leap` to illustrate
+the expected data structure:
 
 ``` r
 
@@ -65,27 +66,26 @@ check_raw(raw_df)
 
 The output from this initial check identifies the variables already
 present in the data, the episode-related variables that still need to be
-created, and the corresponding `add_*()` function to create each of the
-missing variables.
+created, and the corresponding `add_*()` function to create the new
+variable.
 
-## Add episode variables
+## Add variables
 
 Once the session-level data have been prepared, the `add_*()` family of
 functions can be used to generate the variables needed to represent
-treatment episodes in the data. These variables include:
+treatment episodes in the data. These additional variables are:
 
-- **session_lag**: number of days elapsed since the previous session
-- **episode_id**: identifies each distinct treatment episode within a
+- session_lag: number of days elapsed since the previous session
+- episode_id: identifies each distinct treatment episode within a client
+- episode_session: identifies the consecutive session number within each
+  treatment episode
+- n_episodes: indicates the total number of treatment episodes for each
   client
-- **episode_session:** identifies the consecutive session number within
-  each treatment episode
-- **n_episodes:** indicates the total number of treatment episodes for
-  each client
-- **client_episode_id:** provides a unique identifier for each
+- client_episode_id: provides a unique identifier for each
   client-episode combination
 
-These variables can be added individually using their respective
-`add_*()` functions or created simultaneously using the
+Each variable can be added individually using their respective `add_*()`
+functions or created simultaneously using the
 [`add_episode_vars()`](https://frostnd.github.io/leap/reference/add_episode_vars.md)
 wrapper function:
 
@@ -97,13 +97,13 @@ episode_df <- add_episode_vars(raw_df)
 
 ## Summarize episodes
 
-After all episode variables have been added, it is useful to check and
-summarize the resulting data before proceeding. The
+After all episode variables have been added, it is useful to examine the
+resulting data before proceeding. The
 [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
 function provides an overview of the episode structure and evaluates
-several potential data issues, including sample size, the number of
-treatment episodes, session and chronological ordering, and missing
-values.
+several potential data issues, including total number of observations,
+unique clients, unique treatment episodes, the number of treatment
+episodes, session and chronological ordering, and missing values.
 
 ``` r
 
@@ -127,7 +127,7 @@ function. Whereas
 [`check_episodes()`](https://frostnd.github.io/leap/reference/check_episodes.md)
 focuses primarily on data structure and potential issues,
 [`describe_episodes()`](https://frostnd.github.io/leap/reference/describe_episodes.md)
-provides descriptive summaries of treatment utilization and the
+provides descriptive summaries of service utilization and the
 characteristics of each treatment episode represented in the data.
 
 ``` r
@@ -151,8 +151,8 @@ inspect patterns of change within and across treatment episodes. The
 `plot_*()` family of functions provides several ways to explore these
 patterns. For example,
 [`plot_episode_curves()`](https://frostnd.github.io/leap/reference/plot_episode_curves.md)
-displays individual client trajectories alongside the average linear
-pattern within each episode.
+displays individual client growth curves alongside the average linear
+growth curve within each episode.
 
 ``` r
 
@@ -161,9 +161,9 @@ plot_episode_curves(episode_df)
 
 ![](leap_files/figure-html/episode-curves-1.png)
 
-Visualizing treatment trajectories can reveal differences in starting
-levels, treatment duration, rates of change, and variability across
-successive episodes. Because the clients contributing to each episode
+Visualizing each episode growth curve can reveal differences in starting
+levels, episode duration, rates of change, and variability between
+different episodes. Because the clients contributing to each episode
 number may differ, these plots are primarily descriptive and should not
 be interpreted as adjusted within-client effects.
 
@@ -188,7 +188,10 @@ episodes and clients.
 
 Alternative functions support slopes-as-outcomes and Bayesian multilevel
 approaches for examining change within and across episodes. For a
-detailed discussion of the available models and their interpretation.
+detailed discussion of the available models and their interpretation see
+[Model
+Episodes](https://frostnd.github.io/leap/articles/articles/modeling-episodes.md)
+article.
 
 ## Summary
 
