@@ -1,5 +1,7 @@
 # Research Foundations
 
+## Overview
+
 Below is a selected bibliography of research relevant to defining and
 analyzing treatment episodes in longitudinal behavioral health data. The
 literature is organized around two related methodological issues: how
@@ -7,7 +9,7 @@ distinct episodes of care have been identified in longitudinal treatment
 records and how treatment outcomes have been analyzed when individuals
 contribute repeated episodes of care.
 
-## Time-based episode definitions
+### Time-based episode definitions
 
 A large number of intervention studies have used the time between
 treatment contacts to distinguish separate episodes of behavioral health
@@ -76,7 +78,7 @@ between sessions as evidence of distinct treatment episodes.
     minority clients: First, the good news. *Journal of Counseling
     Psychology*, *63*(3), 261–268. <https://doi.org/10.1037/cou0000098>
 
-## Analysis of Repeated Episodes
+### Analysis of Repeated Episodes
 
 A separate body of research has examined clients who engage in more than
 one episode of treatment. Definitions of an episode vary considerably

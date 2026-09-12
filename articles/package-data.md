@@ -2,12 +2,14 @@
 
 ## Overview
 
-leap is designed for longitudinal treatment data in which individuals
+`leap` is designed for longitudinal treatment data in which individuals
 contribute repeated observations over time. In psychotherapy and other
 behavioral health settings, these observations typically correspond to
 treatment sessions. This article describes the hierarchical structure of
 longitudinal psychotherapy data and introduces the example datasets
-included with leap.
+included with `leap`.
+
+## Longitudinal data
 
 When treatment occurs across multiple periods of care, `leap` can be
 used to identify distinct treatment episodes. This adds an additional
@@ -19,8 +21,6 @@ clients.](images/eps_nesting.png)
 
 Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.
-
-## Longitudinal data structure
 
 The starting point for `leap` is session-level longitudinal data, where
 each row represents a treatment session for a client. At minimum, the
@@ -53,7 +53,7 @@ This structure becomes particularly important when fitting statistical
 models because sessions from the same episode and episodes from the same
 client are related rather than independent observations.
 
-## Simulated data
+## Package data
 
 `leap` includes simulated longitudinal psychotherapy data for
 demonstrating package functions and illustrating common features of
@@ -92,3 +92,10 @@ treatment, persistent difficulty, and diminishing response.
 Together, these simulated data provide controlled examples for
 demonstrating how `leap` functions behave across different longitudinal
 data structures and patterns of change.
+
+## Summary
+
+Readers interested in learning more about longitudinal data analysis of
+psychotherapy can find guides in the [Research
+Foundations](https://frostnd.github.io/leap/articles/articles/rx-foundations.md)
+article.
