@@ -2,11 +2,12 @@
 
 ## Overview
 
-`leap` is designed for longitudinal treatment data in which individuals
+leap is designed for longitudinal treatment data in which individuals
 contribute repeated observations over time. In psychotherapy and other
-behavioral health settings, these observations typically represent
-treatment sessions. Clients may attend different numbers of sessions,
-and the time between sessions may vary considerably.
+behavioral health settings, these observations typically correspond to
+treatment sessions. This article describes the hierarchical structure of
+longitudinal psychotherapy data and introduces the example datasets
+included with leap.
 
 When treatment occurs across multiple periods of care, `leap` can be
 used to identify distinct treatment episodes. This adds an additional
