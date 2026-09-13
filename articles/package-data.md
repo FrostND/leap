@@ -41,12 +41,6 @@ clients.](images/eps_nesting.png)
 Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.
 
-This structure is especially important when fitting statistical models
-because sessions from the same episode—and episodes from the same
-client—are related rather than independent. Multilevel modeling methods
-can represent these dependencies and partition variability across the
-session, episode, and client levels.
-
 ## Package data
 
 `leap` includes simulated longitudinal psychotherapy data that exhibit
