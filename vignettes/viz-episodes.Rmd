@@ -21,7 +21,7 @@ Visualizing episodes can help researchers understand when episodes occur, how ou
 `leap` provides plotting functions for several complementary features of multi-episode data:
 
 - `plot_lag_density()` visualizes the distribution of time between consecutive sessions.
-- `plot_episode_curves()` displays session-level outcome trajectories within successive treatment episodes.
+- `plot_episode_curves()` displays episode growth curves
 - `plot_episode_change()` summarizes treatment change across episode number.
 - `plot_breaks_loss()` visualizes outcome loss between consecutive treatment episodes.
 
@@ -147,7 +147,7 @@ Each row of the resulting data represents the transition from one treatment epis
 These data can be visualized using `plot_breaks_loss()`:
 
 ```{r, breaks-loss, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
-plot_episode_loss(breaks)
+plot_episode_loss(breaks, show_time = FALSE)
 ```
 
 The plot connects the discharge score from one episode with the intake score at the subsequent episode. This provides a visual representation of the amount of outcome loss occurring between episodes.
@@ -156,12 +156,6 @@ When time is displayed, horizontal spacing can reflect the relative amount of ti
 
 ```{r, breaks-loss-time, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
 plot_episode_loss(breaks, show_time = TRUE)
-```
-
-Equal spacing can instead be used when the primary interest is the magnitude of change:
-
-```{r breaks-loss-equal, warning = FALSE, fig.width=7, fig.height=4, fig.align="center"}
-plot_episode_loss(breaks, show_time = FALSE)
 ```
 
 Because only clients with multiple episodes can contribute between-episode transitions, a separate multiple-episode cohort restriction is not required.

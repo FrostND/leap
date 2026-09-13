@@ -9,29 +9,23 @@ vignette: >
 
 # Overview
 
-`leap` is designed for longitudinal treatment data in which individuals contribute repeated observations over time. In psychotherapy and other behavioral health settings, these observations typically correspond to treatment sessions. This article describes the hierarchical structure of longitudinal psychotherapy data and introduces the example datasets included with `leap`.
+`leap` is designed for longitudinal treatment data in which individuals contribute repeated observations over time. In psychotherapy and other behavioral health interventions, these observations typically correspond to treatment sessions. This article describes the hierarchical structure of longitudinal psychotherapy data and introduces the example datasets included with `leap`.
 
 # Longitudinal data
 
-When treatment occurs across multiple periods of care, `leap` can be used to identify distinct treatment episodes. This adds an additional level to the data structure: **sessions occur within treatment episodes, and treatment episodes occur within clients**.
+Longitudinal psychotherapy data are inherently hierarchical, or *nested*, because individuals contribute multiple observations over time. This structure has important statistical implications: observations from the same individual are likely to be correlated, violating the independence assumption of many classical statistical models. Appropriate analytic methods must therefore account for variability both within and between individuals.
+
+A central premise of `leap` and the episode-oriented workflow is that longitudinal data may contain an additional level of nesting when individuals participate in multiple episodes of treatment. This structure is particularly likely in large-scale health outcome datasets, including electronic health records and other archival data sources. In these data, sessions are nested within treatment episodes, which are themselves nested within clients.
+
+The resulting data can therefore be understood as having three levels:
+
+- **Session**: An individual treatment visit or observation.
+- **Episode**: A distinct period of treatment comprising one or more sessions.
+- **Client**: An individual who may contribute one or more treatment episodes.
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
 
-The starting point for `leap` is session-level longitudinal data, where each row represents a treatment session for a client. At minimum, the data should contain information identifying the client, session, session date, and outcome of interest.
-
-Importantly, longitudinal treatment records do not need to be balanced. Clients may contribute different numbers of sessions and treatment episodes, and the spacing between sessions may vary over time. These features are common in naturalistic treatment records and are accommodated by `leap`.
-
-When episode variables are added, each session is linked to both the treatment episode in which it occurred and the client who received treatment. This structure allows `leap` to distinguish change occurring within a treatment episode from patterns that occur across repeated episodes of care.
-
-The resulting data can therefore be viewed as having three levels:
-
-- **Session:** an individual treatment visit or observation
-
-- **Episode:** a distinct period of treatment containing one or more sessions
-
-- **Client:** an individual who may contribute one or more treatment episodes
-
-This structure becomes particularly important when fitting statistical models because sessions from the same episode and episodes from the same client are related rather than independent observations.
+This structure is especially important when fitting statistical models because sessions from the same episode—and episodes from the same client—are related rather than independent. Multilevel modeling methods can represent these dependencies and partition variability across the session, episode, and client levels.
 
 # Package data
 
