@@ -12,8 +12,7 @@ multi-episode data:
 - [`plot_lag_density()`](https://frostnd.github.io/leap/reference/plot_lag_density.md)
   visualizes the distribution of time between consecutive sessions.
 - [`plot_episode_curves()`](https://frostnd.github.io/leap/reference/plot_episode_curves.md)
-  displays session-level outcome trajectories within successive
-  treatment episodes.
+  displays episode growth curves
 - [`plot_episode_change()`](https://frostnd.github.io/leap/reference/plot_episode_change.md)
   summarizes treatment change across episode number.
 - `plot_breaks_loss()` visualizes outcome loss between consecutive
@@ -188,7 +187,7 @@ These data can be visualized using `plot_breaks_loss()`:
 
 ``` r
 
-plot_episode_loss(breaks)
+plot_episode_loss(breaks, show_time = FALSE)
 ```
 
 ![](viz-episodes_files/figure-html/breaks-loss-1.png)
@@ -206,16 +205,6 @@ plot_episode_loss(breaks, show_time = TRUE)
 ```
 
 ![](viz-episodes_files/figure-html/breaks-loss-time-1.png)
-
-Equal spacing can instead be used when the primary interest is the
-magnitude of change:
-
-``` r
-
-plot_episode_loss(breaks, show_time = FALSE)
-```
-
-![](viz-episodes_files/figure-html/breaks-loss-equal-1.png)
 
 Because only clients with multiple episodes can contribute
 between-episode transitions, a separate multiple-episode cohort

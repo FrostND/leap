@@ -95,8 +95,8 @@ complementary features of multi-episode data:</p>
 <code><a href="../reference/plot_lag_density.html">plot_lag_density()</a></code> visualizes the distribution of time
 between consecutive sessions.</li>
 <li>
-<code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code> displays session-level outcome
-trajectories within successive treatment episodes.</li>
+<code><a href="../reference/plot_episode_curves.html">plot_episode_curves()</a></code> displays episode growth
+curves</li>
 <li>
 <code><a href="../reference/plot_episode_change.html">plot_episode_change()</a></code> summarizes treatment change
 across episode number.</li>
@@ -224,7 +224,7 @@ as:</p>
 <p>These data can be visualized using
 <code>plot_breaks_loss()</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="viz-episodes_files/figure-html/breaks-loss-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>The plot connects the discharge score from one episode with the
 intake score at the subsequent episode. This provides a visual
@@ -235,11 +235,6 @@ amount of time between episodes:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="viz-episodes_files/figure-html/breaks-loss-time-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
-<p>Equal spacing can instead be used when the primary interest is the
-magnitude of change:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_episode_loss.html">plot_episode_loss</a></span><span class="op">(</span><span class="va">breaks</span>, show_time <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="viz-episodes_files/figure-html/breaks-loss-equal-1.png" class="r-plt" alt="" width="672" style="display: block; margin: auto;"></p>
 <p>Because only clients with multiple episodes can contribute
 between-episode transitions, a separate multiple-episode cohort
 restriction is not required.</p>
