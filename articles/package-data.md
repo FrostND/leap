@@ -2,12 +2,9 @@
 
 ## Overview
 
-`leap` is designed for longitudinal treatment data in which individuals
-contribute repeated observations over time. In psychotherapy and other
-behavioral health interventions, these observations typically correspond
-to treatment sessions. This article describes the hierarchical structure
-of longitudinal psychotherapy data and introduces the example datasets
-included with the `leap` package.
+This article describes the hierarchical structure of longitudinal
+psychotherapy data and introduces the example datasets included with the
+`leap` package.
 
 ## Longitudinal data
 
@@ -44,8 +41,11 @@ clients.
 ## Package data
 
 `leap` includes simulated longitudinal psychotherapy data that exhibit
-common features of real-world treatment records. The simulated data vary
-along two dimensions: **design** and **scenario type**.
+common features of real-world treatment records and the nested structure
+from Figure 1.
+
+The simulated data vary along two key dimensions: **design** and
+**scenario type**.
 
 ### Design: balanced and unbalanced
 
