@@ -7,7 +7,7 @@ contribute repeated observations over time. In psychotherapy and other
 behavioral health interventions, these observations typically correspond
 to treatment sessions. This article describes the hierarchical structure
 of longitudinal psychotherapy data and introduces the example datasets
-included with `leap`.
+included with the `leap` package.
 
 ## Longitudinal data
 
@@ -49,10 +49,9 @@ session, episode, and client levels.
 
 ## Package data
 
-`leap` includes simulated longitudinal psychotherapy data for
-demonstrating package functions and illustrating common features of
-real-world treatment records. The simulated data vary along two
-dimensions: **design** and **scenario type**.
+`leap` includes simulated longitudinal psychotherapy data that exhibit
+common features of real-world treatment records. The simulated data vary
+along two dimensions: **design** and **scenario type**.
 
 ### Design: balanced and unbalanced
 
@@ -61,8 +60,9 @@ designs.
 
 In the **balanced design**, clients contribute the same number of
 treatment episodes and the same number of sessions within each episode.
-This provides a simplified data structure that is useful for
-demonstrating and evaluating statistical methods.
+This provides a simplified data structure that is useful for comparing
+and evaluating the performance of different statistical modeling
+approaches.
 
 In the **unbalanced design**, clients may contribute different numbers
 of sessions and episodes of care. This structure more closely resembles

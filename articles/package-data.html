@@ -90,7 +90,8 @@ which individuals contribute repeated observations over time. In
 psychotherapy and other behavioral health interventions, these
 observations typically correspond to treatment sessions. This article
 describes the hierarchical structure of longitudinal psychotherapy data
-and introduces the example datasets included with <code>leap</code>.</p>
+and introduces the example datasets included with the <code>leap</code>
+package.</p>
 </div>
 <div class="section level2">
 <h2 id="longitudinal-data">Longitudinal data<a class="anchor" aria-label="anchor" href="#longitudinal-data"></a>
@@ -136,10 +137,9 @@ session, episode, and client levels.</p>
 <h2 id="package-data">Package data<a class="anchor" aria-label="anchor" href="#package-data"></a>
 </h2>
 <p><code>leap</code> includes simulated longitudinal psychotherapy data
-for demonstrating package functions and illustrating common features of
-real-world treatment records. The simulated data vary along two
-dimensions: <strong>design</strong> and <strong>scenario
-type</strong>.</p>
+that exhibit common features of real-world treatment records. The
+simulated data vary along two dimensions: <strong>design</strong> and
+<strong>scenario type</strong>.</p>
 <div class="section level3">
 <h3 id="design-balanced-and-unbalanced">Design: balanced and unbalanced<a class="anchor" aria-label="anchor" href="#design-balanced-and-unbalanced"></a>
 </h3>
@@ -148,7 +148,8 @@ designs.</p>
 <p>In the <strong>balanced design</strong>, clients contribute the same
 number of treatment episodes and the same number of sessions within each
 episode. This provides a simplified data structure that is useful for
-demonstrating and evaluating statistical methods.</p>
+comparing and evaluating the performance of different statistical
+modeling approaches.</p>
 <p>In the <strong>unbalanced design</strong>, clients may contribute
 different numbers of sessions and episodes of care. This structure more
 closely resembles naturalistic treatment records, where treatment
