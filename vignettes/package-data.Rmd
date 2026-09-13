@@ -25,8 +25,6 @@ The resulting data can therefore be understood as having three levels:
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
 
-This structure is especially important when fitting statistical models because sessions from the same episode—and episodes from the same client—are related rather than independent. Multilevel modeling methods can represent these dependencies and partition variability across the session, episode, and client levels.
-
 # Package data
 
 `leap` includes simulated longitudinal psychotherapy data that exhibit common features of real-world treatment records. The simulated data vary along two dimensions: **design** and **scenario type**.
