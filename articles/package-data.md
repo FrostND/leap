@@ -42,10 +42,8 @@ clients.
 
 `leap` includes simulated longitudinal psychotherapy data that exhibit
 common features of real-world treatment records and the nested structure
-from Figure 1.
-
-The simulated data vary along two key dimensions: **design** and
-**scenario type**.
+from Figure 1. The simulated data vary along two key dimensions:
+**design** and **scenario type**.
 
 ### Design: balanced and unbalanced
 
@@ -80,6 +78,16 @@ treatment, persistent difficulty, and diminishing response.
 Together, these simulated data provide controlled examples for
 demonstrating how `leap` functions behave across different longitudinal
 data structures and patterns of change.
+
+### Clinical scenarios
+
+##### Clinical scenario: diminishing therapeutic response
+
+##### Clinical scenario: deteriorating therapeutic response
+
+##### Clinical scenario: relapse and response
+
+##### Clinical scenario: efficient return and response
 
 ## Summary
 
