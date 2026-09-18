@@ -2,8 +2,8 @@
 
 ## Overview
 
-This article introduces a typical `leap` workflow, progressing from
-preparing raw data to identifying, describing, visualizing, and modeling
+This article introduces a typical `leap` workflow, progressing from data
+preparation to identifying, describing, visualizing, and modeling
 repeated episodes of treatment.
 
 ## Prepare data
