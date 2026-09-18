@@ -6,7 +6,7 @@ This article introduces a typical `leap` workflow, progressing from data
 preparation to identifying, describing, visualizing, and modeling
 repeated episodes of treatment.
 
-## Prepare data
+## Prepare
 
 `leap` works with longitudinal data frames, in which each row represents
 a treatment session for one client. At minimum, the raw data should
@@ -69,7 +69,7 @@ present in the data, the episode-related variables that still need to be
 created, and the corresponding `add_*()` function to create the new
 variable.
 
-## Add variables
+## Identify
 
 Once the session-level data have been prepared, the `add_*()` family of
 functions can be used to generate the variables needed to represent
@@ -95,7 +95,7 @@ wrapper function:
 episode_df <- add_episode_vars(raw_df) 
 ```
 
-## Summarize episodes
+## Describe
 
 After all episode variables have been added, it is useful to examine the
 resulting data before proceeding. The
@@ -144,7 +144,7 @@ describe_episodes(episode_df)
     ## 2         30.78        11.87
     ## 3         34.78        12.07
 
-## Visualize episodes
+## Visualize
 
 Before fitting statistical models, it is often useful to visually
 inspect patterns of change within and across treatment episodes. The
@@ -167,7 +167,7 @@ different episodes. Because the clients contributing to each episode
 number may differ, these plots are primarily descriptive and should not
 be interpreted as adjusted within-client effects.
 
-## Model outcomes
+## Model
 
 `leap` provides several complementary approaches for modeling
 therapeutic change across repeated episodes of care. These methods
