@@ -111,7 +111,7 @@ check_episodes(episode_df)
 ```
 
     ##    obs clients episodes na_total na_outcomes na_dates correctly_ordered
-    ## 1 7599     400        3      400           0        0              TRUE
+    ## 1 7599     400      734      400           0        0              TRUE
     ##   sequential_sessions chronological_dates
     ## 1                TRUE                TRUE
 

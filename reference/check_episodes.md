@@ -8,14 +8,7 @@ potentially problematic episode structures.
 ## Usage
 
 ``` r
-check_episodes(
-  data,
-  client = "client_id",
-  episode = "episode_id",
-  session = "episode_session",
-  date = "session_date",
-  outcome = "outcome"
-)
+check_episodes(data)
 ```
 
 ## Arguments
@@ -23,31 +16,6 @@ check_episodes(
 - data:
 
   A data frame containing longitudinal treatment-session records.
-
-- client:
-
-  Character string specifying the client identifier column. Defaults to
-  `"client_id"`.
-
-- episode:
-
-  Character string specifying the treatment episode identifier column.
-  Defaults to `"episode_id"`.
-
-- session:
-
-  Character string specifying the session-within-episode column.
-  Defaults to `"episode_session"`.
-
-- date:
-
-  Character string specifying the session date column. Defaults to
-  `"session_date"`.
-
-- outcome:
-
-  Character string specifying the outcome variable. Defaults to
-  `"outcome"`.
 
 ## Value
 
@@ -138,14 +106,7 @@ The function does not modify the supplied data.
 
 ``` r
 if (FALSE) { # \dontrun{
-diagnostics <- check_episodes(
-  data = treatment_data,
-  client = "client_id",
-  episode = "episode_id",
-  session = "episode_session",
-  date = "session_date",
-  outcome = "outcome"
-)
+diagnostics <- check_episodes(data = treatment_data)
 
 diagnostics
 } # }
