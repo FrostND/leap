@@ -4,32 +4,10 @@
 \alias{check_episodes}
 \title{Check treatment episode data}
 \usage{
-check_episodes(
-  data,
-  client = "client_id",
-  episode = "episode_id",
-  session = "episode_session",
-  date = "session_date",
-  outcome = "outcome"
-)
+check_episodes(data)
 }
 \arguments{
 \item{data}{A data frame containing longitudinal treatment-session records.}
-
-\item{client}{Character string specifying the client identifier column.
-Defaults to \code{"client_id"}.}
-
-\item{episode}{Character string specifying the treatment episode identifier
-column. Defaults to \code{"episode_id"}.}
-
-\item{session}{Character string specifying the session-within-episode column.
-Defaults to \code{"episode_session"}.}
-
-\item{date}{Character string specifying the session date column. Defaults to
-\code{"session_date"}.}
-
-\item{outcome}{Character string specifying the outcome variable. Defaults to
-\code{"outcome"}.}
 }
 \value{
 A one-row data frame containing diagnostic information:
@@ -84,14 +62,7 @@ The function does not modify the supplied data.
 }
 \examples{
 \dontrun{
-diagnostics <- check_episodes(
-  data = treatment_data,
-  client = "client_id",
-  episode = "episode_id",
-  session = "episode_session",
-  date = "session_date",
-  outcome = "outcome"
-)
+diagnostics <- check_episodes(data = treatment_data)
 
 diagnostics
 }

@@ -6,17 +6,6 @@
 #' problematic episode structures.
 #'
 #' @param data A data frame containing longitudinal treatment-session records.
-#' @param client Character string specifying the client identifier column.
-#'   Defaults to `"client_id"`.
-#' @param episode Character string specifying the treatment episode identifier
-#'   column. Defaults to `"episode_id"`.
-#' @param session Character string specifying the session-within-episode column.
-#'   Defaults to `"episode_session"`.
-#' @param date Character string specifying the session date column. Defaults to
-#'   `"session_date"`.
-#' @param outcome Character string specifying the outcome variable. Defaults to
-#'   `"outcome"`.
-#'
 #' @return A one-row data frame containing diagnostic information:
 #'
 #' \describe{
@@ -63,14 +52,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' diagnostics <- check_episodes(
-#'   data = treatment_data,
-#'   client = "client_id",
-#'   episode = "episode_id",
-#'   session = "episode_session",
-#'   date = "session_date",
-#'   outcome = "outcome"
-#' )
+#' diagnostics <- check_episodes(data = treatment_data)
 #'
 #' diagnostics
 #' }
@@ -78,68 +60,61 @@
 #' @seealso [describe_episodes()], [episode_slopes()]
 #'
 #' @export
-check_episodes <- function(
-    data,
-    client = "client_id",
-    episode = "episode_id",
-    session = "episode_session",
-    date = "session_date",
-    outcome = "outcome"
-) {
+check_episodes <- function(data) {
 
-  # Validate required columns.
-  cols_validate(data, required = c(client, episode, session, date, outcome))
+  cols_validate(data, required = c("client_id", "episode_id", "episode_session", "session_date", "outcome"))
 
   # Basic counts
   n_rows <- nrow(data)
-  n_clients <- length(unique(data[[client]]))
-  n_episodes <- length(unique(data[[episode]]))
+  n_clients <- length(unique(data$client_id))
 
   # Missing counts
   n_missing <- sum(is.na(data))
-  n_missing_outcome <- sum(is.na(data[[outcome]]))
-  n_missing_date <- sum(is.na(data[[date]]))
+  n_missing_outcome <- sum(is.na(data$outcome))
+  n_missing_date <- sum(is.na(data$session_date))
 
   # Check observation ordering
-  ordered_index <- order(data[[client]], data[[episode]], data[[session]])
-  correctly_ordered <- identical(ordered_index, seq_len(nrow(data)))
+  ordered_index <- order(
+    data$client_id,
+    data$episode_id,
+    data$episode_session
+  )
+  correctly_ordered <- identical(ordered_index, seq_len(n_rows))
 
-  # Split into client-specific treatment episodes.
-  eps_list <- split(data, list(data[[client]], data[[episode]]), drop = TRUE)
+  # Split into client-specific treatment episodes
+  eps_list <- split(data,list(data$client_id, data$episode_id), drop = TRUE)
+  n_episodes <- length(eps_list)
 
-  # Episode-level session counts.
+  # Episode-level session counts
   sessions_per_episode <- vapply(eps_list, nrow, integer(1))
   n_single_session <- sum(sessions_per_episode == 1L)
   n_short_episode <- sum(sessions_per_episode <= 4L)
 
-  # Check sequential session numbering within episodes.
+  # Check sequential session numbering within episodes
   valid_episode_session <- vapply(eps_list, function(x) {
-      identical(as.integer(x[[session]]), seq_len(nrow(x)))
-    }, logical(1)
-    )
+    identical(as.integer(x$episode_session), seq_len(nrow(x)))
+  }, logical(1))
 
   sequential_sessions <- all(valid_episode_session)
 
-  # Check chronological ordering within episodes.
+  # Check chronological ordering within episodes
   valid_dates <- vapply(eps_list, function(x) {
-      dates <- x[[date]]
+    if (anyNA(x$session_date)) {
+      return(NA)
+    }
 
-      if (anyNA(dates)) {
-        return(NA)
-      }
+    !is.unsorted(x$session_date)
+  }, logical(1))
 
-      !is.unsorted(dates)
-    },
-    logical(1)
-  )
-
-  chronological_dates <- if (all(is.na(valid_dates))) {
+  chronological_dates <- if (any(valid_dates == FALSE, na.rm = TRUE)) {
+    FALSE
+  } else if (anyNA(valid_dates)) {
     NA
   } else {
-    all(valid_dates, na.rm = TRUE)
+    TRUE
   }
 
-  # Issue informative warnings.
+  # Issue informative warnings
   if (n_missing_outcome > 0L) {
     warning(
       n_missing_outcome,
@@ -172,10 +147,7 @@ check_episodes <- function(
 
   if (isFALSE(chronological_dates)) {
     warning(
-      paste(
-        "At least one episode contains session dates",
-        "that are not in chronological order."
-      ),
+      "At least one episode contains session dates that are not in chronological order.",
       call. = FALSE
     )
   }
