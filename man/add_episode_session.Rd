@@ -4,16 +4,10 @@
 \alias{add_episode_session}
 \title{Add session number within treatment episode}
 \usage{
-add_episode_session(data, client, episode)
+add_episode_session(data)
 }
 \arguments{
 \item{data}{A data frame containing session-level psychotherapy records.}
-
-\item{client}{Character string specifying the name of the client identifier variable.}
-
-\item{episode}{Character string specifying the name of the treatment episode identifier variable.}
-
-\item{...}{Additional arguments. Currently unused.}
 }
 \value{
 A data frame with an additional variable, \code{episode_session}, indicating

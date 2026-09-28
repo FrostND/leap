@@ -5,9 +5,6 @@
 #' its episode.
 #'
 #' @param data A data frame containing session-level psychotherapy records.
-#' @param client Character string specifying the name of the client identifier variable.
-#' @param episode Character string specifying the name of the treatment episode identifier variable.
-#' @param ... Additional arguments. Currently unused.
 #'
 #' @returns A data frame with an additional variable, `episode_session`, indicating
 #'   the consecutive session number within each treatment episode.
@@ -19,7 +16,7 @@
 #'
 #' @export
 #'
-add_episode_session <- function(data, client, episode) {
+add_episode_session <- function(data) {
 
   cols_validate(data, required = c("client_id", "episode_id"))
 
