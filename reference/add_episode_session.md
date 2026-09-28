@@ -7,7 +7,7 @@ within its episode.
 ## Usage
 
 ``` r
-add_episode_session(data, client, episode)
+add_episode_session(data)
 ```
 
 ## Arguments
@@ -15,20 +15,6 @@ add_episode_session(data, client, episode)
 - data:
 
   A data frame containing session-level psychotherapy records.
-
-- client:
-
-  Character string specifying the name of the client identifier
-  variable.
-
-- episode:
-
-  Character string specifying the name of the treatment episode
-  identifier variable.
-
-- ...:
-
-  Additional arguments. Currently unused.
 
 ## Value
 
