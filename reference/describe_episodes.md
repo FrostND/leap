@@ -8,13 +8,7 @@ sessions, average time between sessions, and average outcome score.
 ## Usage
 
 ``` r
-describe_episodes(
-  data,
-  client = "client_id",
-  episode = "episode_id",
-  outcome = "outcome",
-  date = "session_date"
-)
+describe_episodes(data)
 ```
 
 ## Arguments
