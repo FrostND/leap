@@ -79,7 +79,7 @@ check_raw(
 
 }
 \seealso{
-\code{\link[=check_eps]{check_eps()}},
+\code{\link[=check_episodes]{check_episodes()}},
 \code{\link[=add_session_lag]{add_session_lag()}},
 \code{\link[=add_episode_id]{add_episode_id()}},
 \code{\link[=add_episode_session]{add_episode_session()}},
