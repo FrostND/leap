@@ -6,9 +6,6 @@
 #' to calling this function.
 #'
 #' @param data A data frame containing longitudinal psychotherapy records.
-#' @param client Character string specifying the name of the client identifier variable.
-#' @param date Character string specifying the name of the session date variable. The
-#' variable must be of class `Date`.
 #'
 #' @returns A data frame with an additional variable, `session_lag`, representing the number of days
 #' since the previous session for each client.
@@ -20,7 +17,6 @@
 #' calculating session lags.
 #'
 #' @export
-
 add_session_lag <- function(data) {
 
   cols_validate(data, required = c("client_id", "session_date"))

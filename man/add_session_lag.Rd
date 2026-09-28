@@ -8,11 +8,6 @@ add_session_lag(data)
 }
 \arguments{
 \item{data}{A data frame containing longitudinal psychotherapy records.}
-
-\item{client}{Character string specifying the name of the client identifier variable.}
-
-\item{date}{Character string specifying the name of the session date variable. The
-variable must be of class \code{Date}.}
 }
 \value{
 A data frame with an additional variable, \code{session_lag}, representing the number of days
