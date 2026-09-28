@@ -64,48 +64,44 @@
 #' [add_episode_id()]
 #'
 #' @export
-describe_episodes <- function(
-  data,
-  client = "client_id",
-  episode = "episode_id",
-  outcome = "outcome",
-  date = "session_date"
-) {
-  # cols_validate(data, client, episode, date, outcome)
+describe_episodes <- function(data) {
 
-  rnd <- function(x) {
-    round(x, digits = 2)
-  }
+  cols_validate(data, required = c("client_id", "episode_id", "session_date", "session_lag", "outcome"))
 
-  eps_list <- split(data, f = data[[episode]], drop = TRUE)
+  rnd <- function(x) round(x, digits = 2)
 
-  stat_store <- vector(mode = "list", length = length(eps_list))
+  # Group the same episode number across clients.
+  eps_list <- split(data, data$episode_id, drop = TRUE)
+
+  stat_store <- vector("list", length(eps_list))
   names(stat_store) <- names(eps_list)
 
   for (name in names(eps_list)) {
-    # Data for one episode number across clients
     df <- eps_list[[name]]
 
     session_lag <- df$session_lag
     session_lag[session_lag == 0] <- NA_real_
 
-    # Calculate each client's episode duration in days.
-    episode_duration <- tapply(df[[date]], df[[client]], function(x) {
-      as.numeric(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
-    })
+    episode_duration <- tapply(
+      df$session_date,
+      df$client_id,
+      function(x) {
+        as.numeric(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+      }
+    )
 
     stat_store[[name]] <- data.frame(
       episode_id = as.integer(name),
-      n_clients = length(unique(df[[client]])),
+      n_clients = length(unique(df$client_id)),
       n_sessions = nrow(df),
-      mean_sessions = rnd(mean(table(df[[client]]))),
+      mean_sessions = rnd(mean(table(df$client_id))),
       mean_duration_days = rnd(mean(episode_duration, na.rm = TRUE)),
       mean_lag_days = rnd(mean(session_lag, na.rm = TRUE)),
-      mean_outcome = rnd(mean(df[[outcome]], na.rm = TRUE))
+      mean_outcome = rnd(mean(df$outcome, na.rm = TRUE))
     )
   }
 
-  out <- do.call(what = rbind, args = stat_store)
+  out <- do.call(rbind, stat_store)
   rownames(out) <- NULL
   out
 }

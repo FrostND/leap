@@ -4,13 +4,7 @@
 \alias{describe_episodes}
 \title{Describe treatment episodes}
 \usage{
-describe_episodes(
-  data,
-  client = "client_id",
-  episode = "episode_id",
-  outcome = "outcome",
-  date = "session_date"
-)
+describe_episodes(data)
 }
 \arguments{
 \item{data}{A data frame containing session-level treatment records. The
