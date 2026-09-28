@@ -43,6 +43,8 @@
   : Estimate a candidate episode delimiter from session lags
 - [`order_sessions()`](https://frostnd.github.io/leap/reference/order_sessions.md)
   : Order longitudinal session records
+- [`plot_cohort_change()`](https://frostnd.github.io/leap/reference/plot_cohort_change.md)
+  : Plot outcome change across treatment episode cohorts
 - [`plot_cohort_curves()`](https://frostnd.github.io/leap/reference/plot_cohort_curves.md)
   : Plot growth curves by treatment-episode cohort
 - [`plot_episode_change()`](https://frostnd.github.io/leap/reference/plot_episode_change.md)
