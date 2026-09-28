@@ -89,22 +89,12 @@ assigned using \code{\link[=add_episode_session]{add_episode_session()}}.
 }
 \examples{
 \dontrun{
-episode_estimates <- episode_slopes(
-  data = treatment_data,
-  client = "client_id",
-  episode = "episode_id",
-  episode_session = "episode_session",
-  outcome = "outcome"
-)
+episode_estimates <- episode_slopes(data = treatment_data,)
 
 head(episode_estimates)
 
 # Outcome where lower scores indicate improvement
-episode_estimates <- episode_slopes(
-  data = treatment_data,
-  outcome = "symptom_score",
-  higher_is_better = FALSE
-)
+episode_estimates <- episode_slopes(data = treatment_data, higher_is_better = FALSE)
 }
 
 }

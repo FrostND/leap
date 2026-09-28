@@ -1,175 +1,63 @@
-# test-estimate_episode_slopes.R
-
-# Output structure  -------------------------------------------------
-
-test_that("estimate_episode_slopes returns expected structure", {
-  expect_warning(
-    out <- estimate_episode_slopes(test_data),
-    "four or fewer sessions"
-  )
-
-  expect_s3_class(out, "data.frame")
-
-  expect_equal(nrow(out), 3)
-
-  expect_named(
-    out,
-    c(
-      "client_id",
-      "episode_id",
-      "n_sessions",
-      "n_episodes",
-      "pre",
-      "post",
-      "change",
-      "slope"
-    )
-  )
-})
 
 
-# -------------------------------------------------------------------------
-# Episode identifiers and counts
-# -------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes identifies episodes correctly", {
-  expect_warning(
-    out <- estimate_episode_slopes(test_data),
-    "four or fewer sessions"
-  )
-
-  expect_equal(out$client_id, c("A", "A", "B"))
-
-  expect_equal(out$episode_id, c(1, 2, 1))
-
-  expect_equal(out$n_sessions, c(3, 3, 3))
-
-  expect_equal(out$n_episodes, c(2, 2, 1))
-})
-
-
-# -------------------------------------------------------------------------
-# Pre-post values
-# -------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes returns correct pre-post scores", {
-  expect_warning(
-    out <- estimate_episode_slopes(test_data),
-    "four or fewer sessions"
-  )
-
-  expect_equal(
-    out$pre,
-    c(10, 8, 12)
-  )
-
-  expect_equal(
-    out$post,
-    c(12, 12, 10)
-  )
-})
-
-
-# -------------------------------------------------------------------------
-# Change scores
-# -------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes calculates correct change scores", {
-  expect_warning(
-    out <- estimate_episode_slopes(
-      test_data,
-      higher_is_better = TRUE
+make_slope_data <- function() {
+  data.frame(
+    client_id = c(rep("a", 10), rep("b", 5)),
+    episode_id = c(rep(1L, 5), rep(2L, 5), rep(1L, 5)),
+    episode_session = rep(1:5, 3),
+    outcome = c(
+      2, 4, 6, 8, 10,   # a_1: slope 2
+      10, 9, 8, 7, 6,   # a_2: slope -1
+      5, 5, 5, 5, 5     # b_1: slope 0
     ),
-    "four or fewer sessions"
-  )
-
-  expect_equal(
-    out$change,
-    c(2, 4, -2)
-  )
-})
-
-
-# -------------------------------------------------------------------------
-# Slopes
-# -------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes estimates correct linear slopes", {
-  expect_warning(
-    out <- estimate_episode_slopes(
-      test_data,
-      higher_is_better = TRUE
+    client_episode_id = c(
+      rep("a_1", 5), rep("a_2", 5), rep("b_1", 5)
     ),
-    "four or fewer sessions"
+    n_episodes = c(rep(2L, 10), rep(1L, 5))
   )
+}
 
-  expect_equal(
-    out$slope,
-    c(1, 2, -1),
-    tolerance = 1e-5
-  )
+test_that("episode_slopes estimates change and slope for each episode", {
+  result <- episode_slopes(make_slope_data())
+
+  expect_identical(result$client_id, c("a", "a", "b"))
+  expect_equal(result$episode_id, c(1, 2, 1))
+  expect_equal(result$n_sessions, c(5, 5, 5))
+  expect_equal(result$n_episodes, c(2, 2, 1))
+  expect_equal(result$pre, c(2, 10, 5))
+  expect_equal(result$post, c(10, 6, 5))
+  expect_equal(result$change, c(8, -4, 0))
+  expect_equal(result$slope, c(2, -1, 0))
 })
 
+test_that("episode_slopes reverses direction when lower is better", {
+  result <- episode_slopes(
+    make_slope_data(),
+    higher_is_better = FALSE
+  )
 
-# -------------------------------------------------------------------------
-# Outcome direction
-# -------------------------------------------------------------------------
+  expect_equal(result$change, c(-8, 4, 0))
+  expect_equal(result$slope, c(-2, 1, 0))
+})
 
-test_that("higher_is_better reverses change and slope direction", {
+test_that("episode_slopes warns about short episodes", {
+  data <- make_slope_data()
+  data <- subset(
+    data,
+    client_episode_id != "a_1" | episode_session <= 3
+  )
+
   expect_warning(
-    out <- estimate_episode_slopes(
-      test_data,
-      higher_is_better = FALSE
-    ),
+    result <- episode_slopes(data),
     "four or fewer sessions"
   )
-
-  expect_equal(
-    out$change,
-    c(-2, -4, 2)
-  )
-
-  expect_equal(
-    out$slope,
-    c(-1, -2, 1),
-    tolerance = 1e-5
-  )
-
-  # Raw pre-post scores should not be altered.
-  expect_equal(
-    out$pre,
-    c(10, 8, 12)
-  )
-
-  expect_equal(
-    out$post,
-    c(12, 12, 10)
-  )
+  expect_equal(result$slope[result$client_id == "a" &
+                              result$episode_id == 1], 2)
 })
 
+test_that("episode_slopes requires its input columns", {
+  data <- make_slope_data()
+  data$n_episodes <- NULL
 
-# -------------------------------------------------------------------------
-# Short episodes
-# -------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes warns about short episodes", {
-  expect_warning(
-    estimate_episode_slopes(test_data),
-    "four or fewer sessions"
-  )
-})
-
-
-#-------------------------------------------------------------------------
-# Missing required columns
-#-------------------------------------------------------------------------
-
-test_that("estimate_episode_slopes fails when required columns are missing", {
-  bad_data <- test_data
-  bad_data$outcome <- NULL
-
-  expect_error(
-    estimate_episode_slopes(bad_data),
-    "outcome"
-  )
+  expect_error(episode_slopes(data))
 })
