@@ -185,7 +185,7 @@ plot_episode_loss <- function(
         "horizontal spacing reflects elapsed time between episodes."
       )
     ) +
-    theme_minimal(
+    ggplot2::theme_minimal(
       base_size = 11,
       base_family = "Times"
     )
