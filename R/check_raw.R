@@ -61,7 +61,7 @@
 #' }
 #'
 #' @seealso
-#' [check_eps()],
+#' [check_episodes()],
 #' [add_session_lag()],
 #' [add_episode_id()],
 #' [add_episode_session()],
