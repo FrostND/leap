@@ -6,16 +6,6 @@
 #' the beginning of the next episode.
 #'
 #' @param data A data frame containing longitudinal treatment-session records.
-#' @param client Character string specifying the client identifier column.
-#'   Defaults to `"client_id"`.
-#' @param episode Character string specifying the treatment episode identifier
-#'   column. Defaults to `"episode_id"`.
-#' @param episode_session Character string specifying the session-within-episode
-#'   column. Defaults to `"episode_session"`.
-#' @param date Character string specifying the session date column. The column
-#'   should inherit from class `Date`. Defaults to `"session_date"`.
-#' @param outcome Character string specifying the outcome variable. Defaults to
-#'   `"outcome"`.
 #' @param higher_is_better Logical indicating the direction of favorable
 #'   outcomes. When `TRUE`, positive values of `bad_enough_level` indicate that
 #'   the client's outcome declined between the prior episode's discharge and

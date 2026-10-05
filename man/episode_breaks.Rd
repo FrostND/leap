@@ -15,21 +15,6 @@ the client's outcome declined between the prior episode's discharge and
 the next episode's intake. When \code{FALSE}, the score difference is reversed
 so that positive values continue to indicate deterioration. Defaults to
 \code{TRUE}.}
-
-\item{client}{Character string specifying the client identifier column.
-Defaults to \code{"client_id"}.}
-
-\item{episode}{Character string specifying the treatment episode identifier
-column. Defaults to \code{"episode_id"}.}
-
-\item{episode_session}{Character string specifying the session-within-episode
-column. Defaults to \code{"episode_session"}.}
-
-\item{date}{Character string specifying the session date column. The column
-should inherit from class \code{Date}. Defaults to \code{"session_date"}.}
-
-\item{outcome}{Character string specifying the outcome variable. Defaults to
-\code{"outcome"}.}
 }
 \value{
 A data frame containing one row per transition between consecutive
