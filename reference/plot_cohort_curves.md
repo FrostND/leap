@@ -19,15 +19,25 @@ plot_cohort_curves(
 
 ## Arguments
 
+- data:
+
+  A data frame containing longitudinal treatment-session records.
+
+- x_range:
+
+  Optional numeric vector of length two defining the displayed x-axis
+  limits.
+
+- y_range:
+
+  Optional numeric vector of length two defining the displayed y-axis
+  limits.
+
 - clinical_cutoff:
 
   Optional numeric value indicating a clinically meaningful outcome
   threshold. When supplied, a dashed horizontal line is added to each
   panel.
-
-- df:
-
-  A data frame containing longitudinal treatment-session records.
 
 - episode_count:
 
@@ -48,16 +58,6 @@ plot_cohort_curves(
 
   Character string specifying session number within treatment episode.
   Defaults to `"episode_session"`.
-
-- x_lims:
-
-  Optional numeric vector of length two defining the displayed x-axis
-  limits.
-
-- y_lims:
-
-  Optional numeric vector of length two defining the displayed y-axis
-  limits.
 
 ## Value
 
@@ -83,10 +83,6 @@ layout in which cohorts with more episodes occupy more horizontal space.
 if (FALSE) { # \dontrun{
 plot_cohort_curves(
   df = treatment_data,
-  episode_count = "n_episodes",
-  outcome = "outcome",
-  episode_id = "episode_id",
-  episode_session = "episode_session",
   x_range = c(1, 30),
   y_range = c(0, 25),
   clinical_cutoff = 12

@@ -19,18 +19,6 @@ add_episode_id(data, delimiter = 90)
 
   A longitudinal data frame
 
-- client:
-
-  unique client identifier
-
-- session_lag:
-
-  lag time between sessions
-
-- threshold:
-
-  elapsed time used to demarcate treatment episodes
-
 ## Value
 
 A data frame with an additional variable, `episode_id`, indicating the

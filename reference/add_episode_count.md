@@ -16,16 +16,6 @@ add_episode_count(data)
 
   A data frame containing psychotherapy session records.
 
-- client:
-
-  Character string specifying the name of the client identifier
-  variable.
-
-- episode:
-
-  Character string specifying the name of the treatment episode
-  identifier variable.
-
 ## Value
 
 A data frame with two additional variables:

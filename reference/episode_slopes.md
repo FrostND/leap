@@ -27,26 +27,6 @@ episode_slopes(data, higher_is_better = TRUE)
   is multiplied by `-1`, so that positive values consistently indicate
   improvement.
 
-- client:
-
-  Character string specifying the client identifier column. Defaults to
-  `"client_id"`.
-
-- episode:
-
-  Character string specifying the treatment episode identifier column.
-  Defaults to `"episode_id"`.
-
-- episode_session:
-
-  Character string specifying the session number within each treatment
-  episode. Defaults to `"episode_session"`.
-
-- outcome:
-
-  Character string specifying the outcome variable. Defaults to
-  `"outcome"`.
-
 ## Value
 
 A data frame containing one row per client treatment episode with the

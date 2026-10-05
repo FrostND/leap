@@ -18,18 +18,6 @@ add_client_episode_id(data)
 
   A data frame containing client and episode identifiers.
 
-- client:
-
-  Unquoted column name identifying clients.
-
-- episode:
-
-  Unquoted column name identifying treatment episodes.
-
-- name:
-
-  Name of the new identifier column. Defaults to `"client_episode_id"`.
-
 ## Value
 
 The input data frame with an additional character variable containing a

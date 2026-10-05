@@ -16,17 +16,7 @@ add_episode_vars(data, delimiter = 90)
 
   A data frame containing longitudinal psychotherapy records.
 
-- client:
-
-  Character string specifying the name of the client identifier
-  variable.
-
-- date:
-
-  Character string specifying the name of the session date variable. The
-  variable must be of class `Date`.
-
-- threshold:
+- delimiter:
 
   Numeric value indicating the minimum number of days required to define
   a new treatment episode. Defaults to 90.

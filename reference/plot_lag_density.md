@@ -30,11 +30,6 @@ plot_lag_density(data, delimiter = NULL, smooth = 1.5)
   Values greater than `1` produce a smoother density estimate, whereas
   values less than `1` reveal more local variation. Defaults to `1.5`.
 
-- lag:
-
-  Character string specifying the session-lag variable. Defaults to
-  `"session_lag"`.
-
 ## Value
 
 A `ggplot` object displaying the density of positive between-session

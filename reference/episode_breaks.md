@@ -26,31 +26,6 @@ episode_breaks(data, higher_is_better = TRUE)
   that positive values continue to indicate deterioration. Defaults to
   `TRUE`.
 
-- client:
-
-  Character string specifying the client identifier column. Defaults to
-  `"client_id"`.
-
-- episode:
-
-  Character string specifying the treatment episode identifier column.
-  Defaults to `"episode_id"`.
-
-- episode_session:
-
-  Character string specifying the session-within-episode column.
-  Defaults to `"episode_session"`.
-
-- date:
-
-  Character string specifying the session date column. The column should
-  inherit from class `Date`. Defaults to `"session_date"`.
-
-- outcome:
-
-  Character string specifying the outcome variable. Defaults to
-  `"outcome"`.
-
 ## Value
 
 A data frame containing one row per transition between consecutive

@@ -1,11 +1,11 @@
 # leap
 
-The **L**ongitudinal **E**pisode **A**nalysis and **P**rocedures
-(`leap`) package provides tools to identify, visualize, and
-statistically model repeated treatment episodes in longitudinal health
+The **L**ongitudinal **E**pisode **A**nalyses and **P**rocedures
+(`leap`) package provides research research tools to identify,
+visualize, and model repeated treatment episodes in longitudinal health
 records.
 
-### Why leap?
+# Why leap?
 
 Behavioral health interventions, including psychotherapy, are often
 represented as a single, discrete period of treatment. In real-world
@@ -21,14 +21,14 @@ health records that contain multiple episodes of treatment, including
 identifying breaks in care, constructing episode-level variables, and
 visualizing patterns within and across episodes.
 
-Second, `leap` supports several approaches for modeling change across
-repeated episodes of treatment, including longitudinal mixed-effects
-models, slopes-as-outcomes models, and Bayesian multilevel models.
-Together, these capabilities allow researchers to examine change within
-individual episodes as well as patterns of change across episodes over
-time.
+Second, `leap` supports several approaches for statistically modeling
+change across repeated episodes of treatment, including longitudinal
+mixed-effects models, slopes-as-outcomes models, and Bayesian multilevel
+models. Together, these capabilities allow researchers to examine change
+within individual episodes as well as patterns of change across episodes
+over time.
 
-### What can leap do?
+# What can leap do?
 
 - Identify treatment episodes from longitudinal session data
 - Construct and summarize episode-level variables
@@ -37,7 +37,7 @@ time.
 - Model repeated treatment trajectories using Frequentist and Bayesian
   approaches
 
-### Installation
+# Installation
 
 You can install the development version of `leap` from GitHub.
 
@@ -47,7 +47,7 @@ install.packages("remotes")
 remotes::install_github("FrostND/leap")
 ```
 
-### Get started
+# Get started
 
 For a complete introduction to the `leap` workflow, see [Get Started
 with leap](https://frostnd.github.io/leap/articles/leap.md)
