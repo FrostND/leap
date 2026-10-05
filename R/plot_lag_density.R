@@ -7,8 +7,6 @@
 #' delimiting treatment episodes.
 #'
 #' @param data A data frame containing session-level treatment records.
-#' @param lag Character string specifying the session-lag variable.
-#'   Defaults to `"session_lag"`.
 #' @param delimiter Optional numeric value indicating a proposed episode
 #'   delimiter in days. When supplied, a vertical dashed line is added at the
 #'   specified value. Defaults to `NULL`.

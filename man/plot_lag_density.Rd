@@ -17,9 +17,6 @@ specified value. Defaults to \code{NULL}.}
 of \code{\link[ggplot2:geom_density]{ggplot2::geom_density()}}. Values greater than \code{1} produce a smoother
 density estimate, whereas values less than \code{1} reveal more local
 variation. Defaults to \code{1.5}.}
-
-\item{lag}{Character string specifying the session-lag variable.
-Defaults to \code{"session_lag"}.}
 }
 \value{
 A \code{ggplot} object displaying the density of positive between-session gaps.
