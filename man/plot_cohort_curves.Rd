@@ -12,11 +12,17 @@ plot_cohort_curves(
 )
 }
 \arguments{
+\item{data}{A data frame containing longitudinal treatment-session records.}
+
+\item{x_range}{Optional numeric vector of length two defining the displayed
+x-axis limits.}
+
+\item{y_range}{Optional numeric vector of length two defining the displayed
+y-axis limits.}
+
 \item{clinical_cutoff}{Optional numeric value indicating a clinically
 meaningful outcome threshold. When supplied, a dashed horizontal line is
 added to each panel.}
-
-\item{df}{A data frame containing longitudinal treatment-session records.}
 
 \item{episode_count}{Character string specifying the column containing the
 total number of episodes attended by each client. Defaults to
@@ -30,12 +36,6 @@ identifier. Defaults to \code{"episode_id"}.}
 
 \item{episode_session}{Character string specifying session number within
 treatment episode. Defaults to \code{"episode_session"}.}
-
-\item{x_lims}{Optional numeric vector of length two defining the displayed
-x-axis limits.}
-
-\item{y_lims}{Optional numeric vector of length two defining the displayed
-y-axis limits.}
 }
 \value{
 A \code{patchwork} object containing cohort-specific episode growth
@@ -64,10 +64,6 @@ layout in which cohorts with more episodes occupy more horizontal space.
 \dontrun{
 plot_cohort_curves(
   df = treatment_data,
-  episode_count = "n_episodes",
-  outcome = "outcome",
-  episode_id = "episode_id",
-  episode_session = "episode_session",
   x_range = c(1, 30),
   y_range = c(0, 25),
   clinical_cutoff = 12
