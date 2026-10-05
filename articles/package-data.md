@@ -3,8 +3,8 @@
 ## Overview
 
 This article describes the hierarchical structure of longitudinal
-psychotherapy data and introduces the example datasets included with the
-`leap` package.
+psychotherapy data and introduces the simulated datasets included with
+the `leap` package.
 
 ## Longitudinal data
 
