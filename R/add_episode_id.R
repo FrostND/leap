@@ -8,9 +8,6 @@
 #' for the threshold argument.
 #'
 #' @param data A longitudinal data frame
-#' @param client unique client identifier
-#' @param session_lag lag time between sessions
-#' @param threshold elapsed time used to demarcate treatment episodes
 #'
 #' @returns A data frame with an additional variable, `episode_id`,
 #'  indicating the episode membership of each session.

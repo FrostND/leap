@@ -8,12 +8,6 @@ add_episode_id(data, delimiter = 90)
 }
 \arguments{
 \item{data}{A longitudinal data frame}
-
-\item{client}{unique client identifier}
-
-\item{session_lag}{lag time between sessions}
-
-\item{threshold}{elapsed time used to demarcate treatment episodes}
 }
 \value{
 A data frame with an additional variable, \code{episode_id},
