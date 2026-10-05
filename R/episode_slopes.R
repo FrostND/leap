@@ -7,14 +7,6 @@
 #' observed sessions.
 #'
 #' @param data A data frame containing psychotherapy session records.
-#' @param client Character string specifying the client identifier column.
-#'   Defaults to `"client_id"`.
-#' @param episode Character string specifying the treatment episode identifier
-#'   column. Defaults to `"episode_id"`.
-#' @param episode_session Character string specifying the session number within
-#'   each treatment episode. Defaults to `"episode_session"`.
-#' @param outcome Character string specifying the outcome variable.
-#'   Defaults to `"outcome"`.
 #' @param higher_is_better Logical indicating whether larger outcome values
 #'   represent better functioning. When `TRUE` (default), change is calculated
 #'   as `post - pre` and the estimated slope is returned unchanged. When

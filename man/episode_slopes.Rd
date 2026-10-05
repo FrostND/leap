@@ -15,18 +15,6 @@ as \code{post - pre} and the estimated slope is returned unchanged. When
 \code{FALSE}, change is calculated as \code{pre - post} and the estimated slope is
 multiplied by \code{-1}, so that positive values consistently indicate
 improvement.}
-
-\item{client}{Character string specifying the client identifier column.
-Defaults to \code{"client_id"}.}
-
-\item{episode}{Character string specifying the treatment episode identifier
-column. Defaults to \code{"episode_id"}.}
-
-\item{episode_session}{Character string specifying the session number within
-each treatment episode. Defaults to \code{"episode_session"}.}
-
-\item{outcome}{Character string specifying the outcome variable.
-Defaults to \code{"outcome"}.}
 }
 \value{
 A data frame containing one row per client treatment episode with
