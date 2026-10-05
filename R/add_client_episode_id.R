@@ -7,10 +7,6 @@
 #' belonging to the same episode.
 #'
 #' @param data A data frame containing client and episode identifiers.
-#' @param client Unquoted column name identifying clients.
-#' @param episode Unquoted column name identifying treatment episodes.
-#' @param name Name of the new identifier column. Defaults to
-#'   `"client_episode_id"`.
 #'
 #' @return The input data frame with an additional character variable
 #'   containing a unique identifier for each client-episode combination.

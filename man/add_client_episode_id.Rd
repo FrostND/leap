@@ -8,13 +8,6 @@ add_client_episode_id(data)
 }
 \arguments{
 \item{data}{A data frame containing client and episode identifiers.}
-
-\item{client}{Unquoted column name identifying clients.}
-
-\item{episode}{Unquoted column name identifying treatment episodes.}
-
-\item{name}{Name of the new identifier column. Defaults to
-\code{"client_episode_id"}.}
 }
 \value{
 The input data frame with an additional character variable
