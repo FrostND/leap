@@ -8,12 +8,6 @@ add_episode_count(data)
 }
 \arguments{
 \item{data}{A data frame containing psychotherapy session records.}
-
-\item{client}{Character string specifying the name of the client identifier
-variable.}
-
-\item{episode}{Character string specifying the name of the treatment
-episode identifier variable.}
 }
 \value{
 A data frame with two additional variables:

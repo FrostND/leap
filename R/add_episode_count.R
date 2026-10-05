@@ -11,10 +11,6 @@
 #' }
 #'
 #' @param data A data frame containing psychotherapy session records.
-#' @param client Character string specifying the name of the client identifier
-#'   variable.
-#' @param episode Character string specifying the name of the treatment
-#'   episode identifier variable.
 #'
 #' @returns A data frame with two additional variables:
 #'   \itemize{
