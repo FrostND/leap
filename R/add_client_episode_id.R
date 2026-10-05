@@ -13,7 +13,6 @@
 #'
 #'
 #' @export
-
 add_client_episode_id <- function(data) {
 
   cols_validate(data, required = c("client_id", "episode_id"))
