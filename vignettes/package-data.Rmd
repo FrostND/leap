@@ -13,7 +13,7 @@ This article describes the hierarchical structure of longitudinal psychotherapy 
 
 # Longitudinal data
 
-Longitudinal psychotherapy data are inherently hierarchical, or *nested*, because individuals contribute multiple observations over time. This structure has important statistical implications: observations from the same individual are likely to be correlated, violating the independence assumption of many classical statistical models. Appropriate analytic methods must therefore account for variability both within and between individuals.
+Longitudinal psychotherapy data are inherently hierarchical, or *nested*, because individuals contribute multiple observations. This structure has important statistical implications: observations from the same individual are likely to be correlated, violating the independence assumption of many classical statistical models.
 
 A central premise of `leap` and the episode-oriented workflow is that longitudinal data may contain an additional level of nesting when individuals participate in multiple episodes of treatment. This structure is particularly likely in large-scale health outcome datasets, including electronic health records and other archival data sources. In these data, sessions are nested within treatment episodes, which are themselves nested within clients.
 
@@ -25,7 +25,7 @@ The resulting data can therefore be understood as having three levels:
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and clients.](images/eps_nesting.png){width="490"}
 
-# Package data
+# Simulated datasets
 
 `leap` includes simulated longitudinal psychotherapy data that exhibit common features of real-world treatment records and the nested structure from Figure 1. The simulated data vary along two key dimensions: **design** and **scenario type**.
 
