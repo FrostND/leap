@@ -10,11 +10,7 @@
 #' prepare episode-level data in a single step.
 #'
 #' @param data A data frame containing longitudinal psychotherapy records.
-#' @param client Character string specifying the name of the client identifier
-#'   variable.
-#' @param date Character string specifying the name of the session date
-#'   variable. The variable must be of class `Date`.
-#' @param threshold Numeric value indicating the minimum number of days
+#' @param delimiter Numeric value indicating the minimum number of days
 #'   required to define a new treatment episode. Defaults to 90.
 #'
 #' @returns A data frame with the following additional variables:

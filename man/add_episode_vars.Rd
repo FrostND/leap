@@ -9,13 +9,7 @@ add_episode_vars(data, delimiter = 90)
 \arguments{
 \item{data}{A data frame containing longitudinal psychotherapy records.}
 
-\item{client}{Character string specifying the name of the client identifier
-variable.}
-
-\item{date}{Character string specifying the name of the session date
-variable. The variable must be of class \code{Date}.}
-
-\item{threshold}{Numeric value indicating the minimum number of days
+\item{delimiter}{Numeric value indicating the minimum number of days
 required to define a new treatment episode. Defaults to 90.}
 }
 \value{
