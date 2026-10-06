@@ -39,26 +39,6 @@ plot_cohort_curves(
   threshold. When supplied, a dashed horizontal line is added to each
   panel.
 
-- episode_count:
-
-  Character string specifying the column containing the total number of
-  episodes attended by each client. Defaults to `"n_episodes"`.
-
-- outcome:
-
-  Character string specifying the outcome variable. Defaults to
-  `"outcome"`.
-
-- episode_id:
-
-  Character string specifying the treatment-episode identifier. Defaults
-  to `"episode_id"`.
-
-- episode_session:
-
-  Character string specifying session number within treatment episode.
-  Defaults to `"episode_session"`.
-
 ## Value
 
 A `patchwork` object containing cohort-specific episode growth curves.
