@@ -15,6 +15,8 @@
 #' @param model Character string specifying the model to fit. Must be one of
 #'   `"null"`, `"session"`, `"episode"`, `"adjusted"`, or `"full"`.
 #'   Defaults to `"null"`.
+#' @param cohort Character string specifying the analytic sample to be used in
+#'   for model.
 #'
 #' @return
 #' A fitted `lmerMod` object returned by [lme4::lmer()].

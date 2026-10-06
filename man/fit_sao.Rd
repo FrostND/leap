@@ -21,6 +21,9 @@ to model estimation. When \code{TRUE}, \code{episode_id} is centered at the firs
 treatment episode and \code{n_sessions} is centered at its sample mean.
 Defaults to \code{TRUE}.}
 
+\item{cohort}{Character string specifying the analytic sample to be used in
+for model.}
+
 \item{model}{Character string specifying the model to fit. Must be one of
 \code{"null"}, \code{"session"}, \code{"episode"}, \code{"adjusted"}, or \code{"full"}.
 Defaults to \code{"null"}.}
