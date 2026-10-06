@@ -56,3 +56,5 @@
 - [`plot_lag_density()`](https://frostnd.github.io/leap/reference/plot_lag_density.md)
   : Visualize the distribution of between-session gaps and evaluate
   candidate episode delimiters.
+- [`simulation_data`](https://frostnd.github.io/leap/reference/simulation_data.md)
+  : Simulated treatment episode data
