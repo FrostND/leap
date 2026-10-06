@@ -86,7 +86,7 @@ The full model can be expressed as:
 \beta_2(\mathrm{Sessions}\_{ij}) + \beta_3(\mathrm{Episode}\_{ij} \times
 \mathrm{Sessions}\_{ij}) + u\_{0i} + \varepsilon\_{ij} \$\$
 
-where episode \\j\\ is nested within client \\i\\, and \\u_0i\\
+where episode \\j\\ is nested within client \\i\\, and \\u\_{0i}\\
 represents a client-specific random intercept.
 
 When `center = TRUE`, treatment episode number is centered at the first
