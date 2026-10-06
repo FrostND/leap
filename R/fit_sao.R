@@ -58,7 +58,7 @@
 #' \varepsilon_{ij}
 #' }
 #'
-#' where episode \(j\) is nested within client \(i\), and \(u_{0i}\) represents
+#' where episode \eqn{j} is nested within client \eqn{i}, and \eqn{u_{0i}} represents
 #' a client-specific random intercept.
 #'
 #' When `center = TRUE`, treatment episode number is centered at the first
