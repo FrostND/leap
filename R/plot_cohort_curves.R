@@ -10,15 +10,6 @@
 #' indicate a clinically meaningful outcome cutoff.
 #'
 #' @param data A data frame containing longitudinal treatment-session records.
-#' @param episode_count Character string specifying the column containing the
-#'   total number of episodes attended by each client. Defaults to
-#'   `"n_episodes"`.
-#' @param outcome Character string specifying the outcome variable. Defaults to
-#'   `"outcome"`.
-#' @param episode_id Character string specifying the treatment-episode
-#'   identifier. Defaults to `"episode_id"`.
-#' @param episode_session Character string specifying session number within
-#'   treatment episode. Defaults to `"episode_session"`.
 #' @param x_range Optional numeric vector of length two defining the displayed
 #'   x-axis limits.
 #' @param y_range Optional numeric vector of length two defining the displayed

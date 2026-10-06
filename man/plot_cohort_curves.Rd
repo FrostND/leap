@@ -23,19 +23,6 @@ y-axis limits.}
 \item{clinical_cutoff}{Optional numeric value indicating a clinically
 meaningful outcome threshold. When supplied, a dashed horizontal line is
 added to each panel.}
-
-\item{episode_count}{Character string specifying the column containing the
-total number of episodes attended by each client. Defaults to
-\code{"n_episodes"}.}
-
-\item{outcome}{Character string specifying the outcome variable. Defaults to
-\code{"outcome"}.}
-
-\item{episode_id}{Character string specifying the treatment-episode
-identifier. Defaults to \code{"episode_id"}.}
-
-\item{episode_session}{Character string specifying session number within
-treatment episode. Defaults to \code{"episode_session"}.}
 }
 \value{
 A \code{patchwork} object containing cohort-specific episode growth
