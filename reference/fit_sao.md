@@ -34,6 +34,11 @@ fit_sao(
   treatment episode and `n_sessions` is centered at its sample mean.
   Defaults to `TRUE`.
 
+- cohort:
+
+  Character string specifying the analytic sample to be used in for
+  model.
+
 - model:
 
   Character string specifying the model to fit. Must be one of `"null"`,
