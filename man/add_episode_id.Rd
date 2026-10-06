@@ -8,6 +8,8 @@ add_episode_id(data, delimiter = 90)
 }
 \arguments{
 \item{data}{A longitudinal data frame}
+
+\item{delimter}{The number of days used to delimit episodes, default is 90 days}
 }
 \value{
 A data frame with an additional variable, \code{episode_id},
