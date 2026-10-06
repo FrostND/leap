@@ -85,27 +85,24 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This article describes the hierarchical structure of longitudinal
-psychotherapy data and introduces the simulated datasets included with
-the <code>leap</code> package.</p>
+<p>This article describes the hierarchical structure of treatment
+episode data and introduces the datasets included with the
+<code>leap</code> package.</p>
 </div>
 <div class="section level2">
 <h2 id="longitudinal-data">Longitudinal data<a class="anchor" aria-label="anchor" href="#longitudinal-data"></a>
 </h2>
-<p>Longitudinal psychotherapy data are inherently hierarchical, or
-<em>nested</em>, because individuals contribute multiple observations.
-This structure has important statistical implications: observations from
-the same individual are likely to be correlated, violating the
-independence assumption of many classical statistical models.</p>
-<p>A central premise of <code>leap</code> and the episode-oriented
-workflow is that longitudinal data may contain an additional level of
-nesting when individuals participate in multiple episodes of treatment.
-This structure is particularly likely in large-scale health outcome
-datasets, including electronic health records and other archival data
-sources. In these data, sessions are nested within treatment episodes,
-which are themselves nested within clients.</p>
-<p>The resulting data can therefore be understood as having three
-levels:</p>
+<p>Longitudinal psychotherapy data are hierarchical, or <em>nested</em>,
+because each client contributes multiple observations over time.
+Observations from the same individual are often correlated, so
+statistical analyses must account for this dependence.</p>
+<p>The central premise of <code>leap</code> and is that longitudinal
+treatment data may contain an additional level of nesting when clients
+participate in multiple episodes of treatment. This structure is
+especially relevant in datasets that track service use over extended
+periods, such as electronic health records and other archival data. In
+these data, sessions are nested within treatment episodes, which are
+nested within clients:</p>
 <ul>
 <li>
 <strong>Session</strong>: An individual treatment visit or
@@ -125,11 +122,11 @@ treatment episodes, and clients.</div>
 <div class="section level2">
 <h2 id="simulated-datasets">Simulated datasets<a class="anchor" aria-label="anchor" href="#simulated-datasets"></a>
 </h2>
-<p><code>leap</code> includes simulated longitudinal psychotherapy data
-that exhibit common features of real-world treatment records and the
-nested structure from Figure 1. The simulated data vary along two key
-dimensions: <strong>design</strong> and <strong>scenario
-type</strong>.</p>
+<p><code>leap</code> includes simulated longitudinal psychotherapy
+datasets that reflect common features of real-world treatment records
+and the hierarchical structure illustrated in Figure 1. These datasets
+vary along two key dimensions: <strong>design</strong> and
+<strong>scenario type</strong>.</p>
 <div class="section level3">
 <h3 id="design-balanced-and-unbalanced">Design: balanced and unbalanced<a class="anchor" aria-label="anchor" href="#design-balanced-and-unbalanced"></a>
 </h3>
