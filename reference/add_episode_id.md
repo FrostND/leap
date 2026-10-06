@@ -19,7 +19,7 @@ add_episode_id(data, delimiter = 90)
 
   A longitudinal data frame
 
-- delimter:
+- delimiter:
 
   The number of days used to delimit episodes, default is 90 days
 
