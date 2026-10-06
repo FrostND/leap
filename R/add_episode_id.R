@@ -8,7 +8,7 @@
 #' for the threshold argument.
 #'
 #' @param data A longitudinal data frame
-#' @param delimter The number of days used to delimit episodes, default is 90 days
+#' @param delimiter The number of days used to delimit episodes, default is 90 days
 #'
 #' @returns A data frame with an additional variable, `episode_id`,
 #'  indicating the episode membership of each session.
