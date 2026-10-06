@@ -44,7 +44,7 @@ clients.
 `leap` includes simulated longitudinal psychotherapy datasets that
 reflect common features of real-world treatment records and the
 hierarchical structure illustrated in Figure 1. These datasets vary
-along two key dimensions: **design** and **scenario type**.
+along two key dimensions: *design* and *scenario type*.
 
 ### Design: balanced and unbalanced
 
