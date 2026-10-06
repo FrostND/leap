@@ -88,17 +88,23 @@
 <p>This article describes the hierarchical structure of treatment
 episode data and introduces the datasets included with the
 <code>leap</code> package.</p>
+<p>In naturalistic settings, however, the timing and duration of
+interventions are not determined in advance, and an individual’s
+participation may unfold across multiple distinct periods rather than a
+single continuous course. In these circumstances, observations can be
+further clustered within discrete periods of participation or service
+use</p>
 </div>
 <div class="section level2">
-<h2 id="longitudinal-data">Longitudinal data<a class="anchor" aria-label="anchor" href="#longitudinal-data"></a>
+<h2 id="data-structure">Data structure<a class="anchor" aria-label="anchor" href="#data-structure"></a>
 </h2>
 <p>Longitudinal psychotherapy data are hierarchical, or <em>nested</em>,
-because each client contributes multiple observations over time.
-Observations from the same individual are often correlated, so
-statistical analyses must account for this dependence.</p>
-<p>The central premise of <code>leap</code> and is that longitudinal
-treatment data may contain an additional level of nesting when clients
-participate in multiple episodes of treatment. This structure is
+because each client contributes multiple observations over time. Since
+observations from the same individual are often correlated, statistical
+analyses must account for this dependence.</p>
+<p>A central premise of <code>leap</code> is that longitudinal treatment
+data may contain an additional level of nesting when clients participate
+in multiple episodes of treatment over time. This structure is
 especially relevant in datasets that track service use over extended
 periods, such as electronic health records and other archival data. In
 these data, sessions are nested within treatment episodes, which are
