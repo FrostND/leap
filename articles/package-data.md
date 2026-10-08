@@ -5,13 +5,6 @@
 This article describes the hierarchical structure of treatment episode
 data and introduces the datasets included with the `leap` package.
 
-In naturalistic settings, however, the timing and duration of
-interventions are not determined in advance, and an individual’s
-participation may unfold across multiple distinct periods rather than a
-single continuous course. In these circumstances, observations can be
-further clustered within discrete periods of participation or service
-use
-
 ## Data structure
 
 Longitudinal psychotherapy data are hierarchical, or *nested*, because
