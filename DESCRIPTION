@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R:
     c(
     person("Nickolas", "Frost", email = "drnickfrost@gmail.com",  role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0221-6422")),
-    person("Fran", "Rebolledo", role = "ctb")
+    person("Fran", "Rebolledo", role = "aut")
     )
 Description: Provides tools for identifying, describing, visualizing, and
     modeling repeated treatment episodes in longitudinal clinical data.
