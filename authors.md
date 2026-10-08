@@ -5,6 +5,8 @@
 - **Nickolas Frost**. Author, maintainer.
   [](https://orcid.org/0000-0003-0221-6422)
 
+- **Fran Rebolledo**. Contributor.
+
 ## Citation
 
 Source:
