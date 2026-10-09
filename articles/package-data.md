@@ -5,7 +5,7 @@
 This article explains how multi-episode psychotherapy data are
 structured and introduces the datasets included in `leap`.
 
-## Data structure
+## Structure
 
 Longitudinal psychotherapy data contain repeated session-level
 observations nested within clients. A basic premise of `leap` is that
@@ -32,23 +32,22 @@ clients.](images/eps_nesting.png)
 Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.
 
-## Data sets
+## Datasets
 
-`leap` includes simulated longitudinal psychotherapy datasets that
-reflect common features of real-world treatment records and the
-hierarchical structure illustrated in Figure 1. These datasets vary
-along two key dimensions: *design* and *scenario type*.
+`leap` includes simulated longitudinal psychotherapy datasets with
+sessions nested within treatment episodes and episodes nested within
+clients, as illustrated in Figure 1. The datasets vary by
+*design*—balanced or unbalanced—and *scenario type*.
 
-In the **balanced design**, clients contribute the same number of
-treatment episodes and the same number of sessions within each episode.
-This provides a simplified data structure that is useful for comparing
-and evaluating the performance of different statistical modeling
-approaches.
+In a **balanced design**, all clients contribute the same number of
+episodes, and all episodes contain the same number of sessions. This
+simplified structure is useful for comparing statistical models and
+evaluating their performance.
 
-In the **unbalanced design**, clients may contribute different numbers
-of sessions and episodes of care. This structure more closely resembles
-naturalistic treatment records, where treatment duration and patterns of
-reengagement vary across clients.
+In an **unbalanced design**, the number of episodes and sessions varies
+across clients. This structure more closely resembles routine treatment
+records, where clients differ in how long they attend treatment and how
+often they return for additional care.
 
 ### Scenario type: stochastic and clinical
 

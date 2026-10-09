@@ -90,7 +90,7 @@ structured and introduces the datasets included in
 <code>leap</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="data-structure">Data structure<a class="anchor" aria-label="anchor" href="#data-structure"></a>
+<h2 id="structure">Structure<a class="anchor" aria-label="anchor" href="#structure"></a>
 </h2>
 <p>Longitudinal psychotherapy data contain repeated session-level
 observations nested within clients. A basic premise of <code>leap</code>
@@ -118,22 +118,20 @@ treatment episodes, and clients.</div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="data-sets">Data sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
+<h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
 </h2>
 <p><code>leap</code> includes simulated longitudinal psychotherapy
-datasets that reflect common features of real-world treatment records
-and the hierarchical structure illustrated in Figure 1. These datasets
-vary along two key dimensions: <em>design</em> and <em>scenario
-type</em>.</p>
-<p>In the <strong>balanced design</strong>, clients contribute the same
-number of treatment episodes and the same number of sessions within each
-episode. This provides a simplified data structure that is useful for
-comparing and evaluating the performance of different statistical
-modeling approaches.</p>
-<p>In the <strong>unbalanced design</strong>, clients may contribute
-different numbers of sessions and episodes of care. This structure more
-closely resembles naturalistic treatment records, where treatment
-duration and patterns of reengagement vary across clients.</p>
+datasets with sessions nested within treatment episodes and episodes
+nested within clients, as illustrated in Figure 1. The datasets vary by
+<em>design</em>—balanced or unbalanced—and <em>scenario type</em>.</p>
+<p>In a <strong>balanced design</strong>, all clients contribute the
+same number of episodes, and all episodes contain the same number of
+sessions. This simplified structure is useful for comparing statistical
+models and evaluating their performance.</p>
+<p>In an <strong>unbalanced design</strong>, the number of episodes and
+sessions varies across clients. This structure more closely resembles
+routine treatment records, where clients differ in how long they attend
+treatment and how often they return for additional care.</p>
 <div class="section level3">
 <h3 id="scenario-type-stochastic-and-clinical">Scenario type: stochastic and clinical<a class="anchor" aria-label="anchor" href="#scenario-type-stochastic-and-clinical"></a>
 </h3>
