@@ -2,29 +2,29 @@
 
 ## Overview
 
-This article describes the hierarchical structure of treatment episode
-data and introduces the datasets included with the `leap` package.
+This article explains how multi-episode psychotherapy data are
+structured and introduces the datasets included in `leap`.
 
 ## Data structure
 
-Longitudinal psychotherapy data are hierarchical, or *nested*, because
-each client contributes multiple observations over time. Since
-observations from the same individual are often correlated, statistical
-analyses must account for this dependence.
+Longitudinal psychotherapy data contain repeated session-level
+observations nested within clients. A basic premise of `leap` is that
+clients may participate in multiple treatment episodes, introducing an
+additional level of nesting: **sessions within episodes, and episodes
+within clients**. This structure is especially relevant in electronic
+health records and other archival datasets that track treatment over
+extended periods.
 
-A central premise of `leap` is that longitudinal treatment data may
-contain an additional level of nesting when clients participate in
-multiple episodes of treatment over time. This structure is especially
-relevant in datasets that track service use over extended periods, such
-as electronic health records and other archival data. In these data,
-sessions are nested within treatment episodes, which are nested within
-clients:
+The three levels are:
 
-- **Session**: An individual treatment visit or observation.
-- **Episode**: A distinct period of treatment comprising one or more
+- **Session**: An individual treatment visit at which an outcome may be
+  measured.
+- **Episode**: A distinct period of treatment containing one or more
   sessions.
-- **Client**: An individual who may contribute one or more treatment
+- **Client**: An individual who participates in one or more treatment
   episodes.
+
+Figure 1 illustrates this three-level structure.
 
 ![Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.](images/eps_nesting.png)
@@ -32,16 +32,12 @@ clients.](images/eps_nesting.png)
 Figure 1. Hierarchical structure of sessions, treatment episodes, and
 clients.
 
-## Simulated datasets
+## Data sets
 
 `leap` includes simulated longitudinal psychotherapy datasets that
 reflect common features of real-world treatment records and the
 hierarchical structure illustrated in Figure 1. These datasets vary
-along two key dimensions: *design* and *scenario type*. 2 \## Design:
-balanced and unbalanced
-
-The simulated data include both balanced and unbalanced longitudinal
-designs.
+along two key dimensions: *design* and *scenario type*.
 
 In the **balanced design**, clients contribute the same number of
 treatment episodes and the same number of sessions within each episode.
