@@ -120,53 +120,63 @@ treatment episodes, and clients.</div>
 <div class="section level2">
 <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
 </h2>
-<p><code>leap</code> includes simulated longitudinal psychotherapy
-datasets with sessions nested within treatment episodes and episodes
-nested within clients, as illustrated in Figure 1. The datasets vary by
-<em>design</em>—balanced or unbalanced—and <em>scenario type</em>.</p>
+<p><code>leap</code> includes simulated longitudinal datasets with
+sessions nested within treatment episodes and episodes nested within
+clients, as illustrated in Figure 1. The datasets vary along two
+dimensions: <strong>design</strong>, which determines the number of
+episodes and sessions, and <strong>scenario type</strong>, which
+determines variability and patterns of change.</p>
+<div class="section level3">
+<h3 id="design">Design<a class="anchor" aria-label="anchor" href="#design"></a>
+</h3>
 <p>In a <strong>balanced design</strong>, all clients contribute the
 same number of episodes, and all episodes contain the same number of
 sessions. This simplified structure is useful for comparing statistical
 models and evaluating their performance.</p>
-<p>In an <strong>unbalanced design</strong>, the number of episodes and
-sessions varies across clients. This structure more closely resembles
-routine treatment records, where clients differ in how long they attend
-treatment and how often they return for additional care.</p>
+<p>In an <strong>unbalanced design</strong>, clients contribute
+different numbers of episodes and sessions. This structure more closely
+resembles routine treatment records, where clients differ in treatment
+duration and how often they return for additional care.</p>
+</div>
 <div class="section level3">
-<h3 id="scenario-type-stochastic-and-clinical">Scenario type: stochastic and clinical<a class="anchor" aria-label="anchor" href="#scenario-type-stochastic-and-clinical"></a>
+<h3 id="scenario-type">Scenario type<a class="anchor" aria-label="anchor" href="#scenario-type"></a>
 </h3>
-<p>Within each design, <code>leap</code> provides simulations
-representing different sources and patterns of variation.</p>
 <p><strong>Stochastic scenarios</strong> vary the amount of
 between-client and between-episode variability in treatment
-trajectories. These scenarios are useful for examining how different
-variance structures affect episode-based analyses.</p>
-<p><strong>Clinical scenarios</strong> represent systematic patterns of
-treatment and reengagement across episodes, such as recurrence,
-efficient return to treatment, persistent difficulty, and diminishing
-response.</p>
-<p>Together, these simulated data provide controlled examples for
-demonstrating how <code>leap</code> functions behave across different
-longitudinal data structures and patterns of change.</p>
+trajectories. They are useful for examining how different sources of
+variation affect episode-based analyses.</p>
+<p><strong>Clinical scenarios</strong> simulate predefined patterns of
+change within and between episodes. They illustrate how treatment
+response and return to care may differ across successive episodes.</p>
+<p>Together, these datasets provide controlled examples for exploring
+<code>leap</code> functions and comparing analytic approaches across
+different data structures and treatment trajectories.</p>
+<div class="section level4">
+<h4 id="diminishing-therapeutic-response">Diminishing therapeutic response<a class="anchor" aria-label="anchor" href="#diminishing-therapeutic-response"></a>
+</h4>
+<p>Clients improve during treatment, but their improvement is smaller in
+episodes following the first episode.</p>
 </div>
-<div class="section level3">
-<h3 id="clinical-scenarios">Clinical scenarios<a class="anchor" aria-label="anchor" href="#clinical-scenarios"></a>
-</h3>
-<div class="section level5">
-<h5 id="clinical-scenario-diminishing-therapeutic-response">Clinical scenario: diminishing therapeutic response<a class="anchor" aria-label="anchor" href="#clinical-scenario-diminishing-therapeutic-response"></a>
-</h5>
+<div class="section level4">
+<h4 id="deteriorating-therapeutic-response">Deteriorating therapeutic response<a class="anchor" aria-label="anchor" href="#deteriorating-therapeutic-response"></a>
+</h4>
+<p>Clients’ outcomes worsen during treatment, representing deterioration
+within episodes rather than improvement.</p>
 </div>
-<div class="section level5">
-<h5 id="clinical-scenario-deteriorating-therapeutic-response">Clinical scenario: deteriorating therapeutic response<a class="anchor" aria-label="anchor" href="#clinical-scenario-deteriorating-therapeutic-response"></a>
-</h5>
+<div class="section level4">
+<h4 id="relapse-and-response">Relapse and response<a class="anchor" aria-label="anchor" href="#relapse-and-response"></a>
+</h4>
+<p>Clients’ outcomes worsen between episodes, but clients improve again
+when they return to treatment.</p>
 </div>
-<div class="section level5">
-<h5 id="clinical-scenario-relapse-and-response">Clinical scenario: relapse and response<a class="anchor" aria-label="anchor" href="#clinical-scenario-relapse-and-response"></a>
-</h5>
-</div>
-<div class="section level5">
-<h5 id="clinical-scenario-efficient-return-and-response">Clinical scenario: efficient return and response<a class="anchor" aria-label="anchor" href="#clinical-scenario-efficient-return-and-response"></a>
-</h5>
+<div class="section level4">
+<h4 id="efficient-return-and-response">Efficient return and response<a class="anchor" aria-label="anchor" href="#efficient-return-and-response"></a>
+</h4>
+<p>Clients’ outcomes worsen between episodes, but clients improve in
+fewer sessions when they return to treatment.</p>
+<p>Together, these datasets provide controlled examples for exploring
+<code>leap</code> functions and comparing analytic approaches across
+different data structures and patterns of change.</p>
 </div>
 </div>
 </div>
