@@ -1,9 +1,8 @@
 # leap
 
 The **L**ongitudinal **E**pisode **A**nalyses and **P**rocedures
-(`leap`) package provides research research tools to identify,
-visualize, and model repeated treatment episodes in longitudinal health
-records.
+(`leap`) package provides tools to identify, visualize, and model
+repeated treatment episodes in longitudinal health records.
 
 # Why leap?
 
